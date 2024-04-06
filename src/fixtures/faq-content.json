@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "question": "What is RetroFix?",
+    "answer": "Only the best streaming service ever! Sadly, it's not real. RetroFix is a NetFlix clone I built using React.js, React Router, styled-components, Fuse.js and Firebase."
+  },
+  {
+    "id": 2,
+    "question": "How much does RetroFix cost?",
+    "answer": "More than you can afford buddy! Killer, hand-curated content like this doesn't come cheap. But I'm sure that we can reach a mutually-beneficial arrangement..."
+  },
+  {
+    "id": 3,
+    "question": "Where can I watch?",
+    "answer": "You didn't read the answer to the first question did you? Anywhere you want I guess, but you're gonna be disappointed when you press the play button!"
+  },
+  {
+    "id": 4,
+    "question": "How do I cancel?",
+    "answer": "RetroFix is just like Hotel California. You can check out any time you like, but you can never leave!"
+  },
+  {
+    "id": 5,
+    "question": "What can I watch on RetroFix?",
+    "answer": "RetroFix lists many of my favourite films, documentaries and TV shows from yesteryear. But you can't watch any of them!"
+  },
+  {
+    "id": 6,
+    "question": "Is RetroFix good for kids?",
+    "answer": "My girls, sir, they didn't care for RetroFix at first. One of them actually stole a pack of matches, and tried to burn it down. But I corrected them sir. And when my wife tried to prevent me from doing my duty, I corrected her. Ahem, sorry, what were we talking about?"
+  }
+]
