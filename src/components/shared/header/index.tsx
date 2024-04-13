@@ -12,12 +12,8 @@ export const Header = ({
   children,
 }: PropsWithChildren<HeaderProps>) => {
   return (
-    <HeaderContainer hasBorder={hasBorder} noBgOnMobile={noBgOnMobile}>
+    <HeaderContainer $hasBorder={hasBorder} noBgOnMobile={noBgOnMobile}>
       <ImageGradient>{children}</ImageGradient>
     </HeaderContainer>
   )
-}
-
-Header.LogoWrapper = ({ children }) => {
-  return <LogoWrapper>{children}</LogoWrapper>
 }

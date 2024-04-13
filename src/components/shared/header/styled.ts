@@ -2,13 +2,13 @@ import { cardBorderBottom } from '@/constants/theme'
 import styled from 'styled-components'
 
 type HeaderProps = {
-  hasBorder?: boolean
+  $hasBorder?: boolean
   noBgOnMobile?: boolean
 }
 
 export const HeaderContainer = styled.div<HeaderProps>`
   width: 100%;
-  border-bottom: ${({ hasBorder }) => (hasBorder ? cardBorderBottom : '')};
+  border-bottom: ${({ $hasBorder }) => ($hasBorder ? cardBorderBottom : '')};
   background-image: ${({ noBgOnMobile }) =>
     noBgOnMobile ? `url('')` : `url('../images/misc/videodrome.jpg')`};
   background-repeat: no-repeat;
@@ -27,24 +27,4 @@ export const ImageGradient = styled.div`
     rgba(0, 0, 0, 0) 60%,
     rgba(0, 0, 0, 0.8) 100%
   );
-`
-
-export const LogoWrapper = styled.div`
-  width: 5.5rem;
-  height: 1.5rem;
-
-  @media (min-width: 550px) {
-    width: 6.75rem;
-    height: 2rem;
-  }
-
-  @media (min-width: 950px) {
-    width: 8.375rem;
-    height: 2.25rem;
-  }
-
-  @media (min-width: 1450px) {
-    width: 10.4375rem;
-    height: 2.8125rem;
-  }
 `
