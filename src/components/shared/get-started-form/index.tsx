@@ -11,6 +11,7 @@ import {
   InputWrapper,
 } from './styled'
 import { isEmailValid } from '@/helpers/isEmailValid'
+import { useSignUpContext } from '@/context/SignUpContext'
 
 export default function GetStartedForm() {
   const { globalEmail, setGlobalEmail } = useSignUpContext()
