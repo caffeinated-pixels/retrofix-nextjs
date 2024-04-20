@@ -8,10 +8,13 @@ type FormState = {
   firebaseError: string
 }
 
-type FormAction = {
-  type: string
-  payload: string | boolean
-}
+type FormAction =
+  | { type: 'SET_FIRST_NAME'; payload: string }
+  | { type: 'SET_EMAIL'; payload: string }
+  | { type: 'SET_PASSWORD'; payload: string }
+  | { type: 'SET_INPUT_ERROR'; payload: boolean }
+  | { type: 'SET_FIREBASE_ERROR'; payload: string }
+  | { type: string; payload: never }
 
 type FormReducer = (state: FormState, action: FormAction) => FormState
 
