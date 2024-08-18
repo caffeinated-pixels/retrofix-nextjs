@@ -1,5 +1,8 @@
 'use client'
+import HeaderFeature from '@/components/home/header-feature'
+import StoryCards from '@/components/home/StoryCards'
 import { SemanticHeader } from '@/components/shared/SemanticHeader'
+import MainContainer from '@/components/shared/containers/MainContainer'
 import { Header } from '@/components/shared/header'
 import { LinkButton } from '@/components/shared/link-button'
 import { Navbar } from '@/components/shared/navbar'
@@ -15,15 +18,15 @@ export default function Home() {
             <SiteLogo />
             <LinkButton href={SIGN_IN}>Sign In</LinkButton>
           </Navbar>
-          {/* <HeaderFeature /> */}
+          <HeaderFeature />
         </Header>
       </SemanticHeader>
 
-      {/* <MainContainer>
+      <MainContainer>
         <StoryCards />
-        <FaqSection />
+        {/* <FaqSection /> */}
       </MainContainer>
-      <Footer footerContent={footerHomeContent} increasedPadding /> */}
+      {/* <Footer footerContent={footerHomeContent} increasedPadding /> */}
     </>
   )
 }
