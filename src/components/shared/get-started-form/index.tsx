@@ -12,24 +12,29 @@ import {
 } from './styled'
 import { isEmailValid } from '@/helpers/isEmailValid'
 import { useSignUpContext } from '@/context/SignUpContext'
+import { useRouter } from 'next/router'
+import { useFormValidation } from '@/hooks/useFormValidation'
 
 export default function GetStartedForm() {
   const { globalEmail, setGlobalEmail } = useSignUpContext()
-  const [state, dispatch] = useFormValidation({
+  const { state, dispatch } = useFormValidation({
+    firstName: '',
     email: globalEmail,
     inputError: false,
+    password: '',
+    firebaseError: '',
   })
 
-  const navigate = useNavigate()
+  const router = useRouter()
 
   const emailError = state.inputError && !isEmailValid(state.email)
 
-  const Signup = (e) => {
+  const Signup = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
     if (isEmailValid(state.email)) {
       setGlobalEmail(state.email)
-      navigate(REGISTRATION)
+      router.push(REGISTRATION)
     } else {
       dispatch({ type: 'SET_INPUT_ERROR', payload: true })
     }

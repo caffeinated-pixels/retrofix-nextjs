@@ -46,5 +46,5 @@ export const useFormValidation = (
 ) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  return [state, dispatch]
+  return { state, dispatch }
 }
