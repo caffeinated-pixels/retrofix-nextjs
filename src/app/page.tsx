@@ -2,12 +2,13 @@
 import HeaderFeature from '@/components/home/header-feature'
 import StoryCards from '@/components/home/StoryCards'
 import { SemanticHeader } from '@/components/shared/SemanticHeader'
-import MainContainer from '@/components/shared/containers/MainContainer'
+import { MainContainer } from '@/components/shared/containers/MainContainer'
 import { Header } from '@/components/shared/header'
 import { LinkButton } from '@/components/shared/link-button'
 import { Navbar } from '@/components/shared/navbar'
 import SiteLogo from '@/components/shared/site-logo'
 import { SIGN_IN } from '@/constants/routes'
+import { FaqSection } from '@/components/home/faq-section/FaqSection'
 
 export default function Home() {
   return (
@@ -24,7 +25,7 @@ export default function Home() {
 
       <MainContainer>
         <StoryCards />
-        {/* <FaqSection /> */}
+        <FaqSection />
       </MainContainer>
       {/* <Footer footerContent={footerHomeContent} increasedPadding /> */}
     </>
