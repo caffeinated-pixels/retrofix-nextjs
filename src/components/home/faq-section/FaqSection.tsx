@@ -58,9 +58,7 @@ const FormWrapper = styled.div`
 
 export const FaqSection = () => {
   const accordionItems = faqContentData.map(({ id, question, answer }) => (
-    <AccordionItem key={id} id={id} question={question} answer={answer}>
-      Dave${id}
-    </AccordionItem>
+    <AccordionItem key={id} id={id} question={question} answer={answer} />
   ))
 
   return (

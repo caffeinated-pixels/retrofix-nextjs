@@ -1,11 +1,26 @@
-import { createContext, useState, useContext } from 'react'
+import { createContext, useState, useContext, ReactNode } from 'react'
 
-const AccordionContext = createContext()
+type AccordionContextType = {
+  activeAccordionItem: string | null
+  setToggle: (currentAccordionItem: string) => void
+}
 
-export function AccordionContextProvider({ children }) {
-  const [activeAccordionItem, setActiveAccordionItem] = useState(null)
+const AccordionContext = createContext<AccordionContextType>(
+  {} as AccordionContextType
+)
 
-  const setToggle = (currentAccordionItem) => {
+type AccordionContextProvider = {
+  children: ReactNode
+}
+
+export const AccordionContextProvider = ({
+  children,
+}: AccordionContextProvider) => {
+  const [activeAccordionItem, setActiveAccordionItem] = useState<string | null>(
+    null
+  )
+
+  const setToggle = (currentAccordionItem: string) => {
     setActiveAccordionItem(() => {
       if (activeAccordionItem !== currentAccordionItem) {
         // set currentAccordionItem as activeAccordionItem

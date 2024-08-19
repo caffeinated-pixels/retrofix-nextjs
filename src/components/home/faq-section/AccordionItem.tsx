@@ -32,8 +32,12 @@ const HeaderButton = styled.button`
   }
 `
 
-const OpenIcon = styled.i`
-  transform: ${({ isActive }) => (isActive ? 'rotate(45deg)' : null)};
+type OpenIconProps = {
+  $isActive: boolean
+}
+
+const OpenIcon = styled.i<OpenIconProps>`
+  transform: ${({ $isActive }) => ($isActive ? 'rotate(45deg)' : null)};
 `
 
 const AnswerPanel = styled.div`
@@ -44,7 +48,13 @@ const AnswerPanel = styled.div`
   overflow: hidden;
 `
 
-export const AccordionItem = ({ id, answer, question }) => {
+type AccordionItemProps = {
+  id: number
+  answer: string
+  question: string
+}
+
+export const AccordionItem = ({ id, answer, question }: AccordionItemProps) => {
   const { activeAccordionItem, setToggle } = useAccordionContext()
 
   return (
@@ -60,7 +70,7 @@ export const AccordionItem = ({ id, answer, question }) => {
           {question}
           <OpenIcon
             className='fas fa-plus'
-            isActive={activeAccordionItem === question}
+            $isActive={activeAccordionItem === question}
           ></OpenIcon>
         </HeaderButton>
       </QuestionHeader>

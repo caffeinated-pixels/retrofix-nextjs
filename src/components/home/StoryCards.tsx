@@ -72,12 +72,12 @@ const Subtitle = styled.p`
 `
 
 type ImageWrapperProps = {
-  negativeMargin: string
+  $negativeMargin: string
 }
 
 // some images need a negative margin-top to reduce white space
 const ImageWrapper = styled.div<ImageWrapperProps>`
-  margin: ${({ negativeMargin }) => negativeMargin};
+  margin: ${({ $negativeMargin }) => $negativeMargin};
   position: relative;
   z-index: -1;
   object-fit: cover;
@@ -100,7 +100,7 @@ export default function StoryCards() {
           <Title>{item.title}</Title>
           <Subtitle>{item.subtitle}</Subtitle>
         </TextWrapper>
-        <ImageWrapper negativeMargin={item.negativeMargin}>
+        <ImageWrapper $negativeMargin={item.negativeMargin}>
           <StoryImage src={item.image} alt={item.alt} />
         </ImageWrapper>
       </ContentWrapper>

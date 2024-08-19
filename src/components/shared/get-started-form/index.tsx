@@ -12,7 +12,7 @@ import {
 } from './styled'
 import { isEmailValid } from '@/helpers/isEmailValid'
 import { useSignUpContext } from '@/context/SignUpContext'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useFormValidation } from '@/hooks/useFormValidation'
 
 export default function GetStartedForm() {
@@ -25,19 +25,19 @@ export default function GetStartedForm() {
     firebaseError: '',
   })
 
-  // const router = useRouter()
+  const router = useRouter()
 
   const emailError = state.inputError && !isEmailValid(state.email)
 
   const Signup = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
-    // if (isEmailValid(state.email)) {
-    //   setGlobalEmail(state.email)
-    //   router.push(REGISTRATION)
-    // } else {
-    //   dispatch({ type: 'SET_INPUT_ERROR', payload: true })
-    // }
+    if (isEmailValid(state.email)) {
+      setGlobalEmail(state.email)
+      router.push(REGISTRATION)
+    } else {
+      dispatch({ type: 'SET_INPUT_ERROR', payload: true })
+    }
   }
 
   return (
