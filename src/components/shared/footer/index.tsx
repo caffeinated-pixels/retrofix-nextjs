@@ -3,7 +3,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 
 type FooterContainerProps = {
-  increasedPadding?: boolean
+  $increasedPadding?: boolean
   bgColor?: string
   borderTop?: string
   borderOnlyOnMobile?: boolean
@@ -15,14 +15,14 @@ const FooterContainer = styled.footer<FooterContainerProps>`
   border-top: ${({ borderTop }) =>
     borderTop ? `1px solid ${borderTop}` : null};
 
-  padding: ${({ increasedPadding }) =>
-    increasedPadding ? '50px 5%' : '30px 0'};
+  padding: ${({ $increasedPadding }) =>
+    $increasedPadding ? '50px 5%' : '30px 0'};
   line-height: normal;
 
   @media (min-width: 550px) {
     padding: 75px 45px;
-    padding: ${({ increasedPadding }) =>
-      increasedPadding ? '75px 45px' : '30px 0'};
+    padding: ${({ $increasedPadding }) =>
+      $increasedPadding ? '75px 45px' : '30px 0'};
   }
 
   @media (min-width: 750px) {
@@ -106,7 +106,7 @@ type FooterProps = {
     body: string[]
     bottomText?: string
   }
-  increasedPadding?: boolean
+  $increasedPadding?: boolean
   bgColor?: string
   borderTop?: string
   borderOnlyOnMobile?: boolean
@@ -114,7 +114,7 @@ type FooterProps = {
 
 export const Footer = ({
   footerContent,
-  increasedPadding,
+  $increasedPadding,
   bgColor,
   borderTop,
   borderOnlyOnMobile,
@@ -127,7 +127,7 @@ export const Footer = ({
 
   return (
     <FooterContainer
-      increasedPadding={increasedPadding}
+      $increasedPadding={$increasedPadding}
       bgColor={bgColor}
       borderTop={borderTop}
       borderOnlyOnMobile={borderOnlyOnMobile}

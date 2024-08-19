@@ -29,7 +29,7 @@ export default function Home() {
         <StoryCards />
         <FaqSection />
       </MainContainer>
-      <Footer footerContent={footerHomeContent} increasedPadding />
+      <Footer footerContent={footerHomeContent} $increasedPadding />
     </>
   )
 }
