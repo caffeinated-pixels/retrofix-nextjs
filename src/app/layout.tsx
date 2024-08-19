@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { SignUpContextProvider } from '@/context/SignUpContext'
+import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,10 +18,16 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <SignUpContextProvider>
-      <html lang='en'>
-        <body className={inter.className}>{children}</body>
-      </html>
-    </SignUpContextProvider>
+    <>
+      <Script
+        src='https://kit.fontawesome.com/4947e996a3.js'
+        crossOrigin='anonymous'
+      ></Script>
+      <SignUpContextProvider>
+        <html lang='en'>
+          <body className={inter.className}>{children}</body>
+        </html>
+      </SignUpContextProvider>
+    </>
   )
 }
