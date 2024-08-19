@@ -9,6 +9,8 @@ import { Navbar } from '@/components/shared/navbar'
 import SiteLogo from '@/components/shared/site-logo'
 import { SIGN_IN } from '@/constants/routes'
 import { FaqSection } from '@/components/home/faq-section/FaqSection'
+import { Footer } from '@/components/shared/footer'
+import { footerHomeContent } from '@/fixtures/footer-content'
 
 export default function Home() {
   return (
@@ -27,7 +29,7 @@ export default function Home() {
         <StoryCards />
         <FaqSection />
       </MainContainer>
-      {/* <Footer footerContent={footerHomeContent} increasedPadding /> */}
+      <Footer footerContent={footerHomeContent} increasedPadding />
     </>
   )
 }
