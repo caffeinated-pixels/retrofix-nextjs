@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, ReactNode } from 'react'
+import { createContext, useState, useContext, PropsWithChildren } from 'react'
 
 type AccordionContextType = {
   activeAccordionItem: string | null
@@ -9,13 +9,7 @@ const AccordionContext = createContext<AccordionContextType>(
   {} as AccordionContextType
 )
 
-type AccordionContextProvider = {
-  children: ReactNode
-}
-
-export const AccordionContextProvider = ({
-  children,
-}: AccordionContextProvider) => {
+export const AccordionContextProvider = ({ children }: PropsWithChildren) => {
   const [activeAccordionItem, setActiveAccordionItem] = useState<string | null>(
     null
   )

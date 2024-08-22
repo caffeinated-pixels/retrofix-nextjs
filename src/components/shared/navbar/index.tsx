@@ -1,6 +1,6 @@
 import { NavContainer } from './styled'
-import { ReactNode } from 'react'
+import { PropsWithChildren } from 'react'
 
-export const Navbar = ({ children, ...restProps }: { children: ReactNode }) => {
+export const Navbar = ({ children, ...restProps }: PropsWithChildren) => {
   return <NavContainer {...restProps}>{children}</NavContainer>
 }
