@@ -1,10 +1,7 @@
 'use client'
 
-import { StepDevicesLogo } from '@/components/registration/StepDevicesLogo'
 import { PageContainer } from '@/components/shared/containers/PageContainer'
-import { RegContainer } from '@/components/registration/RegContainer'
 import { RegContentContainer } from '@/components/registration/RegContentContainer'
-import { StepLogoContainer } from '@/components/registration/StepLogoContainer'
 import { Footer } from '@/components/shared/footer'
 import { NavLink } from '@/components/shared/nav-link'
 import { RegNavbar } from '@/components/shared/reg-navbar'
@@ -12,11 +9,16 @@ import { REG_FORM, SIGN_IN } from '@/constants/routes'
 import { colors } from '@/constants/theme'
 import { footerHomeRegistration } from '@/fixtures/footer-content'
 import { useRouter } from 'next/navigation'
-import { StepHeaderContainer } from '@/components/registration/StepHeaderContainer'
 import { StepIndicator } from '@/components/registration/StepIndicator'
 import { StepTitle } from '@/components/registration/StepTitle'
-import { RegContextBody } from '@/components/registration/RegContextBody'
-import { RegParagraph } from '@/components/registration/RegParagraph'
+import {
+  RegContainer,
+  RegContextBody,
+  StepDevicesLogo,
+  StepHeaderContainer,
+  StepLogoContainer,
+  RegParagraph,
+} from '@/components/registration/styled'
 import { SubmitButton } from '@/components/shared/submit-button'
 
 export default function RegistrationPage() {

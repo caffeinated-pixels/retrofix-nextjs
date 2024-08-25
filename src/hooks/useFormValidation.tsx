@@ -1,6 +1,6 @@
 import { useReducer } from 'react'
 
-type FormState = {
+export type FormState = {
   firstName: string
   email: string
   password: string

@@ -4,16 +4,16 @@ import styled from 'styled-components'
 
 type FooterContainerProps = {
   $increasedPadding?: boolean
-  bgColor?: string
-  borderTop?: string
-  borderOnlyOnMobile?: boolean
+  $bgColor?: string
+  $borderTop?: string
+  $borderOnlyOnMobile?: boolean
 }
 
 const FooterContainer = styled.footer<FooterContainerProps>`
   color: ${colors.textMedGrey};
-  background-color: ${({ bgColor }) => (bgColor ? bgColor : null)};
-  border-top: ${({ borderTop }) =>
-    borderTop ? `1px solid ${borderTop}` : null};
+  background-color: ${({ $bgColor }) => ($bgColor ? $bgColor : null)};
+  border-top: ${({ $borderTop }) =>
+    $borderTop ? `1px solid ${$borderTop}` : null};
 
   padding: ${({ $increasedPadding }) =>
     $increasedPadding ? '50px 5%' : '30px 0'};
@@ -26,7 +26,8 @@ const FooterContainer = styled.footer<FooterContainerProps>`
   }
 
   @media (min-width: 750px) {
-    border-top: ${({ borderOnlyOnMobile }) => (borderOnlyOnMobile ? '0' : '')};
+    border-top: ${({ $borderOnlyOnMobile }) =>
+      $borderOnlyOnMobile ? '0' : ''};
   }
 `
 const FooterWrapper = styled.div`
@@ -128,9 +129,9 @@ export const Footer = ({
   return (
     <FooterContainer
       $increasedPadding={$increasedPadding}
-      bgColor={bgColor}
-      borderTop={borderTop}
-      borderOnlyOnMobile={borderOnlyOnMobile}
+      $bgColor={bgColor}
+      $borderTop={borderTop}
+      $borderOnlyOnMobile={borderOnlyOnMobile}
     >
       <FooterWrapper>
         <ContentWrapper>
