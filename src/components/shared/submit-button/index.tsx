@@ -1,6 +1,5 @@
 import { FormHandleSubmit } from '@/app/signup/regform/page'
 import { colors } from '@/constants/theme'
-import { FormEvent } from 'react'
 import styled from 'styled-components'
 
 type SubmitButtonContainerProps = {
