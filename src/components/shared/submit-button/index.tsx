@@ -1,4 +1,6 @@
+import { FormHandleSubmit } from '@/app/signup/regform/page'
 import { colors } from '@/constants/theme'
+import { FormEvent } from 'react'
 import styled from 'styled-components'
 
 type SubmitButtonContainerProps = {
@@ -12,6 +14,7 @@ const SubmitButtonContainer = styled.div<SubmitButtonContainerProps>`
 
 type ButtonProps = {
   $boldText?: boolean
+  onClick: FormHandleSubmit
 }
 
 const Button = styled.button<ButtonProps>`
@@ -39,7 +42,7 @@ const Button = styled.button<ButtonProps>`
 `
 
 type SubmitButtonProps = {
-  onClick: () => void
+  onClick: FormHandleSubmit
   maxWidth?: string
   boldText?: boolean
   children: React.ReactNode

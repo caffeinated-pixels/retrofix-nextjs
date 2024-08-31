@@ -8,7 +8,7 @@ export type FormState = {
   firebaseError: string
 }
 
-type FormAction =
+export type FormAction =
   | { type: 'SET_FIRST_NAME'; payload: string }
   | { type: 'SET_EMAIL'; payload: string }
   | { type: 'SET_PASSWORD'; payload: string }
