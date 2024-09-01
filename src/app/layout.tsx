@@ -28,11 +28,12 @@ export default function RootLayout({
         src='https://kit.fontawesome.com/4947e996a3.js'
         crossOrigin='anonymous'
       ></Script>
-      <SignUpContextProvider>
-        <html lang='en'>
-          <body className={roboto.className}>{children}</body>
-        </html>
-      </SignUpContextProvider>
+
+      <html lang='en'>
+        <body className={roboto.className}>
+          <SignUpContextProvider>{children}</SignUpContextProvider>
+        </body>
+      </html>
     </>
   )
 }
