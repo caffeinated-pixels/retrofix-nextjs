@@ -1,7 +1,7 @@
 export const HOME = '/'
 export const BROWSE = '/browse'
 
-export const SIGN_UP = '/signup'
+export const CHOOSE_PLAN = '/signup/choose-plan'
 export const REGISTRATION = '/signup/registration'
 export const REG_FORM = '/signup/regform'
 export const PLAN_FORM = '/signup/planform'

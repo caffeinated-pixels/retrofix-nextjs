@@ -11,7 +11,7 @@ import { StepTitle } from '@/components/registration/StepTitle'
 import { PageContainer } from '@/components/shared/containers/PageContainer'
 import { NavLink } from '@/components/shared/nav-link'
 import { RegNavbar } from '@/components/shared/reg-navbar'
-import { SIGN_IN, SIGN_UP } from '@/constants/routes'
+import { SIGN_IN, CHOOSE_PLAN } from '@/constants/routes'
 import { colors } from '@/constants/theme'
 import { useSignUpContext } from '@/context/SignUpContext'
 import { isEmailValid } from '@/helpers/isEmailValid'
@@ -61,7 +61,7 @@ export default function RegForm() {
       setGlobalFirstName(state.firstName.trim())
       setGlobalEmail(state.email.trim())
       setGlobalPassword(state.password.trim())
-      router.push(SIGN_UP)
+      router.push(CHOOSE_PLAN)
     }
   }
 
