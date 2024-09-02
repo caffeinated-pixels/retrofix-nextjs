@@ -27,7 +27,7 @@ export default function RootLayout({
       <Script
         src='https://kit.fontawesome.com/4947e996a3.js'
         crossOrigin='anonymous'
-      ></Script>
+      />
 
       <html lang='en'>
         <body className={roboto.className}>
