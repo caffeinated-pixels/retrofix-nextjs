@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { SignUpContextProvider } from '@/context/SignUpContext'
-import Script from 'next/script'
 import { Roboto } from 'next/font/google'
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+config.autoAddCss = false
 
 const roboto = Roboto({
   weight: ['400', '700'],
@@ -24,11 +26,6 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <Script
-        src='https://kit.fontawesome.com/4947e996a3.js'
-        crossOrigin='anonymous'
-      />
-
       <html lang='en'>
         <body className={roboto.className}>
           <SignUpContextProvider>{children}</SignUpContextProvider>

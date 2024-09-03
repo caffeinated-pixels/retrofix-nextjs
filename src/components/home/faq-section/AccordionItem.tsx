@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import React from 'react'
 import { colors } from '@/constants/theme'
 import { useAccordionContext } from '@/context/AccordionContext'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 const AccordionItemWrapper = styled.div`
   margin-bottom: 8px;
@@ -36,7 +38,7 @@ type OpenIconProps = {
   $isActive: boolean
 }
 
-const OpenIcon = styled.i<OpenIconProps>`
+const OpenIcon = styled(FontAwesomeIcon)<OpenIconProps>`
   transform: ${({ $isActive }) => ($isActive ? 'rotate(45deg)' : null)};
 `
 
@@ -69,9 +71,9 @@ export const AccordionItem = ({ id, answer, question }: AccordionItemProps) => {
         >
           {question}
           <OpenIcon
-            className='fas fa-plus'
+            icon={faPlus}
             $isActive={activeAccordionItem === question}
-          ></OpenIcon>
+          />
         </HeaderButton>
       </QuestionHeader>
       <AnswerPanel

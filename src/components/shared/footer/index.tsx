@@ -1,6 +1,8 @@
 import { colors } from '@/constants/theme'
 import Link from 'next/link'
 import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithubSquare } from '@fortawesome/free-brands-svg-icons'
 
 type FooterContainerProps = {
   $increasedPadding?: boolean
@@ -145,8 +147,7 @@ export const Footer = ({
             <CreditLink href='https://steviegill-webportfolio.netlify.app/'>
               Stevie Gill
             </CreditLink>{' '}
-            |{' '}
-            <FaIcon className='fab fa-github-square' aria-label='Github logo' />{' '}
+            | <FontAwesomeIcon icon={faGithubSquare} aria-label='Github logo' />{' '}
             <CreditLink href='https://github.com/caffeinated-pixels/retrofix'>
               Repo
             </CreditLink>

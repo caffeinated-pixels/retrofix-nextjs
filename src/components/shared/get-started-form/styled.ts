@@ -1,5 +1,6 @@
 import { colors, inputErrorBorderBottom } from '@/constants/theme'
 import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Form = styled.form`
   max-width: 500px;
@@ -150,6 +151,6 @@ export const EmailSubmit = styled.button`
   }
 `
 
-export const ChevronIcon = styled.i`
+export const ChevronIcon = styled(FontAwesomeIcon)`
   margin-left: 0.5em;
 `

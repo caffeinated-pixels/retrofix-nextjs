@@ -14,6 +14,7 @@ import { isEmailValid } from '@/helpers/isEmailValid'
 import { useSignUpContext } from '@/context/SignUpContext'
 import { useRouter } from 'next/navigation'
 import { useFormValidation } from '@/hooks/useFormValidation'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 export default function GetStartedForm() {
   const { globalEmail, setGlobalEmail } = useSignUpContext()
@@ -66,7 +67,7 @@ export default function GetStartedForm() {
 
         <EmailSubmit onClick={Signup}>
           Get Started
-          <ChevronIcon className='fas fa-chevron-right' />
+          <ChevronIcon icon={faChevronRight} />
         </EmailSubmit>
       </EmailForm>
     </Form>
