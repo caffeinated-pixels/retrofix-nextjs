@@ -4,6 +4,7 @@ import { SignUpContextProvider } from '@/context/SignUpContext'
 import { Roboto } from 'next/font/google'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+import StyledComponentsRegistry from '@/lib/registry'
 config.autoAddCss = false
 
 const roboto = Roboto({
@@ -28,7 +29,9 @@ export default function RootLayout({
     <>
       <html lang='en'>
         <body className={roboto.className}>
-          <SignUpContextProvider>{children}</SignUpContextProvider>
+          <StyledComponentsRegistry>
+            <SignUpContextProvider>{children}</SignUpContextProvider>
+          </StyledComponentsRegistry>
         </body>
       </html>
     </>
