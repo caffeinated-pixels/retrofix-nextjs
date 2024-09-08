@@ -5,7 +5,6 @@ import { Roboto } from 'next/font/google'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import StyledComponentsRegistry from '@/lib/registry'
 import '@fortawesome/fontawesome-svg-core/styles.css'
-import Script from 'next/script'
 config.autoAddCss = false
 
 const roboto = Roboto({
@@ -30,10 +29,10 @@ export default function RootLayout({
     <>
       <html lang='en'>
         <head>
-          <Script
+          <script
             src='https://kit.fontawesome.com/4947e996a3.js'
             crossOrigin='anonymous'
-            strategy='beforeInteractive'
+            async
           />
         </head>
         <body className={roboto.className}>
