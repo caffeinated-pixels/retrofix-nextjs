@@ -1,7 +1,5 @@
 'use client'
 
-'use client'
-
 import { RegContentContainer } from '@/components/registration/RegContentContainer'
 import { StepIndicator } from '@/components/registration/StepIndicator'
 import { StepTitle } from '@/components/registration/StepTitle'
