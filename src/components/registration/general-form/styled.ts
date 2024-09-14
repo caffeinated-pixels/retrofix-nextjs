@@ -10,7 +10,8 @@ export const InputWrapper = styled.div`
 `
 
 type InputProps = {
-  $borderColor: string
+  $borderColor?: string
+  $inputError?: boolean
 }
 
 export const Input = styled.input<InputProps>`
