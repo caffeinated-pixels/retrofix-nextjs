@@ -3,14 +3,14 @@ import styled from 'styled-components'
 
 type HeaderProps = {
   $hasBorder?: boolean
-  noBgOnMobile?: boolean
+  $noBgOnMobile?: boolean
 }
 
 export const HeaderContainer = styled.div<HeaderProps>`
   width: 100%;
   border-bottom: ${({ $hasBorder }) => ($hasBorder ? cardBorderBottom : '')};
-  background-image: ${({ noBgOnMobile }) =>
-    noBgOnMobile ? `url('')` : `url('../images/misc/videodrome.jpg')`};
+  background-image: ${({ $noBgOnMobile }) =>
+    $noBgOnMobile ? `url('')` : `url('../images/misc/videodrome.jpg')`};
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
