@@ -109,7 +109,7 @@ type FooterProps = {
     body: string[]
     bottomText?: string
   }
-  $increasedPadding?: boolean
+  increasedPadding?: boolean
   bgColor?: string
   borderTop?: string
   borderOnlyOnMobile?: boolean
@@ -117,7 +117,7 @@ type FooterProps = {
 
 export const Footer = ({
   footerContent,
-  $increasedPadding,
+  increasedPadding,
   bgColor,
   borderTop,
   borderOnlyOnMobile,
@@ -130,7 +130,7 @@ export const Footer = ({
 
   return (
     <FooterContainer
-      $increasedPadding={$increasedPadding}
+      $increasedPadding={increasedPadding}
       $bgColor={bgColor}
       $borderTop={borderTop}
       $borderOnlyOnMobile={borderOnlyOnMobile}
