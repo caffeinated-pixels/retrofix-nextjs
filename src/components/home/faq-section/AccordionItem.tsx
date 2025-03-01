@@ -57,7 +57,7 @@ type AccordionItemProps = {
 }
 
 export const AccordionItem = ({ id, answer, question }: AccordionItemProps) => {
-  const { activeAccordionItem, setToggle } = useAccordionContext()
+  const { activeAccordionItem, toggleAccordionItem } = useAccordionContext()
 
   return (
     <AccordionItemWrapper>
@@ -67,7 +67,7 @@ export const AccordionItem = ({ id, answer, question }: AccordionItemProps) => {
           aria-expanded={activeAccordionItem === question}
           aria-controls={`answer-${id}`}
           id={`question-${id}`}
-          onClick={() => setToggle(question)}
+          onClick={() => toggleAccordionItem(question)}
         >
           {question}
           <OpenIcon

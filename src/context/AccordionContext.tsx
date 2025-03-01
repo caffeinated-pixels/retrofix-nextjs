@@ -1,33 +1,36 @@
-import { createContext, useState, useContext, PropsWithChildren } from 'react'
+import {
+  createContext,
+  useState,
+  useContext,
+  PropsWithChildren,
+  useCallback,
+} from 'react'
 
 type AccordionContextType = {
   activeAccordionItem: string | null
-  setToggle: (currentAccordionItem: string) => void
+  toggleAccordionItem: (currentAccordionItem: string) => void
 }
 
-const AccordionContext = createContext<AccordionContextType>(
-  {} as AccordionContextType
-)
+const AccordionContext = createContext<AccordionContextType>({
+  activeAccordionItem: null,
+  toggleAccordionItem: () => {},
+})
 
 export const AccordionContextProvider = ({ children }: PropsWithChildren) => {
   const [activeAccordionItem, setActiveAccordionItem] = useState<string | null>(
     null
   )
 
-  const setToggle = (currentAccordionItem: string) => {
-    setActiveAccordionItem(() => {
-      if (activeAccordionItem !== currentAccordionItem) {
-        // set currentAccordionItem as activeAccordionItem
-        return currentAccordionItem
-      } else {
-        // set null as activeAccordionItem
-        return null
-      }
-    })
-  }
+  const toggleAccordionItem = useCallback((currentAccordionItem: string) => {
+    setActiveAccordionItem((prev) =>
+      prev !== currentAccordionItem ? currentAccordionItem : null
+    )
+  }, [])
 
   return (
-    <AccordionContext.Provider value={{ activeAccordionItem, setToggle }}>
+    <AccordionContext.Provider
+      value={{ activeAccordionItem, toggleAccordionItem }}
+    >
       {children}
     </AccordionContext.Provider>
   )
