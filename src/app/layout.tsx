@@ -5,6 +5,7 @@ import { Roboto } from 'next/font/google'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import StyledComponentsRegistry from '@/lib/registry'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+import { BrowseContextProvider } from '@/context/BrowseContext'
 config.autoAddCss = false
 
 const roboto = Roboto({
@@ -37,7 +38,9 @@ export default function RootLayout({
         </head>
         <body className={roboto.className}>
           <StyledComponentsRegistry>
-            <SignUpContextProvider>{children}</SignUpContextProvider>
+            <BrowseContextProvider>
+              <SignUpContextProvider>{children}</SignUpContextProvider>
+            </BrowseContextProvider>
           </StyledComponentsRegistry>
         </body>
       </html>
