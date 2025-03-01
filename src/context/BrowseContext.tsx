@@ -25,11 +25,11 @@ type BrowseContextType = {
   activeCategory: string
   setCategory: (category: string) => void
   mediaCollection: MediaCollection
-  sortedContent: Array<{ genre: string; content: MediaItem[] }>
+  sortedContent: SortedContent[]
   randomShow: MediaItem
-} | null
+}
 
-const BrowseContext = createContext<BrowseContextType>(null)
+const BrowseContext = createContext<BrowseContextType | null>(null)
 
 export const BrowseContextProvider = ({ children }: PropsWithChildren) => {
   const [activeCategory, setActiveCategory] = useState<string>('home')
@@ -71,4 +71,12 @@ export const BrowseContextProvider = ({ children }: PropsWithChildren) => {
   )
 }
 
-export const useBrowseContext = () => useContext(BrowseContext)
+export const useBrowseContext = () => {
+  const context = useContext(BrowseContext)
+  if (!context) {
+    throw new Error(
+      'useBrowseContext must be used within a BrowseContextProvider'
+    )
+  }
+  return context
+}

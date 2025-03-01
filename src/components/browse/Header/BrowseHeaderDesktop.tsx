@@ -14,13 +14,11 @@ import {
 } from './styled'
 import SiteLogo from '@/components/shared/site-logo'
 import { Billboard } from '../Billboard/Billboard'
+import { useBrowseContext } from '@/context/BrowseContext'
 
 export default function BrowseHeaderDesktop() {
   const [isSearchOpen, setIsSearchOpen] = useState(false)
-
-  // TODO: get active category from context
-  // const { activeCategory, setCategory } = useBrowseContext()
-  const [activeCategory, setCategory] = useState('home')
+  const { activeCategory, setCategory } = useBrowseContext()
 
   const handleSubmit = () => {
     // TODO: get handleSubmit from useBrowseSearch
