@@ -19,3 +19,5 @@ export default function BrowsePage() {
     </BrowsePageContainer>
   )
 }
+
+// TODO: use getServerSideProps to get fetch media collection and pass it to the BrowseContextProvider

@@ -1,3 +1,4 @@
+import { useBrowseContext } from '@/context/BrowseContext'
 import {
   InfoIcon,
   MoreInfoButton,
@@ -30,7 +31,7 @@ const randomShow = {
 }
 
 export const Billboard = () => {
-  // const { randomShow } = useBrowseContext()
+  const { randomShow } = useBrowseContext()
 
   // TODO: implement useLargeModal
   // const { displayModal, handleShowModal, handleCloseModal } = useLargeModal()
@@ -41,16 +42,17 @@ export const Billboard = () => {
   const handlePlay = () => {}
 
   // TODO: make more robust/type safe
-  const imgUrl = randomShow.slug
+  const imgUrl = randomShow?.slug
     ? `/images/${randomShow.category}/${randomShow.genre}/${randomShow.slug}/large.jpg`
     : ''
 
+  // TODO: add proper loading states
   return (
     <BillboardContainer className='container' $imgUrl={imgUrl}>
       <Vignette>
         <FeaturedContainer>
-          <FeaturedTitle>{randomShow.title}</FeaturedTitle>
-          <FeaturedSynopsis>{randomShow.description}</FeaturedSynopsis>
+          <FeaturedTitle>{randomShow?.title || 'Loading...'}</FeaturedTitle>
+          <FeaturedSynopsis>{randomShow?.description}</FeaturedSynopsis>
           <ButtonWrapper>
             <PlayButton onClick={handlePlay}>
               <PlayIcon className='fas fa-play' />
@@ -61,7 +63,7 @@ export const Billboard = () => {
               More Info
             </MoreInfoButton>
           </ButtonWrapper>
-          <MaturityRating>TV-{randomShow.maturity}</MaturityRating>
+          <MaturityRating>TV-{randomShow?.maturity}</MaturityRating>
         </FeaturedContainer>
       </Vignette>
       {/* {displayModal && (

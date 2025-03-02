@@ -1,24 +1,21 @@
 import { MediaItem, type MediaCollection } from '@/types/mediaContent'
 
-// use robocop as default/fallback random show
-export const robocop: MediaItem = {
-  title: 'RoboCop',
-  description:
-    'In a dystopic and crime-ridden Detroit, a terminally wounded cop returns to the force as a powerful cyborg haunted by submerged memories.',
-  category: 'films',
-  genre: 'sci-fi',
-  subgenres: 'action, crime',
-  maturity: 'MA',
-  year: '1987',
-  length: '1h 42m',
-  director: 'Paul Verhoeven',
-  cast: 'Peter Weller, Nancy Allen, Kurtwood Smith',
-  slug: 'robocop',
-  id: '1',
-}
-
 export const mediaCollection: MediaCollection = [
-  robocop,
+  {
+    title: 'RoboCop',
+    description:
+      'In a dystopic and crime-ridden Detroit, a terminally wounded cop returns to the force as a powerful cyborg haunted by submerged memories.',
+    category: 'films',
+    genre: 'sci-fi',
+    subgenres: 'action, crime',
+    maturity: 'MA',
+    year: '1987',
+    length: '1h 42m',
+    director: 'Paul Verhoeven',
+    cast: 'Peter Weller, Nancy Allen, Kurtwood Smith',
+    slug: 'robocop',
+    id: '1',
+  },
   {
     title: 'Blade Runner',
     description:

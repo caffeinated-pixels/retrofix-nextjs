@@ -1,8 +1,5 @@
 'use client'
-import {
-  mediaCollection,
-  robocop as fallbackRandowShow,
-} from '@/fixtures/mediaCollection'
+import { mediaCollection } from '@/fixtures/mediaCollection'
 import {
   getRandomShow,
   sortStreamingContent,
@@ -26,7 +23,7 @@ type BrowseContextType = {
   setCategory: (category: string) => void
   mediaCollection: MediaCollection
   sortedContent: SortedContent[]
-  randomShow: MediaItem
+  randomShow: MediaItem | null
 }
 
 const BrowseContext = createContext<BrowseContextType | null>(null)
@@ -34,7 +31,7 @@ const BrowseContext = createContext<BrowseContextType | null>(null)
 export const BrowseContextProvider = ({ children }: PropsWithChildren) => {
   const [activeCategory, setActiveCategory] = useState<string>('home')
   const [sortedContent, setSortedContent] = useState<SortedContent[]>([])
-  const [randomShow, setRandomShow] = useState<MediaItem>(fallbackRandowShow)
+  const [randomShow, setRandomShow] = useState<MediaItem | null>(null)
 
   useEffect(() => {
     const sortedStreamingContent = sortStreamingContent(
