@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, MouseEvent } from 'react'
 
 export const useLargeModal = () => {
   const [displayModal, setDisplayModal] = useState(false)
@@ -21,7 +21,7 @@ export const useLargeModal = () => {
     }, 10)
   }
 
-  const handleCloseModal = (e?: MouseEvent) => {
+  const handleCloseModal = (e?: MouseEvent<HTMLButtonElement>) => {
     e?.stopPropagation()
     // if the event object exists, we need to stop event bubbling up to Container & calling handleShowModal()
 

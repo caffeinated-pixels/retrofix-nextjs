@@ -55,7 +55,7 @@ export const Billboard = () => {
           <MaturityRating>TV-{randomShow?.maturity}</MaturityRating>
         </FeaturedContainer>
       </Vignette>
-      {displayModal && (
+      {displayModal && randomShow && (
         <LargeMediaModal
           handleCloseModal={handleCloseModal}
           item={randomShow}

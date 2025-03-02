@@ -1,4 +1,5 @@
 import { createPortal } from 'react-dom'
+import { MouseEvent } from 'react'
 import {
   Background,
   ButtonWrapper,
@@ -27,10 +28,8 @@ import { MediaItem } from '@/types/mediaContent'
 import { useMounted } from '@/hooks/useMounted'
 import { useRootElement } from '@/hooks/useRootElement'
 
-const modalRoot = document.getElementById('modal-root')
-
 type LargeContentModalProps = {
-  handleCloseModal: (e?: MouseEvent) => void
+  handleCloseModal: (e?: MouseEvent<HTMLButtonElement>) => void
   item: MediaItem
 }
 
@@ -39,9 +38,7 @@ export const LargeMediaModal = ({
   item,
 }: LargeContentModalProps) => {
   const mounted = useMounted()
-  console.log('🚀 turbo ~ largeMediaModal.tsx:41 ~ mounted:', mounted)
   const target = useRootElement('modal-root', mounted)
-  console.log('🚀 turbo ~ largeMediaModal.tsx:44 ~ target:', target)
 
   // TODO: implement useNavigateToWatch
   //   const handlePlay = useNavigateToWatch(item)
@@ -58,16 +55,8 @@ export const LargeMediaModal = ({
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [handleCloseModal])
 
-  // Only render on client-side
-  //   if (!mounted) return null
-
-  //   const target = document.getElementById('modal-root')
-  //   console.log('🚀 turbo ~ largeMediaModal.tsx:63 ~ target:', target)
-
-  //   if (!target) return null
-
   return (
-    modalRoot &&
+    mounted &&
     target &&
     createPortal(
       <Background>
@@ -104,7 +93,7 @@ export const LargeMediaModal = ({
               <Synopsis>{item.description}</Synopsis>
             </LeftDetailsBox>
             <RightDetailsBox>
-              {item.director && (
+              {item.category === 'films' && item.director && (
                 <People $firstWord='Director: '>{item.director}</People>
               )}
               {item.cast && <People $firstWord='Cast: '>{item.cast}</People>}
