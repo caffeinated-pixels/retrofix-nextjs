@@ -1,7 +1,12 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 
-export const LogoWrapper = styled.div`
+type SiteLogoProps = {
+  $isBrowsePage?: boolean
+}
+
+// TODO: fix/simplify responsive desgin for browse variant of logo
+export const LogoWrapper = styled.div<SiteLogoProps>`
   width: 5.5rem;
   height: 1.5rem;
 
@@ -14,10 +19,14 @@ export const LogoWrapper = styled.div`
     width: 8.375rem;
     height: 2.25rem;
   }
+  @media (min-width: 950px) {
+    width: ${({ $isBrowsePage }) => ($isBrowsePage ? '64.75px' : '8.375rem')};
+    height: ${({ $isBrowsePage }) => ($isBrowsePage ? '17.5px' : '2.25rem')};
+  }
 
   @media (min-width: 1450px) {
-    width: 10.4375rem;
-    height: 2.8125rem;
+    width: ${({ $isBrowsePage }) => ($isBrowsePage ? '64.75px' : '10.4375rem')};
+    height: ${({ $isBrowsePage }) => ($isBrowsePage ? '17.5px' : '2.8125rem')};
   }
 `
 

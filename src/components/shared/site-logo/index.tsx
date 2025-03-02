@@ -1,15 +1,15 @@
 import { HOME } from '@/constants/routes'
 import { Logo, LogoWrapper, StyledNextLink } from './styled'
 
-export default function SiteLogo({ ...restProps }) {
+type SiteLogoProps = {
+  isBrowsePage?: boolean
+}
+
+export const SiteLogo = ({ isBrowsePage }: SiteLogoProps) => {
   return (
-    <LogoWrapper>
+    <LogoWrapper $isBrowsePage={isBrowsePage}>
       <StyledNextLink href={HOME}>
-        <Logo
-          src='../images/misc/logo.svg'
-          alt='RetroFix home'
-          {...restProps}
-        />
+        <Logo src='../images/misc/logo.svg' alt='RetroFix home' />
       </StyledNextLink>
     </LogoWrapper>
   )

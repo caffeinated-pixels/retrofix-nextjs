@@ -37,6 +37,7 @@ export const BurgerButtonIcon = styled.img`
   width: 24px;
 `
 
+// TODO: fix/simplify responsive desgin for mobile variant of logo
 export const LogoWrapperMobile = styled.div`
   width: 84px;
   height: 24px;

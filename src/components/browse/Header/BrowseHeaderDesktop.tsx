@@ -3,7 +3,6 @@ import { SemanticHeader } from '../../shared/SemanticHeader'
 import {
   BellIcon,
   Container,
-  LogoWrapperDesktop,
   Navbar,
   NavPrimary,
   NavPrimaryBtn,
@@ -12,7 +11,7 @@ import {
   NavSecondaryItem,
   SearchIcon,
 } from './styled'
-import SiteLogo from '@/components/shared/site-logo'
+import { SiteLogo } from '@/components/shared/site-logo'
 import { Billboard } from '../Billboard/Billboard'
 import { useBrowseContext } from '@/context/BrowseContext'
 
@@ -46,9 +45,7 @@ export default function BrowseHeaderDesktop() {
     <SemanticHeader>
       <Container>
         <Navbar $padding='0 4vw'>
-          <LogoWrapperDesktop>
-            <SiteLogo />
-          </LogoWrapperDesktop>
+          <SiteLogo isBrowsePage />
 
           <NavPrimary>
             <NavPrimaryItem>

@@ -1,7 +1,7 @@
 'use client'
 import { colors } from '@/constants/theme'
 import styled from 'styled-components'
-import SiteLogo from '../site-logo'
+import { SiteLogo } from '../site-logo'
 
 type NavContainerProps = {
   $noBorder?: boolean
