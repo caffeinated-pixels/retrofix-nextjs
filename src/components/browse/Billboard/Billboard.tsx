@@ -14,28 +14,17 @@ import {
   MaturityRating,
   Vignette,
 } from './styled'
-
-const randomShow = {
-  title: 'From Bedrooms to Billions: The Amiga Years!',
-  description:
-    'How the Commodore Amiga helped influence a generation of Developers to take Video Gaming to a whole new level.',
-  category: 'films',
-  genre: 'documentaries',
-  maturity: 'PG',
-  year: '2016',
-  length: '2h 32m',
-  director: 'Anthony Caulfield, Nicola Caulfield',
-  cast: 'Shahid Ahmad, Richard Aplin, Brian Bagnall',
-  slug: 'amiga-years',
-  id: '64',
-}
+import { useLargeModal } from '@/components/browse/hooks/useLargeModal'
+import { LargeMediaModal } from '../modals/LargeMediaModal'
 
 export const Billboard = () => {
   const { randomShow } = useBrowseContext()
 
-  // TODO: implement useLargeModal
-  // const { displayModal, handleShowModal, handleCloseModal } = useLargeModal()
-  const handleShowModal = () => {}
+  const { displayModal, handleShowModal, handleCloseModal } = useLargeModal()
+  console.log(
+    '🚀 turbo ~ Billboard.tsx:39 ~ Billboard ~ displayModal:',
+    displayModal
+  )
 
   // TODO: implement useNavigateToWatch
   // const handlePlay = useNavigateToWatch(randomShow)
@@ -66,12 +55,12 @@ export const Billboard = () => {
           <MaturityRating>TV-{randomShow?.maturity}</MaturityRating>
         </FeaturedContainer>
       </Vignette>
-      {/* {displayModal && (
-        <LargeContentModal
+      {displayModal && (
+        <LargeMediaModal
           handleCloseModal={handleCloseModal}
           item={randomShow}
         />
-      )} */}
+      )}
     </BillboardContainer>
   )
 }
