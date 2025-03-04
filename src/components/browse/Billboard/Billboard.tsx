@@ -16,19 +16,14 @@ import {
 } from './styled'
 import { useLargeModal } from '@/components/browse/hooks/useLargeModal'
 import { LargeMediaModal } from '../modals/LargeMediaModal'
+import { useNavigateToWatch } from '../hooks/useNavigateToWatch'
 
 export const Billboard = () => {
   const { randomShow } = useBrowseContext()
 
   const { displayModal, handleShowModal, handleCloseModal } = useLargeModal()
-  console.log(
-    '🚀 turbo ~ Billboard.tsx:39 ~ Billboard ~ displayModal:',
-    displayModal
-  )
 
-  // TODO: implement useNavigateToWatch
-  // const handlePlay = useNavigateToWatch(randomShow)
-  const handlePlay = () => {}
+  const handlePlay = useNavigateToWatch(randomShow)
 
   // TODO: make more robust/type safe
   const imgUrl = randomShow?.slug

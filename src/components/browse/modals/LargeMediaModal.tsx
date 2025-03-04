@@ -40,7 +40,7 @@ export const LargeMediaModal = ({
   const mounted = useMounted()
   const target = useRootElement('modal-root', mounted)
 
-  // TODO: implement useNavigateToWatch
+  // TODO: implement useNavigateToWatch (need to implement watch page first)
   //   const handlePlay = useNavigateToWatch(item)
   const handlePlay = () => {}
 
