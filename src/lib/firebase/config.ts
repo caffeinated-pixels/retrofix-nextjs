@@ -11,7 +11,7 @@ const firebaseConfig = {
 }
 
 // this is the Firebase App object
-export const firebaseApp = initializeApp(firebaseConfig)
+const firebaseApp = initializeApp(firebaseConfig)
 
 // this creates a getAuth object for the Firebase authentication service
 export const firebaseAuth = getAuth(firebaseApp)
