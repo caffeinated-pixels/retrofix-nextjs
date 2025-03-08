@@ -9,7 +9,6 @@ type WatchPageProps = {
 
 export default function WatchPage({ params }: WatchPageProps) {
   const { showId } = params
-  console.log('🚀 turbo ~ WatchPage ~ showId:', showId)
 
   return (
     <VideoPlayer

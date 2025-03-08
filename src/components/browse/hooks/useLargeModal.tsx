@@ -2,13 +2,8 @@ import { useState, MouseEvent } from 'react'
 
 export const useLargeModal = () => {
   const [displayModal, setDisplayModal] = useState(false)
-  console.log(
-    '🚀 turbo ~ useLargeModal.tsx:5 ~ useLargeModal ~ displayModal:',
-    displayModal
-  )
 
   const handleShowModal = () => {
-    console.log('turbo handle show modal')
     setDisplayModal(true)
   }
 
