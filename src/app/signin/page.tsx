@@ -1,22 +1,16 @@
 'use client'
 
-import { Form } from '@/components/registration/general-form/styled'
 import { MainContainer } from '@/components/shared/containers/MainContainer'
 import { Footer } from '@/components/shared/footer'
 import { Header } from '@/components/shared/header'
 import { RegNavbar } from '@/components/shared/reg-navbar'
 import { SemanticHeader } from '@/components/shared/SemanticHeader'
-import { SubmitButton } from '@/components/shared/submit-button'
-import {
-  FirebaseErrorDisplay,
-  SigninForm,
-} from '@/components/signin/signin-form'
+import { SigninForm } from '@/components/signin/signin-form'
 import { colors } from '@/constants/theme'
 import { footerHomeRegistration } from '@/fixtures/footer-content'
 import { isEmailValid } from '@/helpers/isEmailValid'
 import { useFormValidation } from '@/hooks/useFormValidation'
 import { firebaseAuthWeb } from '@/lib/firebase/firebaseClient'
-import { Sign } from 'crypto'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
 import { FormEvent } from 'react'
@@ -32,8 +26,12 @@ export default function Signin() {
   const passwordError = state.inputError && isPasswordTooShort
 
   const processFirebaseError = (errorMsg: string) => {
+    console.log('turbo-signin-error', errorMsg)
+    // TODO: add more error types, see https://firebase.google.com/docs/auth/admin/errors
+    // TODO: extract function & constants
     const isEmailError = /user-not-found/.test(errorMsg)
     const isPasswordError = /wrong-password/.test(errorMsg)
+    const isInvalidCredentialsError = /invalid-credential/.test(errorMsg)
 
     if (isEmailError) {
       dispatch({
@@ -46,6 +44,13 @@ export default function Signin() {
       dispatch({
         type: 'SET_FIREBASE_ERROR',
         payload: `Incorrect password. Please try again`,
+      })
+    }
+
+    if (isInvalidCredentialsError) {
+      dispatch({
+        type: 'SET_FIREBASE_ERROR',
+        payload: `Invalid login credentials. Please try again`,
       })
     }
   }
@@ -65,20 +70,12 @@ export default function Signin() {
         },
       })
 
-      router.push('/')
+      router.replace('/') // TODO: redirect to profile page once implemented
     } catch (error) {
-      console.log('turbo-signin-error', error)
+      if (error instanceof Error) {
+        processFirebaseError(error.message)
+      }
     }
-
-    // const firebaseResponse = await firebaseSignIn(
-    //   state.email.trim(),
-    //   state.password.trim()
-    // )
-    // if (firebaseResponse.user) {
-    //   navigate(PROFILE, { replace: true }) // 2nd arg prevents browser back returning to signin page
-    // } else if (firebaseResponse.message) {
-    //   processFirebaseError(firebaseResponse.message)
-    // }
   }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
