@@ -1,6 +1,9 @@
 import { NextRequest } from 'next/server'
-import { authMiddleware } from 'next-firebase-auth-edge'
+import { authMiddleware, redirectToLogin } from 'next-firebase-auth-edge'
 import { clientConfig, serverConfig } from '@/lib/firebase/config'
+import { REGISTRATION, SIGN_IN } from './constants/routes'
+
+const PUBLIC_PATHS = [SIGN_IN, REGISTRATION]
 
 /**
  * next-firebase-auth-edge does not require you to manually define your own /api/login or /api/logout routes.
@@ -16,6 +19,14 @@ export async function middleware(request: NextRequest) {
     cookieSignatureKeys: serverConfig.cookieSignatureKeys, // keys for signing the cookie (should be an array of 2 random >=32 byte keys)
     cookieSerializeOptions: serverConfig.cookieSerializeOptions, // options for setting auth cookie
     serviceAccount: serverConfig.serviceAccount, // firebase credentials
+    handleInvalidToken: async (reason) => {
+      console.info('turbo Missing or malformed credentials', { reason })
+
+      return redirectToLogin(request, {
+        path: SIGN_IN,
+        publicPaths: PUBLIC_PATHS,
+      })
+    },
   })
 }
 

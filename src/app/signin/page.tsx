@@ -15,7 +15,9 @@ import { colors } from '@/constants/theme'
 import { footerHomeRegistration } from '@/fixtures/footer-content'
 import { isEmailValid } from '@/helpers/isEmailValid'
 import { useFormValidation } from '@/hooks/useFormValidation'
+import { firebaseAuthWeb } from '@/lib/firebase/firebaseClient'
 import { Sign } from 'crypto'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
 import { FormEvent } from 'react'
 
@@ -49,6 +51,25 @@ export default function Signin() {
   }
 
   const contactFirebase = async () => {
+    try {
+      const credential = await signInWithEmailAndPassword(
+        firebaseAuthWeb,
+        state.email.trim(),
+        state.password.trim()
+      )
+      const idToken = await credential.user.getIdToken()
+
+      await fetch('/api/login', {
+        headers: {
+          Authorization: `Bearer ${idToken}`,
+        },
+      })
+
+      router.push('/')
+    } catch (error) {
+      console.log('turbo-signin-error', error)
+    }
+
     // const firebaseResponse = await firebaseSignIn(
     //   state.email.trim(),
     //   state.password.trim()
