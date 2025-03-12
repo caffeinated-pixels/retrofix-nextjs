@@ -9,9 +9,10 @@ import { SigninForm } from '@/components/signin/signin-form'
 import { colors } from '@/constants/theme'
 import { footerHomeRegistration } from '@/fixtures/footer-content'
 import { isEmailValid } from '@/helpers/isEmailValid'
-import { useFormValidation } from '@/hooks/useFormValidation'
+import { FORM_ACTION_TYPES, useFormValidation } from '@/hooks/useFormValidation'
+import { FALLBACK_ERROR, processFirebaseError } from '@/lib/firebase/authErrors'
 import { firebaseAuthWeb } from '@/lib/firebase/firebaseClient'
-import { signInWithEmailAndPassword } from 'firebase/auth'
+import { signInWithEmailAndPassword, AuthError } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
 import { FormEvent } from 'react'
 
@@ -25,37 +26,8 @@ export default function Signin() {
   const emailError = state.inputError && isEmailInvalid
   const passwordError = state.inputError && isPasswordTooShort
 
-  const processFirebaseError = (errorMsg: string) => {
-    console.log('turbo-signin-error', errorMsg)
-    // TODO: add more error types, see https://firebase.google.com/docs/auth/admin/errors
-    // TODO: extract function & constants
-    const isEmailError = /user-not-found/.test(errorMsg)
-    const isPasswordError = /wrong-password/.test(errorMsg)
-    const isInvalidCredentialsError = /invalid-credential/.test(errorMsg)
-
-    if (isEmailError) {
-      dispatch({
-        type: 'SET_FIREBASE_ERROR',
-        payload: `Sorry, we can't find an account with this email address. Please try again`,
-      })
-    }
-
-    if (isPasswordError) {
-      dispatch({
-        type: 'SET_FIREBASE_ERROR',
-        payload: `Incorrect password. Please try again`,
-      })
-    }
-
-    if (isInvalidCredentialsError) {
-      dispatch({
-        type: 'SET_FIREBASE_ERROR',
-        payload: `Invalid login credentials. Please try again`,
-      })
-    }
-  }
-
   const contactFirebase = async () => {
+    // TODO: improve error handling
     try {
       const credential = await signInWithEmailAndPassword(
         firebaseAuthWeb,
@@ -73,7 +45,12 @@ export default function Signin() {
       router.replace('/') // TODO: redirect to profile page once implemented
     } catch (error) {
       if (error instanceof Error) {
-        processFirebaseError(error.message)
+        processFirebaseError(error.message, dispatch)
+      } else {
+        dispatch({
+          type: FORM_ACTION_TYPES.SET_FIREBASE_ERROR,
+          payload: FALLBACK_ERROR,
+        })
       }
     }
   }
@@ -82,9 +59,9 @@ export default function Signin() {
     e.preventDefault()
 
     if (isEmailInvalid || isPasswordTooShort) {
-      dispatch({ type: 'SET_INPUT_ERROR', payload: true })
+      dispatch({ type: FORM_ACTION_TYPES.SET_INPUT_ERROR, payload: true })
     } else {
-      dispatch({ type: 'SET_INPUT_ERROR', payload: false })
+      dispatch({ type: FORM_ACTION_TYPES.SET_INPUT_ERROR, payload: false })
       contactFirebase()
     }
   }

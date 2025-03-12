@@ -8,27 +8,35 @@ export type FormState = {
   firebaseError: string
 }
 
+export const FORM_ACTION_TYPES = {
+  SET_FIRST_NAME: 'SET_FIRST_NAME',
+  SET_EMAIL: 'SET_EMAIL',
+  SET_PASSWORD: 'SET_PASSWORD',
+  SET_INPUT_ERROR: 'SET_INPUT_ERROR',
+  SET_FIREBASE_ERROR: 'SET_FIREBASE_ERROR',
+} as const
+
 export type FormAction =
-  | { type: 'SET_FIRST_NAME'; payload: string }
-  | { type: 'SET_EMAIL'; payload: string }
-  | { type: 'SET_PASSWORD'; payload: string }
-  | { type: 'SET_INPUT_ERROR'; payload: boolean }
-  | { type: 'SET_FIREBASE_ERROR'; payload: string }
+  | { type: typeof FORM_ACTION_TYPES.SET_FIRST_NAME; payload: string }
+  | { type: typeof FORM_ACTION_TYPES.SET_EMAIL; payload: string }
+  | { type: typeof FORM_ACTION_TYPES.SET_PASSWORD; payload: string }
+  | { type: typeof FORM_ACTION_TYPES.SET_INPUT_ERROR; payload: boolean }
+  | { type: typeof FORM_ACTION_TYPES.SET_FIREBASE_ERROR; payload: string }
   | { type: string; payload: never }
 
 type FormReducer = (state: FormState, action: FormAction) => FormState
 
 const reducer: FormReducer = (state, action) => {
   switch (action.type) {
-    case 'SET_FIRST_NAME':
+    case FORM_ACTION_TYPES.SET_FIRST_NAME:
       return { ...state, firstName: action.payload }
-    case 'SET_EMAIL':
+    case FORM_ACTION_TYPES.SET_EMAIL:
       return { ...state, email: action.payload }
-    case 'SET_PASSWORD':
+    case FORM_ACTION_TYPES.SET_PASSWORD:
       return { ...state, password: action.payload }
-    case 'SET_INPUT_ERROR':
+    case FORM_ACTION_TYPES.SET_INPUT_ERROR:
       return { ...state, inputError: action.payload }
-    case 'SET_FIREBASE_ERROR':
+    case FORM_ACTION_TYPES.SET_FIREBASE_ERROR:
       return { ...state, firebaseError: action.payload }
     default:
       throw new Error(`Unhandled action type: ${action.type}`)
