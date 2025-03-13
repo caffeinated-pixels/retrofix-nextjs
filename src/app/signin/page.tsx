@@ -15,6 +15,7 @@ import { firebaseAuthWeb } from '@/lib/firebase/firebaseClient'
 import { signInWithEmailAndPassword, AuthError } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
 import { FormEvent } from 'react'
+import { FirebaseError } from 'firebase/app'
 
 export default function Signin() {
   const { state, dispatch } = useFormValidation()
@@ -27,7 +28,6 @@ export default function Signin() {
   const passwordError = state.inputError && isPasswordTooShort
 
   const contactFirebase = async () => {
-    // TODO: improve error handling
     try {
       const credential = await signInWithEmailAndPassword(
         firebaseAuthWeb,
@@ -44,8 +44,8 @@ export default function Signin() {
 
       router.replace('/') // TODO: redirect to profile page once implemented
     } catch (error) {
-      if (error instanceof Error) {
-        processFirebaseError(error.message, dispatch)
+      if (error instanceof FirebaseError) {
+        processFirebaseError(error.code, dispatch)
       } else {
         dispatch({
           type: FORM_ACTION_TYPES.SET_FIREBASE_ERROR,

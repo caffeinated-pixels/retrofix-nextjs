@@ -1,7 +1,8 @@
 import { FORM_ACTION_TYPES } from '@/hooks/useFormValidation'
 
 // Error type constants
-export const FIREBASE_ERROR_CODES = {
+// https://firebase.google.com/docs/auth/admin/errors
+const FIREBASE_ERROR_CODES = {
   USER_NOT_FOUND: 'auth/user-not-found',
   WRONG_PASSWORD: 'auth/wrong-password',
   INVALID_CREDENTIALS: 'auth/invalid-credential',
@@ -20,37 +21,48 @@ type FirebaseErrorAction = {
 /**
  * Processes Firebase authentication error messages and returns appropriate user-friendly messages
  *
- * @param errorMsg - The raw error message from Firebase
+ * @param errorCode - The raw error code from Firebase
  * @param dispatch - The dispatch function to update state with the error message
  */
 export const processFirebaseError = (
-  errorMsg: string,
+  errorCode: string,
   dispatch: (action: FirebaseErrorAction) => void
 ) => {
-  console.log('turbo-signin-error', errorMsg)
-
-  // TODO: add more error types, see https://firebase.google.com/docs/auth/admin/errors
-  const isEmailError = /user-not-found/.test(errorMsg)
-  const isPasswordError = /wrong-password/.test(errorMsg)
-  const isInvalidCredentialsError = /invalid-credential/.test(errorMsg)
-
-  switch (true) {
-    case isEmailError:
+  switch (errorCode) {
+    case FIREBASE_ERROR_CODES.USER_NOT_FOUND:
       dispatch({
         type: FORM_ACTION_TYPES.SET_FIREBASE_ERROR,
         payload: `Sorry, we can't find an account with this email address. Please try again`,
       })
       break
-    case isPasswordError:
+    case FIREBASE_ERROR_CODES.INVALID_EMAIL:
+      dispatch({
+        type: FORM_ACTION_TYPES.SET_FIREBASE_ERROR,
+        payload: `Invalid email address. Please try again`,
+      })
+      break
+    case FIREBASE_ERROR_CODES.WRONG_PASSWORD:
       dispatch({
         type: FORM_ACTION_TYPES.SET_FIREBASE_ERROR,
         payload: `Incorrect password. Please try again`,
       })
       break
-    case isInvalidCredentialsError:
+    case FIREBASE_ERROR_CODES.INVALID_CREDENTIALS:
       dispatch({
         type: FORM_ACTION_TYPES.SET_FIREBASE_ERROR,
         payload: `Invalid login credentials. Please try again`,
+      })
+      break
+    case FIREBASE_ERROR_CODES.TOO_MANY_REQUESTS:
+      dispatch({
+        type: FORM_ACTION_TYPES.SET_FIREBASE_ERROR,
+        payload: `Too many requests. Please try again later`,
+      })
+      break
+    case FIREBASE_ERROR_CODES.USER_DISABLED:
+      dispatch({
+        type: FORM_ACTION_TYPES.SET_FIREBASE_ERROR,
+        payload: `Your account has been disabled. Please contact support`,
       })
       break
     default:
