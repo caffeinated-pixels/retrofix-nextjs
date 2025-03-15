@@ -15,10 +15,11 @@ import { Footer } from '@/components/shared/footer'
 import { NavLink } from '@/components/shared/nav-link'
 import { RegNavbar } from '@/components/shared/reg-navbar'
 import { SubmitButton } from '@/components/shared/submit-button'
-import { PLAN_FORM, PROFILE, REG_FORM, SIGN_IN } from '@/constants/routes'
+import { PROFILE, REG_FORM, SIGN_IN } from '@/constants/routes'
 import { colors } from '@/constants/theme'
 import { useSignUpContext } from '@/context/SignUpContext'
 import { footerHomeRegistration } from '@/fixtures/footer-content'
+import { registerWithFirebase } from '@/lib/firebase/registerWithFirebase'
 import { useRouter } from 'next/navigation'
 import styled from 'styled-components'
 
@@ -29,16 +30,17 @@ export default function PlanformPage() {
   const router = useRouter()
 
   const completeRegistration = async () => {
-    // const user = await firebaseRegistratio(
-    //   globalFirstName,
-    //   globalEmail,
-    //   globalPassword
-    // )
-    // if (user?.email) {
-    //   router.push(PROFILE)
-    // } else {
-    //   router.push(REG_FORM)
-    // }
+    const response = await registerWithFirebase(
+      globalFirstName,
+      globalEmail,
+      globalPassword
+    )
+    if (response.success) {
+      router.push(PROFILE)
+    } else {
+      // TODO: Handle error
+      router.push(REG_FORM)
+    }
   }
 
   return (

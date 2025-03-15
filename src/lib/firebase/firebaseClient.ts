@@ -1,7 +1,10 @@
-import { initializeApp } from 'firebase/app'
-import { clientConfig } from './config'
+import { getApp, getApps, initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
+import { clientConfig } from './config'
 
-// Firebase Web SDK
-export const firebaseAppWeb = initializeApp(clientConfig)
+// Initialize Firebase Web SDK; check if instance already exists
+const firebaseAppWeb =
+  getApps().length === 0 ? initializeApp(clientConfig) : getApp()
+
+// Get Auth instance
 export const firebaseAuthWeb = getAuth(firebaseAppWeb)
