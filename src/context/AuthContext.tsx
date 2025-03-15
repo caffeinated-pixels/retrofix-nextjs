@@ -1,54 +1,35 @@
+'use client'
+
 import {
   createContext,
+  useState,
   useContext,
   useEffect,
-  useState,
   PropsWithChildren,
 } from 'react'
-import { firebaseAuth } from '@/lib/firebase/config'
-import { User, onAuthStateChanged } from 'firebase/auth'
-import Cookies from 'js-cookie'
+import { onAuthStateChanged, User } from 'firebase/auth'
+import { firebaseAuthWeb } from '../lib/firebase/firebaseClient'
 
-type AuthContextType = {
-  user: User | null
-  loading: boolean
-}
+const FirebaseAuthContext = createContext<User | null>(null)
 
-const AuthContext = createContext<AuthContextType>({
-  user: null,
-  loading: true,
-})
-
-export const AuthContextProvider = ({ children }: PropsWithChildren) => {
+export default function FirebaseAuthContextProvider({
+  children,
+}: PropsWithChildren) {
   const [user, setUser] = useState<User | null>(null)
-  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(firebaseAuth, async (user) => {
-      if (user) {
-        // User is signed in
-        setUser(user)
-        const token = await user.getIdToken()
-        Cookies.set('rf_auth_token', token, {
-          secure: true,
-          sameSite: 'strict',
-        })
-      } else {
-        // User is signed out
-        setUser(null)
-        Cookies.remove('rf_auth_token')
-      }
-      setLoading(false)
+    const authListener = onAuthStateChanged(firebaseAuthWeb, (currentUser) => {
+      currentUser ? setUser(currentUser) : setUser(null)
     })
 
-    return unsubscribe
+    return authListener
   }, [])
 
   return (
-    <AuthContext.Provider value={{ user, loading }}>
+    <FirebaseAuthContext.Provider value={user}>
       {children}
-    </AuthContext.Provider>
+    </FirebaseAuthContext.Provider>
   )
 }
 
-export const useAuth = () => useContext(AuthContext)
+export const useAuth = () => useContext(FirebaseAuthContext)

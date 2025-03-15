@@ -6,6 +6,7 @@ import { config } from '@fortawesome/fontawesome-svg-core'
 import StyledComponentsRegistry from '@/lib/registry'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { BrowseContextProvider } from '@/context/BrowseContext'
+import FirebaseAuthContextProvider from '@/context/AuthContext'
 config.autoAddCss = false
 
 const roboto = Roboto({
@@ -38,9 +39,11 @@ export default function RootLayout({
         </head>
         <body className={roboto.className}>
           <StyledComponentsRegistry>
-            <BrowseContextProvider>
-              <SignUpContextProvider>{children}</SignUpContextProvider>
-            </BrowseContextProvider>
+            <FirebaseAuthContextProvider>
+              <BrowseContextProvider>
+                <SignUpContextProvider>{children}</SignUpContextProvider>
+              </BrowseContextProvider>
+            </FirebaseAuthContextProvider>
           </StyledComponentsRegistry>
         </body>
       </html>
