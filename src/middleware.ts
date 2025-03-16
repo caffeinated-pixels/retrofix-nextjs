@@ -1,7 +1,12 @@
 import { NextRequest } from 'next/server'
 import { authMiddleware, redirectToLogin } from 'next-firebase-auth-edge'
 import { clientConfig, serverConfig } from '@/lib/firebase/config'
-import { REGISTRATION, SIGN_IN } from './constants/routes'
+import {
+  LOGIN_API,
+  LOGOUT_API,
+  REGISTRATION,
+  SIGN_IN,
+} from './constants/routes'
 
 const PUBLIC_PATHS = [SIGN_IN, REGISTRATION]
 
@@ -12,8 +17,8 @@ const PUBLIC_PATHS = [SIGN_IN, REGISTRATION]
  */
 export async function middleware(request: NextRequest) {
   return authMiddleware(request, {
-    loginPath: '/api/login', // exposed endpoints
-    logoutPath: '/api/logout',
+    loginPath: LOGIN_API, // exposed endpoints
+    logoutPath: LOGOUT_API,
     apiKey: clientConfig.apiKey, // firebase api key
     cookieName: serverConfig.cookieName, // name of the cookie
     cookieSignatureKeys: serverConfig.cookieSignatureKeys, // keys for signing the cookie (should be an array of 2 random >=32 byte keys)
@@ -32,5 +37,5 @@ export async function middleware(request: NextRequest) {
 
 // runs on /api/login, /api/logout, root and any other path that isn’t a file or api call.
 export const config = {
-  matcher: ['/', '/((?!_next|api|.*\\.).*)', '/api/login', '/api/logout'],
+  matcher: ['/', '/((?!_next|api|.*\\.).*)', LOGIN_API, LOGOUT_API],
 }

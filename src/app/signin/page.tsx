@@ -16,6 +16,7 @@ import { signInWithEmailAndPassword, AuthError } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
 import { FormEvent } from 'react'
 import { FirebaseError } from 'firebase/app'
+import { LOGIN_API, PROFILE } from '@/constants/routes'
 
 export default function Signin() {
   const { state, dispatch } = useFormValidation()
@@ -36,13 +37,13 @@ export default function Signin() {
       )
       const idToken = await credential.user.getIdToken()
 
-      await fetch('/api/login', {
+      await fetch(LOGIN_API, {
         headers: {
           Authorization: `Bearer ${idToken}`,
         },
       })
 
-      router.replace('/') // TODO: redirect to profile page once implemented
+      router.replace(PROFILE)
     } catch (error) {
       if (error instanceof FirebaseError) {
         processFirebaseError(error.code, dispatch)
