@@ -5,10 +5,10 @@ import {
   Name,
   ListItem,
   NavLink,
-  ProfileList,
   Title,
   MainContainer,
   ChooseAvatar,
+  ProfileListContainer,
 } from '@/components/profile/styled'
 import { PageContainer } from '@/components/shared/containers/PageContainer'
 import { Navbar } from '@/components/shared/navbar'
@@ -30,7 +30,7 @@ export default function Profile() {
 
       <MainContainer>
         <Title>Who&apos;s watching?</Title>
-        <ProfileList>
+        <ProfileListContainer>
           <ListItem>
             <NavLink href={BROWSE}>
               <Avatar $imgUrl={user?.photoURL ?? ''} />
@@ -49,7 +49,7 @@ export default function Profile() {
               <Name>Choose avatar</Name>
             </NavLink>
           </ListItem>
-        </ProfileList>
+        </ProfileListContainer>
       </MainContainer>
     </PageContainer>
   )

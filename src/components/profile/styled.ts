@@ -17,7 +17,7 @@ export const Title = styled.h1`
   font-weight: 400;
 `
 
-export const ProfileList = styled.ul`
+export const ProfileListContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
