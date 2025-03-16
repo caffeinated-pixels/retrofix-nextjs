@@ -10,33 +10,28 @@ import { useRouter } from 'next/navigation'
 import { useAuth } from '@/context/AuthContext'
 import { updateProfile } from 'firebase/auth'
 import { ProfileList } from '@/components/profile/ProfileList'
-
-const AVATAR_NAMES = [
-  'Brigand',
-  'Gentleman',
-  'Mercenary',
-  'Navvie',
-  'Preacher',
-  'Thug',
-]
+import { useCallback } from 'react'
 
 export default function ManageProfile() {
   const router = useRouter()
   const user = useAuth()
 
-  const handleClick = async (id: number) => {
-    if (!user) return
+  const handleClick = useCallback(
+    async (id: number) => {
+      if (!user) return
 
-    try {
-      await updateProfile(user, {
-        photoURL: `./images/users/${id}.png`,
-      })
-      router.push(PROFILE)
-    } catch (error) {
-      // TODO: handle error
-      console.log(error)
-    }
-  }
+      try {
+        await updateProfile(user, {
+          photoURL: `./images/users/${id}.png`,
+        })
+        router.push(PROFILE)
+      } catch (error) {
+        // TODO: handle error
+        console.log(error)
+      }
+    },
+    [user, router]
+  )
 
   return (
     <PageContainer>
