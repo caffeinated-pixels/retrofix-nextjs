@@ -14,6 +14,7 @@ import {
 import { SiteLogo } from '@/components/shared/site-logo'
 import { Billboard } from '../Billboard/Billboard'
 import { useBrowseContext } from '@/context/BrowseContext'
+import { NavDropDown } from '@/components/shared/nav-dropdown/navDropdown'
 
 export default function BrowseHeaderDesktop() {
   const [isSearchOpen, setIsSearchOpen] = useState(false)
@@ -102,7 +103,9 @@ export default function BrowseHeaderDesktop() {
               <BellIcon className='fas fa-bell' />
             </NavSecondaryItem>
 
-            <NavSecondaryItem>{/* <NavDropDown /> */}</NavSecondaryItem>
+            <NavSecondaryItem>
+              <NavDropDown />
+            </NavSecondaryItem>
           </NavSecondary>
         </Navbar>
         <Billboard />
