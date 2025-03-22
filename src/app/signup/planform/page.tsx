@@ -15,7 +15,7 @@ import { Footer } from '@/components/shared/footer'
 import { NavLink } from '@/components/shared/nav-link'
 import { RegNavbar } from '@/components/shared/reg-navbar'
 import { SubmitButton } from '@/components/shared/submit-button'
-import { PROFILE, REG_FORM, SIGN_IN } from '@/constants/routes'
+import { REG_FORM, SIGN_IN } from '@/constants/routes'
 import { colors } from '@/constants/theme'
 import { useSignUpContext } from '@/context/SignUpContext'
 import { footerHomeRegistration } from '@/fixtures/footer-content'
@@ -36,7 +36,7 @@ export default function PlanformPage() {
       globalPassword
     )
     if (response.success) {
-      router.push(PROFILE)
+      router.replace(SIGN_IN)
     } else {
       // TODO: Handle error
       router.push(REG_FORM)

@@ -8,6 +8,7 @@ import {
   TextSpan,
 } from './styled'
 import { Avatar } from './styled'
+import { signOut } from 'firebase/auth'
 
 import { AvatarWrapper } from './styled'
 import { CalloutIcon } from './styled'
@@ -16,17 +17,21 @@ import { useAuth } from '@/context/AuthContext'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { DropDownWrapper } from './styled'
-import { CHILDREN, PROFILE } from '@/constants/routes'
+import { CHILDREN, HOME, PROFILE } from '@/constants/routes'
+import { firebaseAuthWeb } from '@/lib/firebase/firebaseClient'
 
 export const NavDropDown = () => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false)
   const user = useAuth()
   const router = useRouter()
 
-  // TODO: implement signOut
-  //   const signOut = useSignOut()
-  const signOut = () => {
+  const handleSignOut = async () => {
     console.log('turbo signout')
+    await signOut(firebaseAuthWeb)
+
+    await fetch('/api/logout')
+
+    router.replace(HOME)
   }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
@@ -80,7 +85,7 @@ export const NavDropDown = () => {
 
           <SubMenuList>
             <SubMenuItem>
-              <SubMenuBtn onClick={signOut}>
+              <SubMenuBtn onClick={handleSignOut}>
                 <TextSpan>Sign out of RetroFix</TextSpan>
               </SubMenuBtn>
             </SubMenuItem>
