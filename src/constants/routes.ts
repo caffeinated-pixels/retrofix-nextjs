@@ -17,10 +17,11 @@ export const WATCH = '/watch'
 export const MANAGE_PROFILE = '/manage-profile'
 export const CHILDREN = '/children'
 
-export const PROTECTED_ROUTES = [
-  BROWSE,
-  SEARCH,
-  WATCH,
-  MANAGE_PROFILE,
-  CHILDREN,
+export const PUBLIC_ROUTES = [
+  HOME,
+  SIGN_IN,
+  CHOOSE_PLAN,
+  REGISTRATION,
+  REG_FORM,
+  PLAN_FORM,
 ]
