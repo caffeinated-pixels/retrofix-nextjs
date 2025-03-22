@@ -40,14 +40,12 @@ export const BrowseContextProvider = ({ children }: PropsWithChildren) => {
     )
 
     setSortedContent(sortedStreamingContent)
-  }, [activeCategory])
 
-  useEffect(() => {
-    if (sortedContent.length > 0) {
-      const randomShow = getRandomShow(sortedContent)
+    if (sortedStreamingContent.length > 0) {
+      const randomShow = getRandomShow(sortedStreamingContent)
       setRandomShow(randomShow)
     }
-  }, [sortedContent])
+  }, [activeCategory])
 
   const setCategory = useCallback((category: string) => {
     setActiveCategory(category)
