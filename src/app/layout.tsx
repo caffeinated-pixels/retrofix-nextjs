@@ -5,7 +5,7 @@ import { Roboto } from 'next/font/google'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import StyledComponentsRegistry from '@/lib/registry'
 import '@fortawesome/fontawesome-svg-core/styles.css'
-import { BrowseContextProvider } from '@/context/BrowseContext'
+import BrowseDataProvider from '@/context/BrowseDataProvider'
 import FirebaseAuthContextProvider from '@/context/AuthContext'
 config.autoAddCss = false
 
@@ -40,9 +40,9 @@ export default function RootLayout({
         <body className={roboto.className}>
           <StyledComponentsRegistry>
             <FirebaseAuthContextProvider>
-              <BrowseContextProvider>
+              <BrowseDataProvider>
                 <SignUpContextProvider>{children}</SignUpContextProvider>
-              </BrowseContextProvider>
+              </BrowseDataProvider>
             </FirebaseAuthContextProvider>
           </StyledComponentsRegistry>
         </body>

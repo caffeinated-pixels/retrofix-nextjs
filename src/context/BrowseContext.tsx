@@ -17,6 +17,7 @@ import {
   type MediaItem,
   type SortedContent,
 } from '@/types/mediaContent'
+import { type BrowseData } from '@/helpers/getBrowseData'
 
 type BrowseContextType = {
   activeCategory: string
@@ -28,28 +29,57 @@ type BrowseContextType = {
 
 const BrowseContext = createContext<BrowseContextType | null>(null)
 
-export const BrowseContextProvider = ({ children }: PropsWithChildren) => {
+type BrowseContextProviderProps = PropsWithChildren<{
+  initialData?: BrowseData
+}>
+
+export const BrowseContextProvider = ({
+  children,
+  initialData,
+}: BrowseContextProviderProps) => {
   const [activeCategory, setActiveCategory] = useState<string>('home')
-  const [sortedContent, setSortedContent] = useState<SortedContent[]>([])
-  const [randomShow, setRandomShow] = useState<MediaItem | null>(null)
+  const [sortedContent, setSortedContent] = useState<SortedContent[]>(
+    initialData?.initialSortedContent || []
+  )
+  const [randomShow, setRandomShow] = useState<MediaItem | null>(
+    initialData?.initialRandomShow || null
+  )
 
   useEffect(() => {
-    const sortedStreamingContent = sortStreamingContent(
-      mediaCollection,
-      activeCategory
-    )
+    // Fallback if initialData is not provided
+    if (!initialData) {
+      const sortedStreamingContent = sortStreamingContent(
+        mediaCollection,
+        'home'
+      )
 
-    setSortedContent(sortedStreamingContent)
+      setSortedContent(sortedStreamingContent)
 
-    if (sortedStreamingContent.length > 0) {
-      const randomShow = getRandomShow(sortedStreamingContent)
-      setRandomShow(randomShow)
+      if (sortedStreamingContent.length > 0) {
+        const randomShow = getRandomShow(sortedStreamingContent)
+        setRandomShow(randomShow)
+      }
     }
-  }, [activeCategory])
+  }, [initialData])
 
-  const setCategory = useCallback((category: string) => {
-    setActiveCategory(category)
-  }, [])
+  const setCategory = useCallback(
+    (category: string) => {
+      setActiveCategory(category)
+
+      const sortedStreamingContent = sortStreamingContent(
+        mediaCollection,
+        activeCategory
+      )
+
+      setSortedContent(sortedStreamingContent)
+
+      if (sortedStreamingContent.length > 0) {
+        const randomShow = getRandomShow(sortedStreamingContent)
+        setRandomShow(randomShow)
+      }
+    },
+    [activeCategory]
+  )
 
   return (
     <BrowseContext.Provider
