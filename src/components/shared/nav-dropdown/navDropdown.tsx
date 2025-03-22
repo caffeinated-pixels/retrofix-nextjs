@@ -47,7 +47,7 @@ export const NavDropDown = () => {
       onClick={() => setIsDropDownOpen((prevState) => !prevState)}
     >
       <AvatarWrapper tabIndex={0} onKeyDown={handleKeyDown}>
-        <Avatar src={user?.photoURL ?? './images/users/1.png'} />
+        <Avatar src={user?.photoURL ?? './images/users/1.png'} alt='' />
         <CalloutIcon
           className='fas fa-caret-up'
           $isDropDownOpen={isDropDownOpen}
