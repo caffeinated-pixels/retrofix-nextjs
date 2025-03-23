@@ -1,4 +1,4 @@
-import { MediaItem, type MediaCollection } from '@/types/mediaContent'
+import { type MediaCollection } from '@/types/mediaContent'
 
 export const mediaCollection: MediaCollection = [
   {

@@ -1,4 +1,4 @@
-import { useState, MouseEvent } from 'react'
+import { useState, MouseEvent, KeyboardEvent } from 'react'
 
 export const useLargeModal = () => {
   const [displayModal, setDisplayModal] = useState(false)

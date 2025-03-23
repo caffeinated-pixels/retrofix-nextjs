@@ -1,8 +1,10 @@
 'use client'
 
 import BrowseHeaderDesktop from '@/components/browse/Header/BrowseHeaderDesktop'
+import { StreamingContentDesktop } from '@/components/browse/streaming-content/StreamingContentDesktop'
 import { BrowsePageContainer } from '@/components/shared/containers/BrowsePageContainer'
 import { Footer } from '@/components/shared/footer'
+import { WindowWidthContextProvider } from '@/context/WindowWidthContext'
 import { footerHomeContent } from '@/fixtures/footer-content'
 
 export default function BrowsePage() {
@@ -12,12 +14,12 @@ export default function BrowsePage() {
    * For now, I'm just going to use the desktop layout.
    */
   return (
-    <BrowsePageContainer>
-      <BrowseHeaderDesktop />
-      {/* <h1>Browse Page</h1> */}
-      <Footer footerContent={footerHomeContent} increasedPadding />
-    </BrowsePageContainer>
+    <WindowWidthContextProvider>
+      <BrowsePageContainer>
+        <BrowseHeaderDesktop />
+        <StreamingContentDesktop />
+        <Footer footerContent={footerHomeContent} increasedPadding />
+      </BrowsePageContainer>
+    </WindowWidthContextProvider>
   )
 }
-
-// TODO: use getServerSideProps to get fetch media collection and pass it to the BrowseContextProvider
