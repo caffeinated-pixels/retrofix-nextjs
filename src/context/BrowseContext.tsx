@@ -11,6 +11,7 @@ import {
   useContext,
   PropsWithChildren,
   useCallback,
+  useRef,
 } from 'react'
 import {
   type MediaCollection,
@@ -44,42 +45,32 @@ export const BrowseContextProvider = ({
   const [randomShow, setRandomShow] = useState<MediaItem | null>(
     initialData?.initialRandomShow || null
   )
+  const previousCategoryRef = useRef(activeCategory)
 
   useEffect(() => {
-    // Fallback if initialData is not provided
-    if (!initialData) {
-      const sortedStreamingContent = sortStreamingContent(
-        mediaCollection,
-        'home'
-      )
-
-      setSortedContent(sortedStreamingContent)
-
-      if (sortedStreamingContent.length > 0) {
-        const randomShow = getRandomShow(sortedStreamingContent)
-        setRandomShow(randomShow)
-      }
+    // Only update if the category has actually changed
+    if (previousCategoryRef.current === activeCategory) {
+      return
     }
-  }, [initialData])
 
-  const setCategory = useCallback(
-    (category: string) => {
-      setActiveCategory(category)
+    previousCategoryRef.current = activeCategory
 
-      const sortedStreamingContent = sortStreamingContent(
-        mediaCollection,
-        activeCategory
-      )
+    const sortedStreamingContent = sortStreamingContent(
+      mediaCollection,
+      activeCategory
+    )
 
-      setSortedContent(sortedStreamingContent)
+    setSortedContent(sortedStreamingContent)
 
-      if (sortedStreamingContent.length > 0) {
-        const randomShow = getRandomShow(sortedStreamingContent)
-        setRandomShow(randomShow)
-      }
-    },
-    [activeCategory]
-  )
+    if (sortedStreamingContent.length > 0) {
+      const randomShow = getRandomShow(sortedStreamingContent)
+      setRandomShow(randomShow)
+    }
+  }, [activeCategory])
+
+  const setCategory = useCallback((category: string) => {
+    setActiveCategory(category)
+  }, [])
 
   return (
     <BrowseContext.Provider
