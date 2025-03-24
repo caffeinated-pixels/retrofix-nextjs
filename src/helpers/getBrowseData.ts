@@ -8,8 +8,9 @@ import {
 import { type MediaItem, type SortedContent } from '@/types/mediaContent'
 
 export type BrowseData = {
-  initialSortedContent: SortedContent[]
-  initialRandomShow: MediaItem
+  activeCategory: string
+  sortedContent: SortedContent[]
+  randomShow: MediaItem
 }
 
 /**
@@ -21,7 +22,8 @@ export const getBrowseData = (category: string = 'home'): BrowseData => {
   const randomShow = getRandomShow(sortedStreamingContent)
 
   return {
-    initialSortedContent: sortedStreamingContent,
-    initialRandomShow: randomShow,
+    activeCategory: category,
+    sortedContent: sortedStreamingContent,
+    randomShow: randomShow,
   }
 }

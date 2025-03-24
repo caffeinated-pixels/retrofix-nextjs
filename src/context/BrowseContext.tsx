@@ -7,11 +7,9 @@ import {
 import {
   createContext,
   useState,
-  useEffect,
   useContext,
   PropsWithChildren,
   useCallback,
-  useRef,
 } from 'react'
 import {
   type MediaCollection,
@@ -31,55 +29,42 @@ type BrowseContextType = {
 const BrowseContext = createContext<BrowseContextType | null>(null)
 
 type BrowseContextProviderProps = PropsWithChildren<{
-  initialData?: BrowseData
+  initialData: BrowseData
 }>
 
 export const BrowseContextProvider = ({
   children,
   initialData,
 }: BrowseContextProviderProps) => {
-  const [activeCategory, setActiveCategory] = useState<string>('home')
-  const [sortedContent, setSortedContent] = useState<SortedContent[]>(
-    initialData?.initialSortedContent || []
-  )
-  const [randomShow, setRandomShow] = useState<MediaItem | null>(
-    initialData?.initialRandomShow || null
-  )
-  const previousCategoryRef = useRef(activeCategory)
-
-  useEffect(() => {
-    // Only update if the category has actually changed
-    if (previousCategoryRef.current === activeCategory) {
-      return
-    }
-
-    previousCategoryRef.current = activeCategory
-
-    const sortedStreamingContent = sortStreamingContent(
-      mediaCollection,
-      activeCategory
-    )
-
-    setSortedContent(sortedStreamingContent)
-
-    if (sortedStreamingContent.length > 0) {
-      const randomShow = getRandomShow(sortedStreamingContent)
-      setRandomShow(randomShow)
-    }
-  }, [activeCategory])
+  const [browseData, setBrowseData] = useState<BrowseData>(initialData)
 
   const setCategory = useCallback((category: string) => {
-    setActiveCategory(category)
+    setBrowseData((prev: BrowseData) => {
+      if (prev.activeCategory === category) return prev
+
+      const sortedStreamingContent = sortStreamingContent(
+        mediaCollection,
+        category
+      )
+
+      const randomShow = getRandomShow(sortedStreamingContent)
+
+      return {
+        activeCategory: category,
+        sortedContent: sortedStreamingContent,
+        randomShow,
+      }
+    })
   }, [])
 
   return (
     <BrowseContext.Provider
       value={{
-        activeCategory,
+        activeCategory: browseData.activeCategory,
         setCategory,
         mediaCollection,
-        sortedContent,
-        randomShow,
+        sortedContent: browseData.sortedContent,
+        randomShow: browseData.randomShow,
       }}
     >
       {children}
