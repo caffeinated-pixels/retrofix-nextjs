@@ -19,18 +19,20 @@ interface SlideTrackProps {
 }
 
 export const SlideTrack = ({ content }: SlideTrackProps) => {
-  const [state, dispatch] = useSlideTracks()
+  const { state, dispatch } = useSlideTracks()
   const windowWidth = useWindowWidthContext()
   const ref = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
+    if (typeof window === 'undefined') return
     // clear state when content updates
     dispatch({ type: SLIDE_TRACK_ACTION_TYPES.RESET_STATE })
 
     // then setup state values based on current content & slideWidth
-    // FIXME: ref element Types
-    const slideWidth = ref.current?.firstChild?.getBoundingClientRect().width
-    const slideTrackWidth = ref.current?.getBoundingClientRect().width
+    const slideWidth =
+      (ref.current?.firstChild as HTMLElement)?.getBoundingClientRect().width ??
+      0
+    const slideTrackWidth = ref.current?.getBoundingClientRect().width ?? 0
     const pageLength = Math.floor(slideTrackWidth / slideWidth)
 
     dispatch({
@@ -41,8 +43,12 @@ export const SlideTrack = ({ content }: SlideTrackProps) => {
   }, [dispatch])
 
   useLayoutEffect(() => {
+    if (typeof window === 'undefined') return
+
     // update trackOffset value when window resizes
-    const slideWidth = ref.current?.firstChild?.getBoundingClientRect().width
+    const slideWidth =
+      (ref.current?.firstChild as HTMLElement)?.getBoundingClientRect().width ??
+      0
     dispatch({
       type: SLIDE_TRACK_ACTION_TYPES.SET_TRACK_OFFSET,
       payload: slideWidth,

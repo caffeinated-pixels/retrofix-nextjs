@@ -14,17 +14,13 @@ export const SLIDE_TRACK_ACTION_TYPES = {
   RESET_STATE: 'RESET_STATE',
 } as const
 
-type SlideTrackAction = {
-  type: string
-  payload: number | number[] | string
-}
-
-// type SlideTrackAction =
-//   | { type: typeof SLIDE_TRACK_ACTION_TYPES.SET_CURRENT_PAGE; payload: number }
-//   | { type: typeof SLIDE_TRACK_ACTION_TYPES.SET_PAGE_LENGTH; payload: number }
-//   | { type: typeof SLIDE_TRACK_ACTION_TYPES.SET_ACTIVE_SLIDES }
-//   | { type: typeof SLIDE_TRACK_ACTION_TYPES.SET_TRACK_OFFSET; payload: string }
-//   | { type: typeof SLIDE_TRACK_ACTION_TYPES.RESET_STATE }
+type SlideTrackAction =
+  | { type: typeof SLIDE_TRACK_ACTION_TYPES.SET_CURRENT_PAGE; payload: number }
+  | { type: typeof SLIDE_TRACK_ACTION_TYPES.SET_PAGE_LENGTH; payload: number }
+  | { type: typeof SLIDE_TRACK_ACTION_TYPES.SET_ACTIVE_SLIDES }
+  | { type: typeof SLIDE_TRACK_ACTION_TYPES.SET_TRACK_OFFSET; payload: number }
+  | { type: typeof SLIDE_TRACK_ACTION_TYPES.RESET_STATE }
+  | { type: string; payload: never }
 
 const initialState: SlideTrackState = {
   currentPage: 0,
@@ -46,7 +42,6 @@ const setTrackOffset = (state: SlideTrackState, slideWidth: number) => {
   return `-${trackOffset}px`
 }
 
-// FIXME: fix reducer type issues
 const reducer = (state: SlideTrackState, action: SlideTrackAction) => {
   switch (action.type) {
     case SLIDE_TRACK_ACTION_TYPES.SET_CURRENT_PAGE:
@@ -67,5 +62,5 @@ const reducer = (state: SlideTrackState, action: SlideTrackAction) => {
 export const useSlideTracks = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  return [state, dispatch]
+  return { state, dispatch }
 }
