@@ -1,5 +1,6 @@
-import { colors } from '@/constants/theme'
 import styled from 'styled-components'
+
+import { colors } from '@/constants/theme'
 
 type PageContainerProps = {
   $bgColor?: string

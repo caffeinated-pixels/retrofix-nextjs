@@ -1,5 +1,6 @@
-import { cardBorderBottom } from '@/constants/theme'
 import styled from 'styled-components'
+
+import { cardBorderBottom } from '@/constants/theme'
 
 type HeaderProps = {
   $hasBorder?: boolean

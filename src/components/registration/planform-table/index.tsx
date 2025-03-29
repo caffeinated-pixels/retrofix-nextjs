@@ -1,6 +1,8 @@
-import { colors } from '@/constants/theme'
 import { useState } from 'react'
 import styled from 'styled-components'
+
+import { colors } from '@/constants/theme'
+
 import PlanTable from './plan-table'
 
 const PlanFormContainer = styled.div``

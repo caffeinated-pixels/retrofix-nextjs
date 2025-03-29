@@ -1,8 +1,10 @@
 import { memo } from 'react'
+
+import { MediaItem } from '@/types/mediaContent'
+
 import { useLargeModal } from '../hooks/useLargeModal'
 import { LargeMediaModal } from '../modals/LargeMediaModal'
 import { ContentSlideContainer, ContentSlideImage } from './styled'
-import { MediaItem } from '@/types/mediaContent'
 
 type ContentSlideProps = {
   item: MediaItem

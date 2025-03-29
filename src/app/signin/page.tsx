@@ -1,22 +1,23 @@
 'use client'
 
+import { FirebaseError } from 'firebase/app'
+import { AuthError,signInWithEmailAndPassword } from 'firebase/auth'
+import { useRouter } from 'next/navigation'
+import { FormEvent } from 'react'
+
 import { MainContainer } from '@/components/shared/containers/MainContainer'
 import { Footer } from '@/components/shared/footer'
 import { Header } from '@/components/shared/header'
 import { RegNavbar } from '@/components/shared/reg-navbar'
 import { SemanticHeader } from '@/components/shared/SemanticHeader'
 import { SigninForm } from '@/components/signin/signin-form'
+import { LOGIN_API, PROFILE } from '@/constants/routes'
 import { colors } from '@/constants/theme'
 import { footerHomeRegistration } from '@/fixtures/footer-content'
 import { isEmailValid } from '@/helpers/isEmailValid'
 import { FORM_ACTION_TYPES, useFormValidation } from '@/hooks/useFormValidation'
 import { FALLBACK_ERROR, processFirebaseError } from '@/lib/firebase/authErrors'
 import { firebaseAuthWeb } from '@/lib/firebase/firebaseClient'
-import { signInWithEmailAndPassword, AuthError } from 'firebase/auth'
-import { useRouter } from 'next/navigation'
-import { FormEvent } from 'react'
-import { FirebaseError } from 'firebase/app'
-import { LOGIN_API, PROFILE } from '@/constants/routes'
 
 export default function Signin() {
   const { state, dispatch } = useFormValidation()

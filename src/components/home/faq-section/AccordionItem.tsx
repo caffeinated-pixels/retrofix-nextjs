@@ -1,10 +1,10 @@
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React from 'react'
 import styled from 'styled-components'
 
-import React from 'react'
 import { colors } from '@/constants/theme'
 import { useAccordionContext } from '@/context/AccordionContext'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 const AccordionItemWrapper = styled.div`
   margin-bottom: 8px;

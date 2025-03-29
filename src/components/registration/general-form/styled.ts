@@ -1,5 +1,6 @@
-import { colors } from '@/constants/theme'
 import styled from 'styled-components'
+
+import { colors } from '@/constants/theme'
 
 export const Form = styled.form`
   margin: 10px 0 20px;

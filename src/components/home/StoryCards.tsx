@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import storyContentData from '../../fixtures/storycard-content.json'
 
 const StoryCardsContainer = styled.div``

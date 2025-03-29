@@ -1,8 +1,12 @@
+import { FormHandleSubmit } from '@/app/signup/regform/page'
+import { SubmitButton } from '@/components/shared/submit-button'
 import {
   textInputBorder,
   textInputBorderBad,
   textInputBorderGood,
 } from '@/constants/theme'
+import { FormAction, FormState } from '@/hooks/useFormValidation'
+
 import {
   Checkbox,
   CheckboxWrapper,
@@ -13,9 +17,6 @@ import {
   InputWrapper,
   Label,
 } from './styled'
-import { SubmitButton } from '@/components/shared/submit-button'
-import { FormAction, FormState } from '@/hooks/useFormValidation'
-import { FormHandleSubmit } from '@/app/signup/regform/page'
 
 const determineBorderColor = (
   inputError: boolean,

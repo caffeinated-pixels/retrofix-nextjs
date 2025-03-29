@@ -1,27 +1,27 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
+import { FormEvent } from 'react'
+
+import { GeneralForm } from '@/components/registration/general-form'
 import { RegContentContainer } from '@/components/registration/RegContentContainer'
+import { StepIndicator } from '@/components/registration/StepIndicator'
+import { StepTitle } from '@/components/registration/StepTitle'
 import {
   RegFormContainer,
   RegFormText,
   StepHeaderContainer,
 } from '@/components/registration/styled'
-import { StepIndicator } from '@/components/registration/StepIndicator'
-import { StepTitle } from '@/components/registration/StepTitle'
 import { PageContainer } from '@/components/shared/containers/PageContainer'
+import { Footer } from '@/components/shared/footer'
 import { NavLink } from '@/components/shared/nav-link'
 import { RegNavbar } from '@/components/shared/reg-navbar'
-import { SIGN_IN, CHOOSE_PLAN } from '@/constants/routes'
+import { CHOOSE_PLAN, SIGN_IN } from '@/constants/routes'
 import { colors } from '@/constants/theme'
 import { useSignUpContext } from '@/context/SignUpContext'
+import { footerHomeRegistration } from '@/fixtures/footer-content'
 import { isEmailValid } from '@/helpers/isEmailValid'
 import { useFormValidation } from '@/hooks/useFormValidation'
-import { useRouter } from 'next/navigation'
-
-import { footerHomeRegistration } from '@/fixtures/footer-content'
-import { Footer } from '@/components/shared/footer'
-import { GeneralForm } from '@/components/registration/general-form'
-import { FormEvent } from 'react'
 
 export type FormHandleSubmit = (e: FormEvent<HTMLFormElement>) => void
 

@@ -1,4 +1,13 @@
 import { useLayoutEffect, useRef } from 'react'
+
+import { useWindowWidthContext } from '@/context/WindowWidthContext'
+import { MediaItem } from '@/types/mediaContent'
+
+import { ContentSlide } from '../content-slide/ContentSlide'
+import {
+  SLIDE_TRACK_ACTION_TYPES,
+  useSlideTracks,
+} from '../hooks/useSlideTrack'
 import {
   ArrowIcon,
   GoBackBox,
@@ -6,13 +15,6 @@ import {
   SlideTrackWrapper,
   Track,
 } from './styled'
-import { MediaItem } from '@/types/mediaContent'
-import {
-  useSlideTracks,
-  SLIDE_TRACK_ACTION_TYPES,
-} from '../hooks/useSlideTrack'
-import { useWindowWidthContext } from '@/context/WindowWidthContext'
-import { ContentSlide } from '../content-slide/ContentSlide'
 
 interface SlideTrackProps {
   content: MediaItem[]

@@ -1,5 +1,11 @@
-import { useState, useRef, useEffect } from 'react'
+import { useEffect,useRef, useState } from 'react'
+
+import { NavDropDown } from '@/components/shared/nav-dropdown/navDropdown'
+import { SiteLogo } from '@/components/shared/site-logo'
+import { useBrowseContext } from '@/context/BrowseContext'
+
 import { SemanticHeader } from '../../shared/SemanticHeader'
+import { Billboard } from '../Billboard/Billboard'
 import {
   BellIcon,
   Container,
@@ -11,10 +17,6 @@ import {
   NavSecondaryItem,
   SearchIcon,
 } from './styled'
-import { SiteLogo } from '@/components/shared/site-logo'
-import { Billboard } from '../Billboard/Billboard'
-import { useBrowseContext } from '@/context/BrowseContext'
-import { NavDropDown } from '@/components/shared/nav-dropdown/navDropdown'
 
 export default function BrowseHeaderDesktop() {
   const [isSearchOpen, setIsSearchOpen] = useState(false)

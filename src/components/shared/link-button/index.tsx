@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react'
+
 import { StyledLinkButton } from './styled'
 
 type LinkButtonProps = {

@@ -1,6 +1,8 @@
 'use client'
-import { colors } from '@/constants/theme'
 import styled from 'styled-components'
+
+import { colors } from '@/constants/theme'
+
 import { SiteLogo } from '../site-logo'
 
 type NavContainerProps = {

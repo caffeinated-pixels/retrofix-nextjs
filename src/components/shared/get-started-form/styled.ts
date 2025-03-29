@@ -1,6 +1,7 @@
-import { colors, inputErrorBorderBottom } from '@/constants/theme'
-import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import styled from 'styled-components'
+
+import { colors, inputErrorBorderBottom } from '@/constants/theme'
 
 export const Form = styled.form`
   max-width: 500px;

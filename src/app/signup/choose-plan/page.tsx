@@ -1,5 +1,7 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
+
 import { RegContentContainer } from '@/components/registration/RegContentContainer'
 import { StepIndicator } from '@/components/registration/StepIndicator'
 import { StepTitle } from '@/components/registration/StepTitle'
@@ -20,7 +22,6 @@ import { SubmitButton } from '@/components/shared/submit-button'
 import { PLAN_FORM, SIGN_IN } from '@/constants/routes'
 import { colors } from '@/constants/theme'
 import { footerHomeRegistration } from '@/fixtures/footer-content'
-import { useRouter } from 'next/navigation'
 
 export default function ChoosePlanPage() {
   const router = useRouter()

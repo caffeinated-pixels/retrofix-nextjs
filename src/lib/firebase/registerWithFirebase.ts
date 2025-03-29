@@ -1,5 +1,6 @@
-import { firebaseAuthWeb } from './firebaseClient'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
+
+import { firebaseAuthWeb } from './firebaseClient'
 
 export const registerWithFirebase = async (
   globalFirstName: string,

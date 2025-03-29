@@ -1,16 +1,17 @@
 'use client'
 
+import { updateProfile } from 'firebase/auth'
+import { useRouter } from 'next/navigation'
+import { useCallback } from 'react'
+
+import { ProfileList } from '@/components/profile/ProfileList'
 import { MainContainer, Title } from '@/components/profile/styled'
 import { PageContainer } from '@/components/shared/containers/PageContainer'
 import { Navbar } from '@/components/shared/navbar'
 import { SemanticHeader } from '@/components/shared/SemanticHeader'
 import { SiteLogo } from '@/components/shared/site-logo'
 import { PROFILE } from '@/constants/routes'
-import { useRouter } from 'next/navigation'
 import { useAuth } from '@/context/AuthContext'
-import { updateProfile } from 'firebase/auth'
-import { ProfileList } from '@/components/profile/ProfileList'
-import { useCallback } from 'react'
 
 export default function ManageProfile() {
   const router = useRouter()
@@ -27,7 +28,7 @@ export default function ManageProfile() {
         router.push(PROFILE)
       } catch (error) {
         // TODO: handle error
-        console.log(error)
+        console.warn(error)
       }
     },
     [user, router]

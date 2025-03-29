@@ -1,10 +1,14 @@
+import { useLargeModal } from '@/components/browse/hooks/useLargeModal'
 import { useBrowseContext } from '@/context/BrowseContext'
+
 import {
   InfoIcon,
   MoreInfoButton,
   PlayButton,
   PlayIcon,
 } from '../buttons/styled'
+import { useNavigateToWatch } from '../hooks/useNavigateToWatch'
+import { LargeMediaModal } from '../modals/LargeMediaModal'
 import {
   BillboardContainer,
   ButtonWrapper,
@@ -14,9 +18,6 @@ import {
   MaturityRating,
   Vignette,
 } from './styled'
-import { useLargeModal } from '@/components/browse/hooks/useLargeModal'
-import { LargeMediaModal } from '../modals/LargeMediaModal'
-import { useNavigateToWatch } from '../hooks/useNavigateToWatch'
 
 export const Billboard = () => {
   const { randomShow } = useBrowseContext()

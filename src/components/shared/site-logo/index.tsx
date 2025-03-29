@@ -1,4 +1,5 @@
 import { HOME } from '@/constants/routes'
+
 import { Logo, LogoWrapper, StyledNextLink } from './styled'
 
 type SiteLogoProps = {

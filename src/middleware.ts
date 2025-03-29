@@ -4,7 +4,9 @@ import {
   redirectToLogin,
   redirectToPath,
 } from 'next-firebase-auth-edge'
+
 import { clientConfig, serverConfig } from '@/lib/firebase/config'
+
 import {
   BROWSE,
   LOGIN_API,
@@ -44,7 +46,7 @@ export async function middleware(request: NextRequest) {
     },
 
     handleInvalidToken: async (reason) => {
-      console.info('turbo Missing or malformed credentials', { reason })
+      console.warn('turbo Missing or malformed credentials', { reason })
 
       return redirectToLogin(request, {
         path: SIGN_IN,

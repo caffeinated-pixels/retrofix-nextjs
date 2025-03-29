@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react'
+
 import { HeaderContainer, ImageGradient } from './styled'
 
 type HeaderProps = {

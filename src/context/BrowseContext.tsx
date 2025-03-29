@@ -1,22 +1,23 @@
 'use client'
+import {
+  createContext,
+  PropsWithChildren,
+  useCallback,
+  useContext,
+  useState,
+} from 'react'
+
 import { mediaCollection } from '@/fixtures/mediaCollection'
+import { type BrowseData } from '@/helpers/getBrowseData'
 import {
   getRandomShow,
   sortStreamingContent,
 } from '@/helpers/sortStreamingContent'
 import {
-  createContext,
-  useState,
-  useContext,
-  PropsWithChildren,
-  useCallback,
-} from 'react'
-import {
   type MediaCollection,
   type MediaItem,
   type SortedContent,
 } from '@/types/mediaContent'
-import { type BrowseData } from '@/helpers/getBrowseData'
 
 type BrowseContextType = {
   activeCategory: string

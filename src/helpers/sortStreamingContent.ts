@@ -1,7 +1,7 @@
 import {
+  type MediaCollection,
   MediaItem,
   SortedContent,
-  type MediaCollection,
 } from '@/types/mediaContent'
 
 /**

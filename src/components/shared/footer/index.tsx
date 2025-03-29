@@ -1,8 +1,9 @@
-import { colors } from '@/constants/theme'
+import { faGithubSquare } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import styled from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithubSquare } from '@fortawesome/free-brands-svg-icons'
+
+import { colors } from '@/constants/theme'
 
 type FooterContainerProps = {
   $increasedPadding?: boolean

@@ -2,8 +2,8 @@
 
 import { mediaCollection } from '@/fixtures/mediaCollection'
 import {
-  sortStreamingContent,
   getRandomShow,
+  sortStreamingContent,
 } from '@/helpers/sortStreamingContent'
 import { type MediaItem, type SortedContent } from '@/types/mediaContent'
 

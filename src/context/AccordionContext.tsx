@@ -1,9 +1,9 @@
 import {
   createContext,
-  useState,
-  useContext,
   PropsWithChildren,
   useCallback,
+  useContext,
+  useState,
 } from 'react'
 
 type AccordionContextType = {

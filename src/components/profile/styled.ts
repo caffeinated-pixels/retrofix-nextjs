@@ -1,7 +1,7 @@
+import Link from 'next/link'
 import styled, { css } from 'styled-components'
 
 import { colors } from '@/constants/theme'
-import Link from 'next/link'
 
 export const MainContainer = styled.main`
   display: flex;

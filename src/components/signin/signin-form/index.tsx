@@ -1,15 +1,16 @@
+import NextLink from 'next/link'
+import { FormEvent, PropsWithChildren } from 'react'
+import styled from 'styled-components'
+
 import {
   Form,
-  Input as GeneralFormInput,
   HiddenLabel,
+  Input as GeneralFormInput,
 } from '@/components/registration/general-form/styled'
 import { SubmitButton } from '@/components/shared/submit-button'
 import { HOME } from '@/constants/routes'
 import { colors, inputErrorBorderBottom } from '@/constants/theme'
 import { FormAction } from '@/hooks/useFormValidation'
-import NextLink from 'next/link'
-import { FormEvent, PropsWithChildren } from 'react'
-import styled from 'styled-components'
 
 export const ContentBody = styled.div`
   width: 100%;

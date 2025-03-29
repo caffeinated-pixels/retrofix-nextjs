@@ -1,9 +1,11 @@
 import styled from 'styled-components'
-import GetStartedForm from '../../shared/get-started-form'
-import faqContentData from '../../../fixtures/faq-content.json'
-import { AccordionItem } from './AccordionItem'
-import { AccordionContextProvider } from '@/context/AccordionContext'
+
 import { cardBorderBottom } from '@/constants/theme'
+import { AccordionContextProvider } from '@/context/AccordionContext'
+
+import faqContentData from '../../../fixtures/faq-content.json'
+import GetStartedForm from '../../shared/get-started-form'
+import { AccordionItem } from './AccordionItem'
 
 const FaqContainer = styled.section`
   padding: 50px 0;

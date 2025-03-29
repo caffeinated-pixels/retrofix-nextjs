@@ -1,5 +1,8 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
+import styled from 'styled-components'
+
 import PlanFormTable from '@/components/registration/planform-table'
 import { RegContentContainer } from '@/components/registration/RegContentContainer'
 import { StepIndicator } from '@/components/registration/StepIndicator'
@@ -20,8 +23,6 @@ import { colors } from '@/constants/theme'
 import { useSignUpContext } from '@/context/SignUpContext'
 import { footerHomeRegistration } from '@/fixtures/footer-content'
 import { registerWithFirebase } from '@/lib/firebase/registerWithFirebase'
-import { useRouter } from 'next/navigation'
-import styled from 'styled-components'
 
 const RegContainerPlanForm = styled.div``
 

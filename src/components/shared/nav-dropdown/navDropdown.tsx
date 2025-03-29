@@ -1,24 +1,23 @@
+import { signOut } from 'firebase/auth'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+
+import { CHILDREN, HOME, PROFILE } from '@/constants/routes'
+import { useAuth } from '@/context/AuthContext'
+import { firebaseAuthWeb } from '@/lib/firebase/firebaseClient'
+
 import {
-  DropDownIcon,
-  EditIcon,
+ Avatar , AvatarWrapper , CalloutIcon ,   DropDownIcon,
+DropDownWrapper,  EditIcon,
   SubMenuBtn,
   SubMenuContainer,
   SubMenuItem,
   SubMenuList,
-  TextSpan,
-} from './styled'
-import { Avatar } from './styled'
-import { signOut } from 'firebase/auth'
+  TextSpan } from './styled'
 
-import { AvatarWrapper } from './styled'
-import { CalloutIcon } from './styled'
 
-import { useAuth } from '@/context/AuthContext'
-import { useRouter } from 'next/navigation'
-import { useState } from 'react'
-import { DropDownWrapper } from './styled'
-import { CHILDREN, HOME, PROFILE } from '@/constants/routes'
-import { firebaseAuthWeb } from '@/lib/firebase/firebaseClient'
+
+
 
 export const NavDropDown = () => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false)

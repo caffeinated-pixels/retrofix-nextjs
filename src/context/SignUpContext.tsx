@@ -1,5 +1,5 @@
 'use client'
-import { useState, createContext, useContext, PropsWithChildren } from 'react'
+import { createContext, PropsWithChildren,useContext, useState } from 'react'
 
 type SignUpContextType = {
   globalFirstName: string

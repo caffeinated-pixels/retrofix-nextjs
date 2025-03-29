@@ -1,25 +1,26 @@
 'use client'
 
-import { PageContainer } from '@/components/shared/containers/PageContainer'
-import { RegContentContainer } from '@/components/registration/RegContentContainer'
-import { Footer } from '@/components/shared/footer'
-import { NavLink } from '@/components/shared/nav-link'
-import { RegNavbar } from '@/components/shared/reg-navbar'
-import { REG_FORM, SIGN_IN } from '@/constants/routes'
-import { colors } from '@/constants/theme'
-import { footerHomeRegistration } from '@/fixtures/footer-content'
 import { useRouter } from 'next/navigation'
+
+import { RegContentContainer } from '@/components/registration/RegContentContainer'
 import { StepIndicator } from '@/components/registration/StepIndicator'
 import { StepTitle } from '@/components/registration/StepTitle'
 import {
   RegContainer,
   RegContextBody,
+  RegParagraph,
   StepDevicesLogo,
   StepHeaderContainer,
   StepLogoContainer,
-  RegParagraph,
 } from '@/components/registration/styled'
+import { PageContainer } from '@/components/shared/containers/PageContainer'
+import { Footer } from '@/components/shared/footer'
+import { NavLink } from '@/components/shared/nav-link'
+import { RegNavbar } from '@/components/shared/reg-navbar'
 import { SubmitButton } from '@/components/shared/submit-button'
+import { REG_FORM, SIGN_IN } from '@/constants/routes'
+import { colors } from '@/constants/theme'
+import { footerHomeRegistration } from '@/fixtures/footer-content'
 
 export default function RegistrationPage() {
   const router = useRouter()

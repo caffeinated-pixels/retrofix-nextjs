@@ -1,5 +1,6 @@
-import { colors } from '@/constants/theme'
 import styled from 'styled-components'
+
+import { colors } from '@/constants/theme'
 
 const Table = styled.table`
   padding-bottom: 10px;

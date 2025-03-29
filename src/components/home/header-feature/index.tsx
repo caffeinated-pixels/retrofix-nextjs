@@ -1,4 +1,5 @@
 import GetStartedForm from '@/components/shared/get-started-form'
+
 import { FeatureWrapper, Subtitle, Title } from './styled'
 
 export default function HeaderFeature() {

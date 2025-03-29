@@ -2,13 +2,13 @@
 
 import {
   Avatar,
-  Name,
-  ListItem,
-  NavLink,
-  Title,
-  MainContainer,
   ChooseAvatar,
+  ListItem,
+  MainContainer,
+  Name,
+  NavLink,
   ProfileListContainer,
+  Title,
 } from '@/components/profile/styled'
 import { PageContainer } from '@/components/shared/containers/PageContainer'
 import { Navbar } from '@/components/shared/navbar'

@@ -1,5 +1,11 @@
+import { MouseEvent , useEffect } from 'react'
 import { createPortal } from 'react-dom'
-import { MouseEvent } from 'react'
+
+import { useMounted } from '@/hooks/useMounted'
+import { useRootElement } from '@/hooks/useRootElement'
+import { MediaItem } from '@/types/mediaContent'
+
+import { PlayButton, PlayIcon } from '../buttons/styled'
 import {
   Background,
   ButtonWrapper,
@@ -22,11 +28,6 @@ import {
   Title,
   TitleBox,
 } from './styled'
-import { useEffect } from 'react'
-import { PlayButton, PlayIcon } from '../buttons/styled'
-import { MediaItem } from '@/types/mediaContent'
-import { useMounted } from '@/hooks/useMounted'
-import { useRootElement } from '@/hooks/useRootElement'
 
 type LargeContentModalProps = {
   handleCloseModal: (e?: MouseEvent<HTMLButtonElement>) => void

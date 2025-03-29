@@ -1,12 +1,14 @@
-import type { Metadata } from 'next'
 import './globals.css'
-import { SignUpContextProvider } from '@/context/SignUpContext'
-import { Roboto } from 'next/font/google'
-import { config } from '@fortawesome/fontawesome-svg-core'
-import StyledComponentsRegistry from '@/lib/registry'
 import '@fortawesome/fontawesome-svg-core/styles.css'
-import BrowseDataProvider from '@/context/BrowseDataProvider'
+
+import { config } from '@fortawesome/fontawesome-svg-core'
+import type { Metadata } from 'next'
+import { Roboto } from 'next/font/google'
+
 import FirebaseAuthContextProvider from '@/context/AuthContext'
+import BrowseDataProvider from '@/context/BrowseDataProvider'
+import { SignUpContextProvider } from '@/context/SignUpContext'
+import StyledComponentsRegistry from '@/lib/registry'
 config.autoAddCss = false
 
 const roboto = Roboto({

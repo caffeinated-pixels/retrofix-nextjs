@@ -1,8 +1,10 @@
-import { useBrowseContext } from '@/context/BrowseContext'
 import { useMemo } from 'react'
-import { GenreContainer, GenreContainersWrapper, GenreTitle } from './styled'
+
 import { MainContainer } from '@/components/shared/containers/MainContainer'
+import { useBrowseContext } from '@/context/BrowseContext'
+
 import { SlideTrack } from '../slide-track/SlideTrack'
+import { GenreContainer, GenreContainersWrapper, GenreTitle } from './styled'
 
 export const StreamingContentDesktop = () => {
   const { sortedContent } = useBrowseContext()

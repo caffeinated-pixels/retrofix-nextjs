@@ -1,9 +1,9 @@
 import {
+  createContext,
+  PropsWithChildren,
+  useContext,
   useLayoutEffect,
   useState,
-  createContext,
-  useContext,
-  PropsWithChildren,
 } from 'react'
 
 const WindowWidthContext = createContext<number | null>(null)
@@ -26,6 +26,7 @@ export const WindowWidthContextProvider = ({ children }: PropsWithChildren) => {
 
     // clean up event listener
     return () => window.removeEventListener('resize', updateWidth)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

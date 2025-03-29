@@ -1,13 +1,14 @@
 'use client'
 
+import { onAuthStateChanged, User } from 'firebase/auth'
 import {
   createContext,
-  useState,
+  PropsWithChildren,
   useContext,
   useEffect,
-  PropsWithChildren,
+  useState,
 } from 'react'
-import { onAuthStateChanged, User } from 'firebase/auth'
+
 import { firebaseAuthWeb } from '../lib/firebase/firebaseClient'
 
 const FirebaseAuthContext = createContext<User | null>(null)
