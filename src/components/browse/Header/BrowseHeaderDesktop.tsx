@@ -1,4 +1,4 @@
-import { useEffect,useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { NavDropDown } from '@/components/shared/nav-dropdown/navDropdown'
 import { SiteLogo } from '@/components/shared/site-logo'
@@ -6,43 +6,50 @@ import { useBrowseContext } from '@/context/BrowseContext'
 
 import { SemanticHeader } from '../../shared/SemanticHeader'
 import { Billboard } from '../Billboard/Billboard'
+import { useBrowseSearch } from '../hooks/useBrowseSearch'
 import {
   BellIcon,
   Container,
+  IconButton,
   Navbar,
   NavPrimary,
   NavPrimaryBtn,
   NavPrimaryItem,
   NavSecondary,
   NavSecondaryItem,
+  SearchForm,
   SearchIcon,
+  SearchInputDesktop,
+  SearchWrapper,
 } from './styled'
 
-export default function BrowseHeaderDesktop() {
+export const BrowseHeaderDesktop = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const { activeCategory, setCategory } = useBrowseContext()
 
-  const handleSubmit = () => {
-    // TODO: get handleSubmit from useBrowseSearch
-  }
-  //   const [handleSubmit, handleSearchInput] = useBrowseSearch()
+  const { handleSubmit, handleSearchInput } = useBrowseSearch()
+
+  /**
+   * TODO: implement NextJs way of getting the previous URL
+   * may need to pass as URL param?
+   */
   //   const { state: prevURL } = useLocation()
-  //   const ref = useRef(null)
+  const ref = useRef<HTMLInputElement>(null)
 
   const toggleSearch = () => {
     setIsSearchOpen((prevState) => !prevState)
   }
 
-  //   useEffect(() => {
-  //     // display search input if returning from SearchPage
-  //     if (prevURL === 'search') setIsSearchOpen(true)
-  //   }, [prevURL])
+  // useEffect(() => {
+  //   // display search input if returning from SearchPage
+  //   if (prevURL === 'search') setIsSearchOpen(true)
+  // }, [prevURL])
 
-  //   useEffect(() => {
-  //     if (isSearchOpen) {
-  //       ref.current.focus()
-  //     }
-  //   }, [isSearchOpen])
+  useEffect(() => {
+    if (isSearchOpen) {
+      ref.current?.focus()
+    }
+  }, [isSearchOpen])
 
   return (
     <SemanticHeader>
@@ -81,9 +88,8 @@ export default function BrowseHeaderDesktop() {
 
           <NavSecondary>
             <NavSecondaryItem>
-              <SearchIcon className='fas fa-search' />
-              {/* <SearchForm onSubmit={handleSubmit}>
-                <SearchWrapper isSearchOpen={isSearchOpen}>
+              <SearchForm onSubmit={handleSubmit}>
+                <SearchWrapper $isSearchOpen={isSearchOpen}>
                   <IconButton
                     onClick={toggleSearch}
                     aria-label='open search box'
@@ -93,12 +99,12 @@ export default function BrowseHeaderDesktop() {
 
                   <SearchInputDesktop
                     ref={ref}
-                    isSearchOpen={isSearchOpen}
+                    $isSearchOpen={isSearchOpen}
                     placeholder='Search'
                     onChange={handleSearchInput}
                   />
                 </SearchWrapper>
-              </SearchForm> */}
+              </SearchForm>
             </NavSecondaryItem>
 
             <NavSecondaryItem>
