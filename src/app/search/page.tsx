@@ -11,6 +11,7 @@ import { BROWSE } from '@/constants/routes'
 import { useWindowWidthContext } from '@/context/WindowWidthContext'
 import { footerHomeContent } from '@/fixtures/footer-content'
 import { mediaCollection } from '@/fixtures/mediaCollection'
+import { sanitizeSearchInput } from '@/helpers/sanitizeSearchInput'
 import { MediaItem } from '@/types/mediaContent'
 
 export default function SearchPage() {
@@ -27,14 +28,18 @@ export default function SearchPage() {
   }
 
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(e.target.value)
+    // Sanitize the input
+    const sanitizedInput = sanitizeSearchInput(e.target.value)
+
+    setSearchInput(sanitizedInput)
 
     if (e.target.value.trim() === '') {
       // return to browse page if searchInput becomes empty
       router.push(`${BROWSE}?sp=true`)
     } else {
-      // sync URL param and searchInput
-      router.push(`?q=${e.target.value}`)
+      // sync URL param and searchInput; Encode for URL safety
+      const encodedQuery = encodeURIComponent(sanitizedInput)
+      router.push(`?q=${encodedQuery}`)
     }
   }
 
