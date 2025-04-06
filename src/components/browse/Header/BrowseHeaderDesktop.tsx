@@ -1,3 +1,4 @@
+import { useSearchParams } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 
 import { NavDropDown } from '@/components/shared/nav-dropdown/navDropdown'
@@ -9,6 +10,8 @@ import { Billboard } from '../Billboard/Billboard'
 import { useBrowseSearch } from '../hooks/useBrowseSearch'
 import {
   BellIcon,
+  CloseIcon,
+  CloseSearchButton,
   Container,
   IconButton,
   Navbar,
@@ -24,26 +27,20 @@ import {
 } from './styled'
 
 export const BrowseHeaderDesktop = () => {
-  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const searchParams = useSearchParams()
+
+  const [isSearchOpen, setIsSearchOpen] = useState(
+    searchParams.get('sp') ? true : false
+  )
   const { activeCategory, setCategory } = useBrowseContext()
 
   const { handleSubmit, handleSearchInput } = useBrowseSearch()
 
-  /**
-   * TODO: implement NextJs way of getting the previous URL
-   * may need to pass as URL param?
-   */
-  //   const { state: prevURL } = useLocation()
   const ref = useRef<HTMLInputElement>(null)
 
   const toggleSearch = () => {
     setIsSearchOpen((prevState) => !prevState)
   }
-
-  // useEffect(() => {
-  //   // display search input if returning from SearchPage
-  //   if (prevURL === 'search') setIsSearchOpen(true)
-  // }, [prevURL])
 
   useEffect(() => {
     if (isSearchOpen) {
@@ -103,6 +100,14 @@ export const BrowseHeaderDesktop = () => {
                     placeholder='Search'
                     onChange={handleSearchInput}
                   />
+                  {isSearchOpen && (
+                    <CloseSearchButton
+                      aria-label='close search'
+                      onClick={toggleSearch}
+                    >
+                      <CloseIcon className='fas fa-times' />
+                    </CloseSearchButton>
+                  )}
                 </SearchWrapper>
               </SearchForm>
             </NavSecondaryItem>

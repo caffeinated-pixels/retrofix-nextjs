@@ -31,7 +31,7 @@ export default function SearchPage() {
 
     if (e.target.value.trim() === '') {
       // return to browse page if searchInput becomes empty
-      router.push(BROWSE)
+      router.push(`${BROWSE}?sp=true`)
     } else {
       // sync URL param and searchInput
       router.push(`?q=${e.target.value}`)

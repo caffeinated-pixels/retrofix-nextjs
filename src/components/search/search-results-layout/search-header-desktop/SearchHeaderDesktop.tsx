@@ -100,7 +100,7 @@ export const SearchHeaderDesktop = ({
             </NavSecondaryItem>
 
             <NavSecondaryItem>
-              <BellIcon />
+              <BellIcon className='fas fa-bell' />
             </NavSecondaryItem>
 
             <NavSecondaryItem>
