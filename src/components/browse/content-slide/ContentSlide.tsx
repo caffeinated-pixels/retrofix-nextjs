@@ -8,7 +8,7 @@ import { ContentSlideContainer, ContentSlideImage } from './styled'
 
 type ContentSlideProps = {
   item: MediaItem
-  isSlideOnCurrentPage: boolean
+  isSlideOnCurrentPage?: boolean
 }
 
 const ContentSlideComponent = ({
