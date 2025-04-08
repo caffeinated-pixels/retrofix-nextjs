@@ -15,17 +15,14 @@ import { sanitizeSearchInput } from '@/helpers/sanitizeSearchInput'
 import { MediaItem } from '@/types/mediaContent'
 
 export default function SearchPage() {
-  const searchParams = useSearchParams()
-  const [searchInput, setSearchInput] = useState(searchParams.get('q') || '')
+  const [searchInput, setSearchInput] = useState(
+    decodeURIComponent(useSearchParams().get('q') || '')
+  )
   const [searchResults, setSearchResults] =
     useState<MediaItem[]>(mediaCollection)
 
   const router = useRouter()
   const width = useWindowWidthContext()
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-  }
 
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Sanitize the input
@@ -67,7 +64,6 @@ export default function SearchPage() {
       ) : (
         <>
           <SearchHeaderDesktop
-            handleSubmit={handleSubmit}
             searchInput={searchInput}
             handleSearchInput={handleSearchInput}
           />

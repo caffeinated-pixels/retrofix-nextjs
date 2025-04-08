@@ -1,4 +1,5 @@
 'use client'
+import { usePathname, useRouter } from 'next/navigation'
 import {
   createContext,
   PropsWithChildren,
@@ -7,6 +8,7 @@ import {
   useState,
 } from 'react'
 
+import { BROWSE } from '@/constants/routes'
 import { mediaCollection } from '@/fixtures/mediaCollection'
 import { type BrowseData } from '@/helpers/getBrowseData'
 import {
@@ -38,25 +40,34 @@ export const BrowseContextProvider = ({
   initialData,
 }: BrowseContextProviderProps) => {
   const [browseData, setBrowseData] = useState<BrowseData>(initialData)
+  const router = useRouter()
+  const pathname = usePathname()
 
-  const setCategory = useCallback((category: string) => {
-    setBrowseData((prev: BrowseData) => {
-      if (prev.activeCategory === category) return prev
+  const setCategory = useCallback(
+    (category: string) => {
+      setBrowseData((prev: BrowseData) => {
+        if (prev.activeCategory === category) return prev
 
-      const sortedStreamingContent = sortStreamingContent(
-        mediaCollection,
-        category
-      )
+        const sortedStreamingContent = sortStreamingContent(
+          mediaCollection,
+          category
+        )
 
-      const randomShow = getRandomShow(sortedStreamingContent)
+        const randomShow = getRandomShow(sortedStreamingContent)
 
-      return {
-        activeCategory: category,
-        sortedContent: sortedStreamingContent,
-        randomShow,
+        return {
+          activeCategory: category,
+          sortedContent: sortedStreamingContent,
+          randomShow,
+        }
+      })
+
+      if (pathname !== BROWSE) {
+        router.push(BROWSE)
       }
-    })
-  }, [])
+    },
+    [router, pathname]
+  )
 
   return (
     <BrowseContext.Provider
