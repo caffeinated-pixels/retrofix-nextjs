@@ -1,6 +1,6 @@
 {
   "extends": "next/core-web-vitals",
-  "plugins": ["simple-import-sort", "import"],
+  "plugins": ["simple-import-sort", "import", "@typescript-eslint"],
   "rules": {
     "no-console": ["error", { "allow": ["warn", "error"] }],
     "simple-import-sort/imports": "error",
@@ -10,6 +10,7 @@
     "import/no-unresolved": "error",
     "import/no-cycle": "error",
     "import/no-self-import": "error",
-    "import/no-useless-path-segments": "error"
+    "import/no-useless-path-segments": "error",
+    "@typescript-eslint/no-unused-vars": "warn"
   }
 }
