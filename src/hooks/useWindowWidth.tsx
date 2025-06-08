@@ -1,15 +1,7 @@
-import {
-  createContext,
-  PropsWithChildren,
-  useContext,
-  useLayoutEffect,
-  useState,
-} from 'react'
+import { useLayoutEffect, useState } from 'react'
 
-const WindowWidthContext = createContext<number | null>(null)
-
-export const WindowWidthContextProvider = ({ children }: PropsWithChildren) => {
-  const [width, setWidth] = useState(0)
+export const useWindowWidth = () => {
+  const [width, setWidth] = useState<number>(0)
 
   // useLayoutEffect runs before React renders the component making it a better choice for DOM measurement than useEffect, which runs after rendering/screen painting
   useLayoutEffect(() => {
@@ -26,14 +18,7 @@ export const WindowWidthContextProvider = ({ children }: PropsWithChildren) => {
 
     // clean up event listener
     return () => window.removeEventListener('resize', updateWidth)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [width])
 
-  return (
-    <WindowWidthContext.Provider value={width}>
-      {children}
-    </WindowWidthContext.Provider>
-  )
+  return width
 }
-
-export const useWindowWidthContext = () => useContext(WindowWidthContext)

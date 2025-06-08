@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from 'react'
 
-import { useWindowWidthContext } from '@/context/WindowWidthContext'
+import { useWindowWidth } from '@/hooks/useWindowWidth'
 import { MediaItem } from '@/types/mediaContent'
 
 import { ContentSlide } from '../content-slide/ContentSlide'
@@ -22,7 +22,8 @@ interface SlideTrackProps {
 
 export const SlideTrack = ({ content }: SlideTrackProps) => {
   const { state, dispatch } = useSlideTracks()
-  const windowWidth = useWindowWidthContext()
+  const windowWidth = useWindowWidth()
+
   const ref = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {

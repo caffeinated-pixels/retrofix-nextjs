@@ -8,10 +8,10 @@ import { SearchResultsLayout } from '@/components/search/search-results-layout/S
 import { BrowsePageContainer } from '@/components/shared/containers/BrowsePageContainer'
 import { Footer } from '@/components/shared/footer'
 import { BROWSE } from '@/constants/routes'
-import { useWindowWidthContext } from '@/context/WindowWidthContext'
 import { footerHomeContent } from '@/fixtures/footer-content'
 import { mediaCollection } from '@/fixtures/mediaCollection'
 import { sanitizeSearchInput } from '@/helpers/sanitizeSearchInput'
+import { useWindowWidth } from '@/hooks/useWindowWidth'
 import { MediaItem } from '@/types/mediaContent'
 
 export default function SearchPage() {
@@ -22,7 +22,7 @@ export default function SearchPage() {
     useState<MediaItem[]>(mediaCollection)
 
   const router = useRouter()
-  const width = useWindowWidthContext()
+  const width = useWindowWidth()
 
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Sanitize the input
