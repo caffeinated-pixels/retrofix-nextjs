@@ -1,22 +1,12 @@
 'use client'
 
-import { BrowseHeaderDesktop } from '@/components/browse/Header/BrowseHeaderDesktop'
-import { StreamingContentDesktop } from '@/components/browse/streaming-content/StreamingContentDesktop'
-import { BrowsePageContainer } from '@/components/shared/containers/BrowsePageContainer'
-import { Footer } from '@/components/shared/footer'
-import { footerHomeContent } from '@/fixtures/footer-content'
+import { BrowseDesktopLayout } from '@/components/browse/BrowseDesktopLayout'
+import { BrowseMobileLayout } from '@/components/browse/BrowseMobileLayout'
+import { useWindowWidth } from '@/hooks/useWindowWidth'
 
 export default function BrowsePage() {
-  /**
-   * TODO: In the orginial app, I created two layoutss for the browse page.
-   * One for mobile and one for desktop.
-   * For now, I'm just going to use the desktop layout.
-   */
-  return (
-    <BrowsePageContainer>
-      <BrowseHeaderDesktop />
-      <StreamingContentDesktop />
-      <Footer footerContent={footerHomeContent} increasedPadding />
-    </BrowsePageContainer>
-  )
+  const width = useWindowWidth()
+  const isMobile = width ? width < 768 : false
+
+  return isMobile ? <BrowseMobileLayout /> : <BrowseDesktopLayout />
 }
