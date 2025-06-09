@@ -14,6 +14,10 @@ import { sanitizeSearchInput } from '@/helpers/sanitizeSearchInput'
 import { useWindowWidth } from '@/hooks/useWindowWidth'
 import { MediaItem } from '@/types/mediaContent'
 
+const fuse = new Fuse(mediaCollection, {
+  keys: ['description', 'title', 'cast'],
+})
+
 export default function SearchPage() {
   const [searchInput, setSearchInput] = useState(
     decodeURIComponent(useSearchParams().get('q') || '')
@@ -25,29 +29,25 @@ export default function SearchPage() {
   const width = useWindowWidth()
 
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // Sanitize the input
-    const sanitizedInput = sanitizeSearchInput(e.target.value)
+    const rawInput = e.target.value
 
-    setSearchInput(sanitizedInput)
+    setSearchInput(rawInput)
 
-    if (e.target.value.trim() === '') {
+    if (rawInput.trim() === '') {
       // return to browse page if searchInput becomes empty
       router.push(`${BROWSE}?sp=true`)
     } else {
+      // Sanitize the input
+      const sanitizedInput = sanitizeSearchInput(rawInput)
+      const fuseResults = fuse
+        .search(sanitizedInput)
+        .map((result) => result.item)
+      setSearchResults(fuseResults)
       // sync URL param and searchInput; Encode for URL safety
       const encodedQuery = encodeURIComponent(sanitizedInput)
       router.push(`?q=${encodedQuery}`)
     }
   }
-
-  useEffect(() => {
-    const fuse = new Fuse(mediaCollection, {
-      keys: ['description', 'title', 'cast'],
-    })
-
-    const fuseResults = fuse.search(searchInput).map((result) => result.item)
-    setSearchResults(fuseResults)
-  }, [searchInput])
 
   return (
     <BrowsePageContainer>
