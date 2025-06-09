@@ -1,3 +1,10 @@
+import { BrowseHeaderMobile } from './Header/BrowseHeaderMobile'
+
 export const BrowseMobileLayout = () => {
-  return <h1>BrowseMobileLayout</h1>
+  return (
+    <>
+      <BrowseHeaderMobile />
+      {/* <StreamingContentMobile /> */}
+    </>
+  )
 }

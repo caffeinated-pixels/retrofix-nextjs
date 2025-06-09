@@ -7,17 +7,18 @@ import { useAuth } from '@/context/AuthContext'
 import { firebaseAuthWeb } from '@/lib/firebase/firebaseClient'
 
 import {
- Avatar , AvatarWrapper , CalloutIcon ,   DropDownIcon,
-DropDownWrapper,  EditIcon,
+  Avatar,
+  AvatarWrapper,
+  CalloutIcon,
+  DropDownIcon,
+  DropDownWrapper,
+  EditIcon,
   SubMenuBtn,
   SubMenuContainer,
   SubMenuItem,
   SubMenuList,
-  TextSpan } from './styled'
-
-
-
-
+  TextSpan,
+} from './styled'
 
 export const NavDropDown = () => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false)
@@ -25,7 +26,6 @@ export const NavDropDown = () => {
   const router = useRouter()
 
   const handleSignOut = async () => {
-    console.log('turbo signout')
     await signOut(firebaseAuthWeb)
 
     await fetch('/api/logout')
