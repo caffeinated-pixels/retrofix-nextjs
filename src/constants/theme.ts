@@ -21,6 +21,21 @@ export const colors = {
   moreInfoButtonHover: 'hsla(240, 0%, 43%, 0.4)',
 }
 
+/**
+ * TODO: standardize & centralize breakpoints
+ * Your app uses 7 main responsive breakpoints:
+ * 500px - Small mobile/phablet
+ * 550px - Large mobile
+ * 600px - Small tablet
+ * 740px - Medium tablet
+ * 950px - Large tablet/small desktop
+ * 1450px - Large desktop
+ */
+
+export const breakpoints = {
+  mobile: 768,
+}
+
 // TODO: consolidate into object???
 export const cardBorderBottom = '8px solid #222'
 export const navSliderBorderBottom = '1px solid #333'
