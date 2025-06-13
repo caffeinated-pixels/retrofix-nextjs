@@ -1,10 +1,9 @@
-import { signOut } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
-import { CHILDREN, HOME, PROFILE } from '@/constants/routes'
+import { CHILDREN, PROFILE } from '@/constants/routes'
 import { useAuth } from '@/context/AuthContext'
-import { firebaseAuthWeb } from '@/lib/firebase/firebaseClient'
+import { useSignOut } from '@/hooks/useSignOut'
 
 import {
   Avatar,
@@ -25,13 +24,7 @@ export const NavDropDown = () => {
   const user = useAuth()
   const router = useRouter()
 
-  const handleSignOut = async () => {
-    await signOut(firebaseAuthWeb)
-
-    await fetch('/api/logout')
-
-    router.replace(HOME)
-  }
+  const handleSignOut = useSignOut()
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter' || e.key === ' ') {

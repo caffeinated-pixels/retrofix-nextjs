@@ -2,6 +2,7 @@ import { useRouter } from 'next/navigation'
 
 import { PROFILE } from '@/constants/routes'
 import { useAuth } from '@/context/AuthContext'
+import { useSignOut } from '@/hooks/useSignOut'
 
 import {
   NavBtn,
@@ -29,8 +30,8 @@ export const NavSliderPanel = ({
   setCategory,
 }: NavSliderPanelProps) => {
   const user = useAuth()
-  const signOut = () => console.log(' turbo sign out') // FIXME: add sign out
   const router = useRouter()
+  const handleSignOut = useSignOut()
 
   return (
     <>
@@ -49,7 +50,7 @@ export const NavSliderPanel = ({
             </NavBtn>
           </NavUserLi>
           <NavLi $noLeftPadding>
-            <NavBtn onClick={signOut}>Sign out of RetroFix</NavBtn>
+            <NavBtn onClick={handleSignOut}>Sign out of RetroFix</NavBtn>
           </NavLi>
         </NavPrimary>
         <NavSecondary>
