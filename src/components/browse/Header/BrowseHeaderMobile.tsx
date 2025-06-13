@@ -19,13 +19,14 @@ import {
 export const BrowseHeaderMobile = () => {
   const { activeCategory, setCategory } = useBrowseContext()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   const { handleSubmit, handleSearchInput } = useBrowseSearch()
 
   const toggleMenu = () => {
     setIsMenuOpen((prevState) => !prevState)
   }
 
-  useEffect(() => toggleMenu, [activeCategory])
+  useEffect(() => setIsMenuOpen(false), [activeCategory])
 
   return (
     <SemanticHeader>
