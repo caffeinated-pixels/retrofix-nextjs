@@ -25,3 +25,6 @@ export const PUBLIC_ROUTES = [
   REG_FORM,
   PLAN_FORM,
 ]
+
+export const PORFOLIO_URL = 'https://steviegill-webportfolio.netlify.app/'
+export const REPO_URL = 'https://github.com/caffeinated-pixels/retrofix-nextjs'
