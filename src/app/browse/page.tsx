@@ -1,20 +1,12 @@
-'use client'
+import isMobile from 'ismobilejs'
+import { headers } from 'next/headers'
 
-import { BrowseDesktopLayout } from '@/components/browse/BrowseDesktopLayout'
-import { BrowseMobileLayout } from '@/components/browse/BrowseMobileLayout'
-import { BrowsePageContainer } from '@/components/shared/containers/BrowsePageContainer'
-import { Footer } from '@/components/shared/footer'
-import { footerHomeContent } from '@/fixtures/footer-content'
-import { useWindowWidth } from '@/hooks/useWindowWidth'
+import BrowseClientComponent from '@/components/browse/BrowseClientComponent'
 
-export default function BrowsePage() {
-  const width = useWindowWidth()
-  const isMobile = width ? width < 768 : false
+export default async function BrowsePage() {
+  const headersList = headers()
+  const userAgent = headersList.get('user-agent')
+  const isMobileOrTablet = isMobile(userAgent || '').any
 
-  return (
-    <BrowsePageContainer>
-      {isMobile ? <BrowseMobileLayout /> : <BrowseDesktopLayout />}
-      <Footer footerContent={footerHomeContent} increasedPadding />
-    </BrowsePageContainer>
-  )
+  return <BrowseClientComponent isMobileOrTablet={isMobileOrTablet} />
 }
