@@ -1,12 +1,8 @@
-import isMobile from 'ismobilejs'
-import { headers } from 'next/headers'
-
 import BrowseClientComponent from '@/components/browse/BrowseClientComponent'
+import { getDeviceOnServer } from '@/helpers/getDeviceOnServer'
 
-export default async function BrowsePage() {
-  const headersList = headers()
-  const userAgent = headersList.get('user-agent')
-  const isMobileOrTablet = isMobile(userAgent || '').any
+export default function BrowsePage() {
+  const isMobileOrTablet = getDeviceOnServer()
 
   return <BrowseClientComponent isMobileOrTablet={isMobileOrTablet} />
 }
