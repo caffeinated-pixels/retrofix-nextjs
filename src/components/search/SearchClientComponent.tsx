@@ -13,6 +13,8 @@ import { mediaCollection } from '@/fixtures/mediaCollection'
 import { sanitizeSearchInput } from '@/helpers/sanitizeSearchInput'
 import { MediaItem } from '@/types/mediaContent'
 
+import { SearchHeaderMobile } from './header/SearchHeaderMobile'
+
 const fuse = new Fuse(mediaCollection, {
   keys: ['description', 'title', 'cast'],
 })
@@ -57,13 +59,11 @@ export default function SearchClientComponent({
     <BrowsePageContainer>
       {isMobileOrTablet ? (
         <>
-          <h1>Mobile search page goes here</h1>
-          {/* <SearchHeaderMobile
-            handleSubmit={handleSubmit}
+          <SearchHeaderMobile
             searchInput={searchInput}
             handleSearchInput={handleSearchInput}
           />
-          <SearchResultsLayoutMobile searchResults={searchResults} /> */}
+          {/* <SearchResultsLayoutMobile searchResults={searchResults} /> */}
         </>
       ) : (
         <>
