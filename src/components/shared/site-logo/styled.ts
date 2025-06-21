@@ -3,15 +3,17 @@ import styled from 'styled-components'
 
 type SiteLogoProps = {
   $isBrowsePage?: boolean
+  $isGetTheAppPage?: boolean
 }
 
 // TODO: fix/simplify responsive desgin for browse variant of logo
 export const LogoWrapper = styled.div<SiteLogoProps>`
-  width: 5.5rem;
+  width: ${({ $isGetTheAppPage }) => ($isGetTheAppPage ? '120px' : '5.5rem')};
   height: 1.5rem;
 
   @media (min-width: 550px) {
-    width: 6.75rem;
+    width: ${({ $isGetTheAppPage }) =>
+      $isGetTheAppPage ? '120px' : '6.75rem'};
     height: 2rem;
   }
 
