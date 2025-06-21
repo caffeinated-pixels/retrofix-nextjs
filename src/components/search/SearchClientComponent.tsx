@@ -3,7 +3,7 @@ import Fuse from 'fuse.js'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
-import { SearchHeaderDesktop } from '@/components/search/search-results-layout/search-header-desktop/SearchHeaderDesktop'
+import { SearchHeaderDesktop } from '@/components/search/header/SearchHeaderDesktop'
 import { SearchResultsLayout } from '@/components/search/search-results-layout/SearchResultsLayout'
 import { BrowsePageContainer } from '@/components/shared/containers/BrowsePageContainer'
 import { Footer } from '@/components/shared/footer'
@@ -14,6 +14,7 @@ import { sanitizeSearchInput } from '@/helpers/sanitizeSearchInput'
 import { MediaItem } from '@/types/mediaContent'
 
 import { SearchHeaderMobile } from './header/SearchHeaderMobile'
+import { SearchResultsLayoutMobile } from './search-results-layout/SearchResultsLayoutMobile'
 
 const fuse = new Fuse(mediaCollection, {
   keys: ['description', 'title', 'cast'],
@@ -63,7 +64,7 @@ export default function SearchClientComponent({
             searchInput={searchInput}
             handleSearchInput={handleSearchInput}
           />
-          {/* <SearchResultsLayoutMobile searchResults={searchResults} /> */}
+          <SearchResultsLayoutMobile searchResults={searchResults} />
         </>
       ) : (
         <>
