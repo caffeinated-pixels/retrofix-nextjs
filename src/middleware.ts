@@ -30,7 +30,7 @@ export async function middleware(request: NextRequest) {
     cookieSerializeOptions: serverConfig.cookieSerializeOptions, // options for setting auth cookie
     serviceAccount: serverConfig.serviceAccount, // firebase credentials
 
-    handleValidToken: async ({ token, decodedToken }, headers) => {
+    handleValidToken: async (_, headers) => {
       // if the user is logged in and tries to access a public route, redirect to the browse page
       if (PUBLIC_ROUTES.includes(request.nextUrl.pathname)) {
         return redirectToPath(request, BROWSE, {

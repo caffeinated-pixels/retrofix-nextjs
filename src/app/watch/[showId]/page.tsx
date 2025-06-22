@@ -1,15 +1,7 @@
 'use client'
 import { VideoPlayer } from '@/components/watch/video-player/styled'
 
-type WatchPageProps = {
-  params: {
-    showId: string
-  }
-}
-
-export default function WatchPage({ params }: WatchPageProps) {
-  const { showId } = params
-
+export default function WatchPage() {
   return (
     <VideoPlayer
       controls

@@ -21,7 +21,6 @@ export const registerWithFirebase = async (
 
     return { success: true, error: null }
   } catch (error) {
-    console.log(error)
     return { success: false, error }
   }
 }

@@ -1,7 +1,7 @@
 'use client'
 
 import { FirebaseError } from 'firebase/app'
-import { AuthError,signInWithEmailAndPassword } from 'firebase/auth'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
 import { FormEvent } from 'react'
 
