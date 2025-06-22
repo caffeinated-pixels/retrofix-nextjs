@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-import { FormHandleSubmit } from '@/app/signup/regform/page'
 import { colors } from '@/constants/theme'
+import { FormHandleSubmit } from '@/types/sharedTypes'
 
 type SubmitButtonContainerProps = {
   $maxWidth?: string

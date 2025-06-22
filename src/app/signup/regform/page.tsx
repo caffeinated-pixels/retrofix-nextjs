@@ -22,8 +22,7 @@ import { useSignUpContext } from '@/context/SignUpContext'
 import { footerHomeRegistration } from '@/fixtures/footer-content'
 import { isEmailValid } from '@/helpers/isEmailValid'
 import { useFormValidation } from '@/hooks/useFormValidation'
-
-export type FormHandleSubmit = (e: FormEvent<HTMLFormElement>) => void
+import { type FormHandleSubmit } from '@/types/sharedTypes'
 
 export default function RegForm() {
   const {

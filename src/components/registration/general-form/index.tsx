@@ -1,4 +1,3 @@
-import { FormHandleSubmit } from '@/app/signup/regform/page'
 import { SubmitButton } from '@/components/shared/submit-button'
 import {
   textInputBorder,
@@ -6,6 +5,7 @@ import {
   textInputBorderGood,
 } from '@/constants/theme'
 import { FormAction, FormState } from '@/hooks/useFormValidation'
+import { type FormHandleSubmit } from '@/types/sharedTypes'
 
 import {
   Checkbox,
