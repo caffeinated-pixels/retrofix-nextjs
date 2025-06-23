@@ -1,4 +1,4 @@
-import { MouseEvent , useEffect } from 'react'
+import { MouseEvent, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
 import { useMounted } from '@/hooks/useMounted'
@@ -6,6 +6,7 @@ import { useRootElement } from '@/hooks/useRootElement'
 import { MediaItem } from '@/types/mediaContent'
 
 import { PlayButton, PlayIcon } from '../buttons/styled'
+import { useNavigateToWatch } from '../hooks/useNavigateToWatch'
 import {
   Background,
   ButtonWrapper,
@@ -41,9 +42,7 @@ export const LargeMediaModal = ({
   const mounted = useMounted()
   const target = useRootElement('modal-root', mounted)
 
-  // TODO: implement useNavigateToWatch (need to implement watch page first)
-  //   const handlePlay = useNavigateToWatch(item)
-  const handlePlay = () => {}
+  const handlePlay = useNavigateToWatch(item)
 
   const imgUrl = `/images/${item.category}/${item.genre}/${item.slug}/large.jpg`
 
