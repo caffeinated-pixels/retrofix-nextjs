@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
 
 import { colors } from '@/constants/theme'
@@ -101,7 +102,7 @@ export const RoundButton = styled.button`
   }
 `
 
-export const RoundButtonIcon = styled.i``
+export const RoundButtonIcon = styled(FontAwesomeIcon)``
 
 export const CloseButton = styled.button`
   align-self: flex-start;
@@ -125,7 +126,7 @@ export const CloseButton = styled.button`
   align-items: center;
 `
 
-export const CloseIcon = styled.i`
+export const CloseIcon = styled(FontAwesomeIcon)`
   font-size: 1.25rem;
 `
 

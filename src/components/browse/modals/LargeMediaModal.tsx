@@ -1,3 +1,7 @@
+import { faPlay } from '@fortawesome/free-solid-svg-icons/faPlay'
+import { faThumbsDown } from '@fortawesome/free-solid-svg-icons/faThumbsDown'
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons/faThumbsUp'
+import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes'
 import { MouseEvent, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
@@ -66,19 +70,19 @@ export const LargeMediaModal = ({
               <Title>{item.title}</Title>
               <ButtonWrapper>
                 <PlayButton onClick={handlePlay} autoFocus>
-                  <PlayIcon className='fas fa-play' />
+                  <PlayIcon icon={faPlay} />
                   Play
                 </PlayButton>
                 <RoundButton aria-label='Rate thumbs up'>
-                  <RoundButtonIcon className='fas fa-thumbs-up' />
+                  <RoundButtonIcon icon={faThumbsUp} />
                 </RoundButton>
                 <RoundButton aria-label='Rate thumbs down'>
-                  <RoundButtonIcon className='fas fa-thumbs-down' />
+                  <RoundButtonIcon icon={faThumbsDown} />
                 </RoundButton>
               </ButtonWrapper>
             </TitleBox>
             <CloseButton aria-label='close' onClick={handleCloseModal}>
-              <CloseIcon className='fas fa-times' />
+              <CloseIcon icon={faTimes} />
             </CloseButton>
           </Header>
           <DetailsContainer>

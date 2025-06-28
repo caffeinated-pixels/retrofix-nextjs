@@ -1,3 +1,6 @@
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons/faInfoCircle'
+import { faPlay } from '@fortawesome/free-solid-svg-icons/faPlay'
+
 import { useLargeModal } from '@/components/browse/hooks/useLargeModal'
 import { useBrowseContext } from '@/context/BrowseContext'
 
@@ -40,11 +43,11 @@ export const Billboard = () => {
           <FeaturedSynopsis>{randomShow?.description}</FeaturedSynopsis>
           <ButtonWrapper>
             <PlayButton onClick={handlePlay}>
-              <PlayIcon className='fas fa-play' />
+              <PlayIcon icon={faPlay} />
               Play
             </PlayButton>
             <MoreInfoButton onClick={handleShowModal}>
-              <InfoIcon className='fas fa-info-circle' />
+              <InfoIcon icon={faInfoCircle} />
               More Info
             </MoreInfoButton>
           </ButtonWrapper>
