@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { colors } from '@/constants/theme'
 
-import PlanTable from './plan-table'
+import PlanTable from './plan-table/PlanTable'
 
 const PlanFormContainer = styled.div``
 
