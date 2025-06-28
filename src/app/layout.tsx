@@ -30,25 +30,23 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <>
-      <html lang='en'>
-        <head>
-          <script
-            src='https://kit.fontawesome.com/4947e996a3.js'
-            crossOrigin='anonymous'
-            async
-          />
-        </head>
-        <body className={roboto.className}>
-          <StyledComponentsRegistry>
-            <FirebaseAuthContextProvider>
-              <BrowseDataProvider>
-                <SignUpContextProvider>{children}</SignUpContextProvider>
-              </BrowseDataProvider>
-            </FirebaseAuthContextProvider>
-          </StyledComponentsRegistry>
-        </body>
-      </html>
-    </>
+    <html lang='en'>
+      <head>
+        <script
+          src='https://kit.fontawesome.com/4947e996a3.js'
+          crossOrigin='anonymous'
+          async
+        />
+      </head>
+      <body className={roboto.className}>
+        <StyledComponentsRegistry>
+          <FirebaseAuthContextProvider>
+            <BrowseDataProvider>
+              <SignUpContextProvider>{children}</SignUpContextProvider>
+            </BrowseDataProvider>
+          </FirebaseAuthContextProvider>
+        </StyledComponentsRegistry>
+      </body>
+    </html>
   )
 }

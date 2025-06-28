@@ -45,9 +45,7 @@ export async function middleware(request: NextRequest) {
       })
     },
 
-    handleInvalidToken: async (reason) => {
-      console.warn('turbo Missing or malformed credentials', { reason })
-
+    handleInvalidToken: async () => {
       return redirectToLogin(request, {
         path: SIGN_IN,
         publicPaths: PUBLIC_ROUTES, // will skip the redirect for specified public routes
