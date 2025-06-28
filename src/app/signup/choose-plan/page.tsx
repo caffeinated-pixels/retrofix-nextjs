@@ -2,14 +2,14 @@
 
 import { useRouter } from 'next/navigation'
 
+import { RegListItem } from '@/components/registration/reg-list/RegListItem'
+import { RegList } from '@/components/registration/reg-list/styled'
 import { RegContentContainer } from '@/components/registration/RegContentContainer'
 import { StepIndicator } from '@/components/registration/StepIndicator'
 import { StepTitle } from '@/components/registration/StepTitle'
 import {
   RegContainer,
   RegContextBody,
-  RegList,
-  RegListItem,
   StepCheckmarkLogo,
   StepHeaderContainer,
   StepLogoContainer,

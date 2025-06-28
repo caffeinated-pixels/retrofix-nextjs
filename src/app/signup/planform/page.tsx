@@ -4,13 +4,13 @@ import { useRouter } from 'next/navigation'
 import styled from 'styled-components'
 
 import PlanFormTable from '@/components/registration/planform-table'
+import { RegListItem } from '@/components/registration/reg-list/RegListItem'
+import { RegList } from '@/components/registration/reg-list/styled'
 import { RegContentContainer } from '@/components/registration/RegContentContainer'
 import { StepIndicator } from '@/components/registration/StepIndicator'
 import { StepTitle } from '@/components/registration/StepTitle'
 import {
   RegContextBody,
-  RegList,
-  RegListItem,
   StepHeaderContainer,
 } from '@/components/registration/styled'
 import { PageContainer } from '@/components/shared/containers/PageContainer'
@@ -57,13 +57,13 @@ export default function PlanformPage() {
           </StepHeaderContainer>
           <RegContextBody $regForm={true}>
             <RegList $planform>
-              <RegListItem $planform>
+              <RegListItem planform>
                 Content that&apos;s literally unwatchable.
               </RegListItem>
-              <RegListItem $planform>
+              <RegListItem planform>
                 Recommendations based on someone else&apos;s tastes.
               </RegListItem>
-              <RegListItem $planform>None of these plans are real!</RegListItem>
+              <RegListItem planform>None of these plans are real!</RegListItem>
             </RegList>
           </RegContextBody>
         </RegContainerPlanForm>
