@@ -1,3 +1,4 @@
+import { faShare } from '@fortawesome/free-solid-svg-icons/faShare'
 import { useMemo } from 'react'
 
 import { BROWSE } from '@/constants/routes'
@@ -55,7 +56,7 @@ export const GetTheApp = ({ id }: GetTheAppProps) => {
           <AppLinkButton href='#'>Get the imaginery app</AppLinkButton>
         </AppLaunchBox>
         <ReturnLinkButton href={BROWSE}>
-          <ReturnIcon className='fas fa-share' />
+          <ReturnIcon icon={faShare} />
           Back to Browse Page
         </ReturnLinkButton>
       </DetailsContainer>
