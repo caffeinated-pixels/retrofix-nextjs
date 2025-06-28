@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
 
 import { colors } from '@/constants/theme'
@@ -22,7 +23,7 @@ export const PlayButton = styled.button`
   }
 `
 
-export const PlayIcon = styled.i`
+export const PlayIcon = styled(FontAwesomeIcon)`
   margin-right: 1rem;
 `
 

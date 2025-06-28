@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import styled, { css } from 'styled-components'
 
@@ -112,6 +113,6 @@ export const ReturnLinkButton = styled(Link)`
   line-height: 2;
 `
 
-export const ReturnIcon = styled.i`
+export const ReturnIcon = styled(FontAwesomeIcon)`
   margin-right: 0.5em;
 `

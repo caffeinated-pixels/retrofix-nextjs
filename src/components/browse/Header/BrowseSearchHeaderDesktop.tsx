@@ -1,3 +1,6 @@
+import { faBell } from '@fortawesome/free-solid-svg-icons/faBell'
+import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch'
+import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes'
 import { forwardRef } from 'react'
 
 import { NavDropDown } from '@/components/shared/nav-dropdown/navDropdown'
@@ -93,7 +96,7 @@ export const BrowseSearchHeaderDesktop = forwardRef<
                       onClick={toggleSearch}
                       aria-label='open search box'
                     >
-                      <SearchIcon className='fas fa-search' />
+                      <SearchIcon icon={faSearch} />
                     </IconButton>
 
                     <SearchInputDesktop
@@ -110,7 +113,7 @@ export const BrowseSearchHeaderDesktop = forwardRef<
                         aria-label='close search'
                         onClick={toggleSearch}
                       >
-                        <CloseIcon className='fas fa-times' />
+                        <CloseIcon icon={faTimes} />
                       </CloseSearchButton>
                     )}
                   </SearchWrapper>
@@ -118,7 +121,7 @@ export const BrowseSearchHeaderDesktop = forwardRef<
               </NavSecondaryItem>
 
               <NavSecondaryItem>
-                <BellIcon className='fas fa-bell' />
+                <BellIcon icon={faBell} />
               </NavSecondaryItem>
 
               <NavSecondaryItem>

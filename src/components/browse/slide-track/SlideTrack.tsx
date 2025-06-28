@@ -1,3 +1,5 @@
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons/faAngleLeft'
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons/faAngleRight'
 import { useLayoutEffect, useRef } from 'react'
 
 import { useWindowWidth } from '@/hooks/useWindowWidth'
@@ -84,7 +86,7 @@ export const SlideTrack = ({ content }: SlideTrackProps) => {
   return (
     <SlideTrackWrapper>
       <GoBackBox className='go-back' tabIndex={0} onClick={handleBack}>
-        <ArrowIcon className='fas fa-angle-left' />
+        <ArrowIcon icon={faAngleLeft} />
       </GoBackBox>
       <Track $trackOffset={state.trackOffset} ref={ref}>
         {content.map((item, i) => (
@@ -96,7 +98,7 @@ export const SlideTrack = ({ content }: SlideTrackProps) => {
         ))}
       </Track>
       <GoForwardBox className='go-forward' tabIndex={0} onClick={handleForward}>
-        <ArrowIcon className='fas fa-angle-right' />
+        <ArrowIcon icon={faAngleRight} />
       </GoForwardBox>
     </SlideTrackWrapper>
   )

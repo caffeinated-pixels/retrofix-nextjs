@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
 
 export const Container = styled.div``
@@ -108,7 +109,7 @@ export const IconButton = styled.button`
   color: inherit;
 `
 
-export const SearchIcon = styled.i`
+export const SearchIcon = styled(FontAwesomeIcon)`
   font-size: 0.8125rem;
 `
 
@@ -146,8 +147,8 @@ export const CloseSearchButton = styled(IconButton)`
   right: 0;
 `
 
-export const CloseIcon = styled.i``
+export const CloseIcon = styled(FontAwesomeIcon)``
 
-export const BellIcon = styled.i`
+export const BellIcon = styled(FontAwesomeIcon)`
   font-size: 1rem;
 `

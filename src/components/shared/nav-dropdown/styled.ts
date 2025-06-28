@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
 
 export const DropDownWrapper = styled.div`
@@ -20,7 +21,7 @@ type CalloutIconProps = {
   $isDropDownOpen: boolean
 }
 
-export const CalloutIcon = styled.i<CalloutIconProps>`
+export const CalloutIconWrapper = styled.div<CalloutIconProps>`
   display: ${({ $isDropDownOpen }) => ($isDropDownOpen ? 'flex' : 'none')};
   position: absolute;
   width: 200%;
@@ -36,7 +37,9 @@ export const CalloutIcon = styled.i<CalloutIconProps>`
   align-items: flex-end;
 `
 
-export const DropDownIcon = styled.i`
+export const CalloutIcon = styled(FontAwesomeIcon)``
+
+export const DropDownIcon = styled(FontAwesomeIcon)`
   margin-left: 10px;
 `
 
@@ -79,4 +82,4 @@ export const SubMenuBtn = styled.button`
 `
 export const TextSpan = styled.span``
 
-export const EditIcon = styled.i``
+export const EditIcon = styled(FontAwesomeIcon)``

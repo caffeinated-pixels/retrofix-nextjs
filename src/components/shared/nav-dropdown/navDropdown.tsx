@@ -1,3 +1,8 @@
+import {
+  faCaretDown,
+  faCaretUp,
+  faEdit,
+} from '@fortawesome/free-solid-svg-icons'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
@@ -9,6 +14,7 @@ import {
   Avatar,
   AvatarWrapper,
   CalloutIcon,
+  CalloutIconWrapper,
   DropDownIcon,
   DropDownWrapper,
   EditIcon,
@@ -40,15 +46,12 @@ export const NavDropDown = () => {
     >
       <AvatarWrapper tabIndex={0} onKeyDown={handleKeyDown}>
         <Avatar src={user?.photoURL ?? './images/users/1.png'} alt='' />
-        <CalloutIcon
-          className='fas fa-caret-up'
-          $isDropDownOpen={isDropDownOpen}
-        />
+        <CalloutIconWrapper $isDropDownOpen={isDropDownOpen}>
+          <CalloutIcon icon={faCaretUp} />
+        </CalloutIconWrapper>
       </AvatarWrapper>
 
-      <DropDownIcon
-        className={isDropDownOpen ? 'fas fa-caret-down' : 'fas fa-caret-up'}
-      />
+      <DropDownIcon icon={isDropDownOpen ? faCaretDown : faCaretUp} />
 
       {isDropDownOpen && (
         <SubMenuContainer>
@@ -69,7 +72,7 @@ export const NavDropDown = () => {
                   router.push(PROFILE)
                 }}
               >
-                <EditIcon className='fas fa-edit' />
+                <EditIcon icon={faEdit} />
                 <TextSpan>Manage Profiles</TextSpan>
               </SubMenuBtn>
             </SubMenuItem>
