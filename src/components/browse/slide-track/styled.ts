@@ -1,11 +1,20 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
+
+export const ArrowIcon = styled(FontAwesomeIcon)`
+  font-size: 3rem;
+
+  // hide arrow icons on hover for non-touch devices
+  @media (hover: hover) {
+    display: none;
+  }
+`
 
 export const SlideTrackWrapper = styled.div`
   position: relative;
   overflow: hidden;
 
-  &:hover > button > i,
-  &:focus-within > button > i {
+  &:hover ${ArrowIcon}, &:focus-within ${ArrowIcon} {
     display: block;
   }
 `
@@ -40,14 +49,6 @@ export const GoBackBox = styled.button`
 `
 export const GoForwardBox = styled(GoBackBox)`
   right: 0;
-`
-
-export const ArrowIcon = styled.i`
-  font-size: 3rem;
-
-  @media (hover: hover) {
-    display: none;
-  }
 `
 
 export const Track = styled.div<{ $trackOffset: string }>`
