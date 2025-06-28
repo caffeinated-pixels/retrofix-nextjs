@@ -31,13 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <head>
-        <script
-          src='https://kit.fontawesome.com/4947e996a3.js'
-          crossOrigin='anonymous'
-          async
-        />
-      </head>
+      <head></head>
       <body className={roboto.className}>
         <StyledComponentsRegistry>
           <FirebaseAuthContextProvider>
