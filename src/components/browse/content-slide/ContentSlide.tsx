@@ -21,7 +21,6 @@ const ContentSlideComponent = ({
 
   const tabIndex = isSlideOnCurrentPage ? 0 : -1
 
-  // FIXME: watch page not working from modal
   return (
     <ContentSlideContainer onClick={handleShowModal}>
       <ContentSlideImage
@@ -29,6 +28,8 @@ const ContentSlideComponent = ({
         src={imgUrl}
         alt={item.title}
         onKeyDown={handleKeyDown}
+        fill
+        sizes='(min-width: 1400px) 300px, 24vw'
       />
       {displayModal && (
         <LargeMediaModal handleCloseModal={handleCloseModal} item={item} />

@@ -1,14 +1,16 @@
+import Image from 'next/image'
 import styled from 'styled-components'
 
 export const ContentSlideContainer = styled.div`
+  position: relative;
+  aspect-ratio: 16 / 9;
   min-width: min(24%, 300px);
-  padding: 0 0.2vw;
 
   cursor: pointer;
 
   transition: all 250ms;
 `
-export const ContentSlideImage = styled.img`
+export const ContentSlideImage = styled(Image)`
   object-fit: cover;
 
   &:hover,

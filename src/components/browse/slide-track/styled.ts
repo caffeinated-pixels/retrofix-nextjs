@@ -56,4 +56,5 @@ export const Track = styled.div<{ $trackOffset: string }>`
   padding-left: 4%;
   transform: translateX(${({ $trackOffset }) => $trackOffset});
   transition: transform 750ms ease;
+  gap: 0.2vw;
 `
