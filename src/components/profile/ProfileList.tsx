@@ -25,7 +25,7 @@ export const ProfileList = ({ handleClick }: ProfileListProps) => {
       {AVATAR_NAMES.map((avatar, index) => (
         <ListItem key={index}>
           <NavButton onClick={() => handleClick(index + 1)}>
-            <Avatar $imgUrl={`./images/users/${index + 1}.png`} />
+            <Avatar $imgUrl={`/images/users/${index + 1}.png`} />
             <Name>
               The <br />
               {avatar}

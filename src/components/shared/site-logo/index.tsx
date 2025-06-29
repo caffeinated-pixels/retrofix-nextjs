@@ -14,7 +14,7 @@ export const SiteLogo = ({ isBrowsePage, isGetTheAppPage }: SiteLogoProps) => {
       $isGetTheAppPage={isGetTheAppPage}
     >
       <StyledNextLink href={HOME}>
-        <Logo src='../images/misc/logo.svg' alt='RetroFix home' />
+        <Logo src='./images/misc/logo.svg' alt='RetroFix home' />
       </StyledNextLink>
     </LogoWrapper>
   )

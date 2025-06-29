@@ -27,5 +27,5 @@ export const registerWithFirebase = async (
 
 export const generateRandomPhotoUrl = () => {
   const randomNum = Math.ceil(Math.random() * 6)
-  return `./images/users/${randomNum}.png`
+  return `/images/users/${randomNum}.png`
 }

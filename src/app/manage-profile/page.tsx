@@ -23,7 +23,7 @@ export default function ManageProfile() {
 
       try {
         await updateProfile(user, {
-          photoURL: `./images/users/${id}.png`,
+          photoURL: `/images/users/${id}.png`,
         })
         router.push(PROFILE)
       } catch (error) {
