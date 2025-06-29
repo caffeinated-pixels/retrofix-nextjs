@@ -20,20 +20,10 @@ export const ResultsGallery = styled.div`
 `
 
 export const Container = styled.div`
+  position: relative;
+  aspect-ratio: 16 / 9;
+
   cursor: pointer;
 
   transition: all 250ms;
-`
-export const ContentImage = styled.img`
-  object-fit: cover;
-
-  &:hover,
-  &:focus-visible {
-    transform: scale(0.98);
-    filter: brightness(0.5);
-  }
-
-  &:focus-visible {
-    outline: auto;
-  }
 `

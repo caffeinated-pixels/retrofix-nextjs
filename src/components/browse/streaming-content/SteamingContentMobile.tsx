@@ -31,6 +31,8 @@ export const StreamingContentMobile = () => {
               <ContentImage
                 src={`/images/${item.category}/${item.genre}/${item.slug}/thumb.jpg`}
                 alt={item.title}
+                fill
+                sizes='(min-width: 768px) 33vw, 50vw'
               />
             </ContentBox>
           ))}

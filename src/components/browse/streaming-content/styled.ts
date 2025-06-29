@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import styled from 'styled-components'
 
 import { breakpoints } from '@/constants/theme'
@@ -38,11 +39,13 @@ export const GenreRow = styled.div`
 `
 
 export const ContentBox = styled.div`
+  position: relative;
+  aspect-ratio: 16 / 9;
   min-width: 160px;
   margin-right: 2px;
   cursor: pointer;
 `
-export const ContentImage = styled.img`
+export const ContentImage = styled(Image)`
   height: 90px;
   object-fit: cover;
 `
