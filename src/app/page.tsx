@@ -1,7 +1,7 @@
 'use client'
 import { FaqSection } from '@/components/home/faq-section/FaqSection'
 import HeaderFeature from '@/components/home/header-feature'
-import StoryCards from '@/components/home/StoryCards'
+import { StoryCards } from '@/components/home/story-cards/StoryCards'
 import { MainContainer } from '@/components/shared/containers/MainContainer'
 import { Footer } from '@/components/shared/footer'
 import { Header } from '@/components/shared/header'

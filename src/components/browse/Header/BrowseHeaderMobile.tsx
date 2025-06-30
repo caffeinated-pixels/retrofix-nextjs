@@ -33,7 +33,7 @@ export const BrowseHeaderMobile = () => {
       <Container>
         <Navbar>
           <BurgerButton aria-label='Main menu' onClick={toggleMenu}>
-            <BurgerButtonIcon src='../images/icons/hamburger.gif' />
+            <BurgerButtonIcon src='./images/icons/hamburger.gif' />
           </BurgerButton>
 
           <LogoWrapperMobile>

@@ -2,6 +2,7 @@ import { useRouter } from 'next/navigation'
 
 import { PROFILE } from '@/constants/routes'
 import { useAuth } from '@/context/AuthContext'
+import { removeDotFromPhotoUrl } from '@/helpers/removeDotFromPhotoUrl'
 import { useSignOut } from '@/hooks/useSignOut'
 
 import {
@@ -40,7 +41,13 @@ export const NavSliderPanel = ({
         <NavPrimary>
           <NavUserLi>
             <NavBtn onClick={() => router.push(PROFILE)}>
-              <UserAvatar src={user?.photoURL || './images/users/2.png'} />
+              <UserAvatar
+                src={
+                  user?.photoURL
+                    ? removeDotFromPhotoUrl(user.photoURL)
+                    : '/images/users/2.png'
+                }
+              />
               <NavUserTextWrapper>
                 <NavUserTextTop>
                   {user?.displayName || 'nobody!'}

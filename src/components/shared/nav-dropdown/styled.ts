@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Image from 'next/image'
 import styled from 'styled-components'
 
 export const DropDownWrapper = styled.div`
@@ -11,7 +12,7 @@ export const AvatarWrapper = styled.div`
   position: relative;
 `
 
-export const Avatar = styled.img`
+export const Avatar = styled(Image)`
   width: 32px;
   height: 32px;
   border-radius: 4px;

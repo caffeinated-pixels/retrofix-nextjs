@@ -1,14 +1,10 @@
 import { useRouter } from 'next/navigation'
 
+import { ContentSlideImage } from '@/components/browse/content-slide/styled'
 import { GET_THE_APP } from '@/constants/routes'
 import { MediaItem } from '@/types/mediaContent'
 
-import {
-  Container,
-  ContentImage,
-  LayoutContainer,
-  ResultsGallery,
-} from './styled'
+import { Container, LayoutContainer, ResultsGallery } from './styled'
 
 type SearchResultsLayoutProps = {
   searchResults: MediaItem[]
@@ -24,11 +20,13 @@ export const SearchResultsLayoutMobile = ({
 
     return (
       <Container key={`result-${i}`}>
-        <ContentImage
+        <ContentSlideImage
           tabIndex={0}
           src={imgUrl}
           alt={show.title}
           onClick={() => router.push(`${GET_THE_APP}/${show.id}`)}
+          fill
+          sizes='(min-width: 768px) 33vw, 50vw'
         />
       </Container>
     )

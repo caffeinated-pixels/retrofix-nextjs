@@ -16,9 +16,11 @@ import { SemanticHeader } from '@/components/shared/SemanticHeader'
 import { SiteLogo } from '@/components/shared/site-logo'
 import { BROWSE, CHILDREN, MANAGE_PROFILE } from '@/constants/routes'
 import { useAuth } from '@/context/AuthContext'
+import { removeDotFromPhotoUrl } from '@/helpers/removeDotFromPhotoUrl'
 
 export default function Profile() {
   const user = useAuth()
+  const photoUrl = removeDotFromPhotoUrl(user?.photoURL ?? '')
 
   return (
     <PageContainer>
@@ -33,19 +35,19 @@ export default function Profile() {
         <ProfileListContainer>
           <ListItem>
             <NavLink href={BROWSE}>
-              <Avatar $imgUrl={user?.photoURL ?? ''} />
+              <Avatar $imgUrl={photoUrl} />
               <Name>{user?.displayName}</Name>
             </NavLink>
           </ListItem>
           <ListItem>
             <NavLink href={CHILDREN}>
-              <Avatar $imgUrl='./images/users/kids.jpg' />
+              <Avatar $imgUrl='/images/users/kids.jpg' />
               <Name>Children</Name>
             </NavLink>
           </ListItem>
           <ListItem>
             <NavLink href={MANAGE_PROFILE}>
-              <ChooseAvatar $imgUrl='./images/users/retrofix.svg' />
+              <ChooseAvatar $imgUrl='/images/users/retrofix.svg' />
               <Name>Choose avatar</Name>
             </NavLink>
           </ListItem>

@@ -8,6 +8,7 @@ import { useState } from 'react'
 
 import { CHILDREN, PROFILE } from '@/constants/routes'
 import { useAuth } from '@/context/AuthContext'
+import { removeDotFromPhotoUrl } from '@/helpers/removeDotFromPhotoUrl'
 import { useSignOut } from '@/hooks/useSignOut'
 
 import {
@@ -45,7 +46,16 @@ export const NavDropDown = () => {
       onClick={() => setIsDropDownOpen((prevState) => !prevState)}
     >
       <AvatarWrapper tabIndex={0} onKeyDown={handleKeyDown}>
-        <Avatar src={user?.photoURL ?? './images/users/1.png'} alt='' />
+        <Avatar
+          src={
+            user?.photoURL
+              ? removeDotFromPhotoUrl(user.photoURL)
+              : '/images/users/1.png'
+          }
+          alt=''
+          width={32}
+          height={32}
+        />
         <CalloutIconWrapper $isDropDownOpen={isDropDownOpen}>
           <CalloutIcon icon={faCaretUp} />
         </CalloutIconWrapper>
@@ -62,7 +72,12 @@ export const NavDropDown = () => {
                   router.push(CHILDREN)
                 }}
               >
-                <Avatar src='./images/users/kids.jpg' />
+                <Avatar
+                  src='/images/users/kids.jpg'
+                  alt=''
+                  width={32}
+                  height={32}
+                />
                 <TextSpan>Children</TextSpan>
               </SubMenuBtn>
             </SubMenuItem>
