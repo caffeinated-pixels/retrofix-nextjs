@@ -1,11 +1,9 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 
-import storyContentData from '../../fixtures/storycard-content.json'
+export const StoryCardsContainer = styled.div``
 
-const StoryCardsContainer = styled.div``
-
-const StoryCard = styled.section`
+export const StoryCard = styled.section`
   border-bottom: 8px solid #222;
 `
 
@@ -13,7 +11,7 @@ type ContentWrapperProps = {
   direction: string
 }
 
-const ContentWrapper = styled.div<ContentWrapperProps>`
+export const ContentWrapper = styled.div<ContentWrapperProps>`
   margin: 0 auto;
   padding: 50px 5%;
   box-sizing: content-box;
@@ -30,7 +28,7 @@ const ContentWrapper = styled.div<ContentWrapperProps>`
   }
 `
 
-const TextWrapper = styled.div<ContentWrapperProps>`
+export const TextWrapper = styled.div<ContentWrapperProps>`
   text-align: center;
   padding: 15px 0;
 
@@ -42,7 +40,7 @@ const TextWrapper = styled.div<ContentWrapperProps>`
   }
 `
 
-const Title = styled.h2`
+export const Title = styled.h2`
   font-size: 1.75rem;
   font-weight: 700;
   max-width: 640px;
@@ -58,7 +56,7 @@ const Title = styled.h2`
   }
 `
 
-const Subtitle = styled.p`
+export const Subtitle = styled.p`
   font-size: 1.2rem;
   font-weight: 400;
   max-width: 640px;
@@ -78,7 +76,7 @@ type ImageWrapperProps = {
 }
 
 // some images need a negative margin-top to reduce white space
-const ImageWrapper = styled.div<ImageWrapperProps>`
+export const ImageWrapper = styled.div<ImageWrapperProps>`
   margin: ${({ $negativeMargin }) => $negativeMargin};
   position: relative;
   aspect-ratio: 4/3;
@@ -90,24 +88,6 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
   }
 `
 
-const StoryImage = styled(Image)`
+export const StoryImage = styled(Image)`
   margin: 0 auto;
 `
-
-export default function StoryCards() {
-  const storyContent = storyContentData.map((item) => (
-    <StoryCard key={item.id}>
-      <ContentWrapper direction={item.direction}>
-        <TextWrapper direction={item.direction}>
-          <Title>{item.title}</Title>
-          <Subtitle>{item.subtitle}</Subtitle>
-        </TextWrapper>
-        <ImageWrapper $negativeMargin={item.negativeMargin}>
-          <StoryImage src={item.image} alt={item.alt} fill />
-        </ImageWrapper>
-      </ContentWrapper>
-    </StoryCard>
-  ))
-
-  return <StoryCardsContainer>{storyContent}</StoryCardsContainer>
-}
