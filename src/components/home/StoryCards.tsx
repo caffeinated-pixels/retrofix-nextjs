@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import styled from 'styled-components'
 
 import storyContentData from '../../fixtures/storycard-content.json'
@@ -80,8 +81,8 @@ type ImageWrapperProps = {
 const ImageWrapper = styled.div<ImageWrapperProps>`
   margin: ${({ $negativeMargin }) => $negativeMargin};
   position: relative;
+  aspect-ratio: 4/3;
   z-index: -1;
-  object-fit: cover;
 
   @media (min-width: 950px) {
     width: 48%;
@@ -89,7 +90,7 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
   }
 `
 
-const StoryImage = styled.img`
+const StoryImage = styled(Image)`
   margin: 0 auto;
 `
 
@@ -102,7 +103,7 @@ export default function StoryCards() {
           <Subtitle>{item.subtitle}</Subtitle>
         </TextWrapper>
         <ImageWrapper $negativeMargin={item.negativeMargin}>
-          <StoryImage src={item.image} alt={item.alt} />
+          <StoryImage src={item.image} alt={item.alt} fill />
         </ImageWrapper>
       </ContentWrapper>
     </StoryCard>
