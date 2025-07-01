@@ -14,7 +14,7 @@ type PlanTableProps = {
   selectedPlan: string
 }
 
-export default function PlanTable({ selectedPlan }: PlanTableProps) {
+export const PlanTable = ({ selectedPlan }: PlanTableProps) => {
   const typeNum =
     selectedPlan === 'basic' ? '1' : selectedPlan === 'standard' ? '2' : '3'
 

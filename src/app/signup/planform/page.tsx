@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation'
 import styled from 'styled-components'
 
-import PlanFormTable from '@/components/registration/planform-table'
+import { PlanFormTable } from '@/components/registration/planform-table/PlanFormTable'
 import { RegListItem } from '@/components/registration/reg-list/RegListItem'
 import { RegList } from '@/components/registration/reg-list/styled'
 import { RegContentContainer } from '@/components/registration/RegContentContainer'
