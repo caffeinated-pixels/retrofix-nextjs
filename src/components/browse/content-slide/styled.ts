@@ -1,10 +1,13 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 
+import { colors } from '@/constants/theme'
+
 export const ContentSlideContainer = styled.div`
   position: relative;
   aspect-ratio: 16 / 9;
   min-width: min(24%, 300px);
+  background-color: ${colors.textDarkGrey};
 
   cursor: pointer;
 
