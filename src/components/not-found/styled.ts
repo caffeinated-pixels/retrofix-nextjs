@@ -1,17 +1,17 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
-type PageBackgroundProps = {
-  $bgImage: string
-}
 
-export const PageBackground = styled.div<PageBackgroundProps>`
-  background-image: url(${({ $bgImage }) => $bgImage});
-  background-size: cover;
-  background-position: center;
+export const PageBackground = styled.div`
   height: 100vh;
 
   display: flex;
   flex-direction: column;
+`
+
+export const PageBackgroundImage = styled(Image)`
+  z-index: -1;
+  object-fit: cover;
 `
 
 export const MainContainer = styled.div`

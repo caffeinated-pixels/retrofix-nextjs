@@ -5,6 +5,7 @@ import {
   Message,
   MessageContainer,
   PageBackground,
+  PageBackgroundImage,
   Title,
 } from '@/components/not-found/styled'
 import { RegNavbar } from '@/components/shared/reg-navbar'
@@ -13,7 +14,8 @@ import { HOME } from '@/constants/routes'
 
 export default function PageNotFound() {
   return (
-    <PageBackground $bgImage='/images/misc/no-more-table.jpg'>
+    <PageBackground>
+      <PageBackgroundImage src='/images/misc/no-more-table.jpg' alt='' fill />
       <SemanticHeader>
         <RegNavbar noBorder />
       </SemanticHeader>

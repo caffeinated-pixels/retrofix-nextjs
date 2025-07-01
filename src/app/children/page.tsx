@@ -5,6 +5,7 @@ import {
   Message,
   MessageContainer,
   PageBackground,
+  PageBackgroundImage,
   Title,
 } from '@/components/not-found/styled'
 import { RegNavbar } from '@/components/shared/reg-navbar'
@@ -13,7 +14,12 @@ import { HOME } from '@/constants/routes'
 
 export default function Children() {
   return (
-    <PageBackground $bgImage='/images/films/horror/Halloween/large.jpg'>
+    <PageBackground>
+      <PageBackgroundImage
+        src='/images/films/horror/Halloween/large.jpg'
+        alt=''
+        fill
+      />
       <SemanticHeader>
         <RegNavbar noBorder />
       </SemanticHeader>
