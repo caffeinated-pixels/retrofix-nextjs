@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Image from 'next/image'
 import Link from 'next/link'
 import styled, { css } from 'styled-components'
 
@@ -32,15 +33,14 @@ export const LogoWrapper = styled.div`
   width: 120px;
 `
 
-type ShowImageProps = {
-  $imgUrl: string
-}
-
-export const ShowImage = styled.div<ShowImageProps>`
+export const ShowImageNextContainer = styled.div`
+  position: relative;
   height: 80vh;
-  background-image: url(${({ $imgUrl }) => $imgUrl});
-  background-position: 50% 0;
-  background-size: cover;
+`
+
+export const ShowImage = styled(Image)`
+  z-index: -1;
+  object-fit: cover;
 `
 
 export const DetailsContainer = styled.div`

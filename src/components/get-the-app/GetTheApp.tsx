@@ -17,6 +17,7 @@ import {
   ReturnIcon,
   ReturnLinkButton,
   ShowImage,
+  ShowImageNextContainer,
   ShowInfoBox,
   ShowTitle,
   WatchRetroFix,
@@ -41,7 +42,9 @@ export const GetTheApp = ({ id }: GetTheAppProps) => {
       <Header>
         <SiteLogo isGetTheAppPage />
       </Header>
-      <ShowImage $imgUrl={imgUrl}></ShowImage>
+      <ShowImageNextContainer>
+        <ShowImage src={imgUrl} alt='' fill />
+      </ShowImageNextContainer>
       <DetailsContainer>
         <MetadataBox>
           <ShowTitle>{show.title}</ShowTitle>
