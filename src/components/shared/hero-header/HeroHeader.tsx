@@ -16,7 +16,7 @@ export const HeroHeader = ({
     <HeaderContainer $hasBorder={hasBorder}>
       <BackgroundImage
         src='/images/misc/videodrome.jpg'
-        alt='RetroFix home'
+        alt=''
         fill
         $noBgOnMobile={noBgOnMobile}
         sizes='100vw'

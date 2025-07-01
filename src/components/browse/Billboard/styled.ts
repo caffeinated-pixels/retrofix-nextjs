@@ -1,17 +1,11 @@
+import Image from 'next/image'
 import styled from 'styled-components'
 
-type BillboardContainerProps = {
-  $imgUrl: string
-}
-
-export const BillboardContainer = styled.div<BillboardContainerProps>`
+export const BillboardContainer = styled.div`
   position: relative;
   width: 100%;
   height: 56.25vw;
-
-  background-image: url(${({ $imgUrl }) => $imgUrl});
-  background-size: cover;
-  background-position: center;
+  isolation: isolate;
 
   display: flex;
 
@@ -32,6 +26,11 @@ export const BillboardContainer = styled.div<BillboardContainerProps>`
       #141414 100%
     );
   }
+`
+
+export const BillboardImage = styled(Image)`
+  z-index: -1;
+  object-fit: cover;
 `
 
 export const Vignette = styled.div`
