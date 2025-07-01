@@ -42,7 +42,7 @@ export const StepDevicesLogo = styled.div`
   height: 90px;
   display: inline-block;
 
-  background-image: url('./images/misc/reg-devices.png');
+  background-image: url('/images/misc/reg-devices.png');
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: 260px;
@@ -59,6 +59,6 @@ export const StepCheckmarkLogo = styled.div`
   height: 50px;
   display: inline-block;
 
-  background-image: url('./images/misc/reg-checkmark-circle.png');
+  background-image: url('/images/misc/reg-checkmark-circle.png');
   background-size: contain;
 `
