@@ -7,7 +7,7 @@ import { FormEvent } from 'react'
 
 import { MainContainer } from '@/components/shared/containers/MainContainer'
 import { Footer } from '@/components/shared/footer'
-import { Header } from '@/components/shared/header'
+import { HeroHeader } from '@/components/shared/hero-header/HeroHeader'
 import { RegNavbar } from '@/components/shared/reg-navbar'
 import { SemanticHeader } from '@/components/shared/SemanticHeader'
 import { SigninForm } from '@/components/signin/signin-form'
@@ -70,7 +70,7 @@ export default function Signin() {
 
   return (
     <>
-      <Header noBgOnMobile>
+      <HeroHeader noBgOnMobile>
         <SemanticHeader>
           <RegNavbar noBorder />
         </SemanticHeader>
@@ -93,7 +93,7 @@ export default function Signin() {
           borderTop={colors.textMedGrey}
           borderOnlyOnMobile
         />
-      </Header>
+      </HeroHeader>
     </>
   )
 }

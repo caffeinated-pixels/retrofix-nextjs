@@ -14,6 +14,7 @@ import { useNavigateToWatch } from '../hooks/useNavigateToWatch'
 import { LargeMediaModal } from '../modals/LargeMediaModal'
 import {
   BillboardContainer,
+  BillboardImage,
   ButtonWrapper,
   FeaturedContainer,
   FeaturedSynopsis,
@@ -34,9 +35,9 @@ export const Billboard = () => {
     ? `/images/${randomShow.category}/${randomShow.genre}/${randomShow.slug}/large.jpg`
     : ''
 
-  // TODO: add proper loading states
   return (
-    <BillboardContainer className='container' $imgUrl={imgUrl}>
+    <BillboardContainer className='container'>
+      <BillboardImage src={imgUrl} alt='' fill />
       <Vignette>
         <FeaturedContainer>
           <FeaturedTitle>{randomShow?.title || 'Loading...'}</FeaturedTitle>

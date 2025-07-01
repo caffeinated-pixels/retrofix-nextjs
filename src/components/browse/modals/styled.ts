@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Image from 'next/image'
 import styled from 'styled-components'
 
 import { colors } from '@/constants/theme'
@@ -37,18 +38,12 @@ export const ModalContainer = styled.div`
   }
 `
 
-type HeaderProps = {
-  $imgUrl: string
-}
-
-export const Header = styled.div<HeaderProps>`
+export const Header = styled.div`
   position: relative;
+  isolation: isolate;
   height: 50vh;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-
-  background-image: url(${({ $imgUrl }) => $imgUrl});
-  background-size: cover;
 
   display: flex;
   justify-content: space-between;
@@ -61,6 +56,12 @@ export const Header = styled.div<HeaderProps>`
     height: 100%;
     background: linear-gradient(to top, #181818, transparent 50%);
   }
+`
+
+export const HeaderImage = styled(Image)`
+  z-index: -1;
+  object-fit: cover;
+  object-position: 50% 0;
 `
 
 export const TitleBox = styled.div`

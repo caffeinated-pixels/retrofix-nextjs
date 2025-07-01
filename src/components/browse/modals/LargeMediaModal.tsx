@@ -18,6 +18,7 @@ import {
   CloseIcon,
   DetailsContainer,
   Header,
+  HeaderImage,
   LeftDetailsBox,
   MatchScore,
   MaturityRating,
@@ -65,7 +66,8 @@ export const LargeMediaModal = ({
     createPortal(
       <Background>
         <ModalContainer>
-          <Header $imgUrl={imgUrl}>
+          <Header>
+            <HeaderImage src={imgUrl} alt='' fill />
             <TitleBox>
               <Title>{item.title}</Title>
               <ButtonWrapper>
