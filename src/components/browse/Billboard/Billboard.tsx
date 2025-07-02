@@ -37,7 +37,7 @@ export const Billboard = () => {
 
   return (
     <BillboardContainer className='container'>
-      <BillboardImage src={imgUrl} alt='' fill />
+      <BillboardImage src={imgUrl} alt='' fill priority />
       <Vignette>
         <FeaturedContainer>
           <FeaturedTitle>{randomShow?.title || 'Loading...'}</FeaturedTitle>

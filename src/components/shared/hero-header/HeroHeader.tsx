@@ -18,6 +18,7 @@ export const HeroHeader = ({
         src='/images/misc/videodrome.jpg'
         alt=''
         fill
+        priority
         $noBgOnMobile={noBgOnMobile}
         sizes='100vw'
       />

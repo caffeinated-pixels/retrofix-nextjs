@@ -25,7 +25,7 @@ export const FullPageBackground = ({
 }: FullPageBackgroundProps) => {
   return (
     <PageBackground>
-      <PageBackgroundImage src={imageUrl} alt='' fill />
+      <PageBackgroundImage src={imageUrl} alt='' fill priority />
       <SemanticHeader>
         <RegNavbar noBorder />
       </SemanticHeader>
