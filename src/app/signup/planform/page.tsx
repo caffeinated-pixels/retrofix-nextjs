@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation'
 import styled from 'styled-components'
 
+import { RegistrationFooter } from '@/components/registration/footer/RegistrationFooter'
 import { PlanFormTable } from '@/components/registration/planform-table/PlanFormTable'
 import { RegListItem } from '@/components/registration/reg-list/RegListItem'
 import { RegList } from '@/components/registration/reg-list/styled'
@@ -14,14 +15,12 @@ import {
   StepHeaderContainer,
 } from '@/components/registration/styled'
 import { PageContainer } from '@/components/shared/containers/PageContainer'
-import { Footer } from '@/components/shared/footer'
 import { NavLink } from '@/components/shared/nav-link'
 import { RegNavbar } from '@/components/shared/reg-navbar'
 import { SubmitButton } from '@/components/shared/submit-button'
 import { REG_FORM, SIGN_IN } from '@/constants/routes'
 import { colors } from '@/constants/theme'
 import { useSignUpContext } from '@/context/SignUpContext'
-import { footerHomeRegistration } from '@/fixtures/footer-content'
 import { registerWithFirebase } from '@/lib/firebase/registerWithFirebase'
 
 const RegContainerPlanForm = styled.div``
@@ -76,11 +75,7 @@ export default function PlanformPage() {
           Complete Registration
         </SubmitButton>
       </RegContentContainer>
-      <Footer
-        footerContent={footerHomeRegistration}
-        bgColor={colors.bgLightGrey}
-        borderTop={colors.borderLightGrey}
-      />
+      <RegistrationFooter />
     </PageContainer>
   )
 }

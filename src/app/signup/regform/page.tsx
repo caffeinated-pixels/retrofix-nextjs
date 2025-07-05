@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation'
 import { FormEvent } from 'react'
 
+import { RegistrationFooter } from '@/components/registration/footer/RegistrationFooter'
 import { GeneralForm } from '@/components/registration/general-form'
 import { RegContentContainer } from '@/components/registration/RegContentContainer'
 import { StepIndicator } from '@/components/registration/StepIndicator'
@@ -13,13 +14,11 @@ import {
   StepHeaderContainer,
 } from '@/components/registration/styled'
 import { PageContainer } from '@/components/shared/containers/PageContainer'
-import { Footer } from '@/components/shared/footer'
 import { NavLink } from '@/components/shared/nav-link'
 import { RegNavbar } from '@/components/shared/reg-navbar'
 import { CHOOSE_PLAN, SIGN_IN } from '@/constants/routes'
 import { colors } from '@/constants/theme'
 import { useSignUpContext } from '@/context/SignUpContext'
-import { footerHomeRegistration } from '@/fixtures/footer-content'
 import { isEmailValid } from '@/helpers/isEmailValid'
 import { useFormValidation } from '@/hooks/useFormValidation'
 import { type FormHandleSubmit } from '@/types/sharedTypes'
@@ -92,11 +91,7 @@ export default function RegForm() {
           />
         </RegFormContainer>
       </RegContentContainer>
-      <Footer
-        footerContent={footerHomeRegistration}
-        bgColor={colors.bgLightGrey}
-        borderTop={colors.borderLightGrey}
-      />
+      <RegistrationFooter />
     </PageContainer>
   )
 }

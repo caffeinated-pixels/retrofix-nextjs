@@ -6,12 +6,14 @@ import { colors } from '@/constants/theme'
 type FooterContainerProps = {
   $increasedPadding?: boolean
   $bgColor?: string
+  $textColor?: string
   $borderTop?: string
   $borderOnlyOnMobile?: boolean
 }
 
 export const FooterContainer = styled.footer<FooterContainerProps>`
-  color: ${colors.textMedGrey};
+  color: ${({ $textColor }) =>
+    $textColor ? $textColor : colors.textLightGrey};
   background-color: ${({ $bgColor }) => ($bgColor ? $bgColor : null)};
   border-top: ${({ $borderTop }) =>
     $borderTop ? `1px solid ${$borderTop}` : null};
