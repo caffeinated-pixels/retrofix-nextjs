@@ -85,7 +85,12 @@ export const SlideTrack = ({ content }: SlideTrackProps) => {
 
   return (
     <SlideTrackWrapper>
-      <GoBackBox className='go-back' tabIndex={0} onClick={handleBack}>
+      <GoBackBox
+        className='go-back'
+        tabIndex={0}
+        onClick={handleBack}
+        aria-label='Go back'
+      >
         <ArrowIcon icon={faAngleLeft} />
       </GoBackBox>
       <Track $trackOffset={state.trackOffset} ref={ref}>
@@ -97,7 +102,12 @@ export const SlideTrack = ({ content }: SlideTrackProps) => {
           />
         ))}
       </Track>
-      <GoForwardBox className='go-forward' tabIndex={0} onClick={handleForward}>
+      <GoForwardBox
+        className='go-forward'
+        tabIndex={0}
+        onClick={handleForward}
+        aria-label='Go forward'
+      >
         <ArrowIcon icon={faAngleRight} />
       </GoForwardBox>
     </SlideTrackWrapper>

@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 
+import { RegistrationFooter } from '@/components/registration/footer/RegistrationFooter'
 import { RegListItem } from '@/components/registration/reg-list/RegListItem'
 import { RegList } from '@/components/registration/reg-list/styled'
 import { RegContentContainer } from '@/components/registration/RegContentContainer'
@@ -15,13 +16,11 @@ import {
   StepLogoContainer,
 } from '@/components/registration/styled'
 import { PageContainer } from '@/components/shared/containers/PageContainer'
-import { Footer } from '@/components/shared/footer'
 import { NavLink } from '@/components/shared/nav-link'
 import { RegNavbar } from '@/components/shared/reg-navbar'
 import { SubmitButton } from '@/components/shared/submit-button'
 import { PLAN_FORM, SIGN_IN } from '@/constants/routes'
 import { colors } from '@/constants/theme'
-import { footerHomeRegistration } from '@/fixtures/footer-content'
 
 export default function ChoosePlanPage() {
   const router = useRouter()
@@ -61,11 +60,7 @@ export default function ChoosePlanPage() {
         </RegContainer>
         <SubmitButton onClick={nextPage}>Next</SubmitButton>
       </RegContentContainer>
-      <Footer
-        footerContent={footerHomeRegistration}
-        bgColor={colors.bgLightGrey}
-        borderTop={colors.borderLightGrey}
-      />
+      <RegistrationFooter />
     </PageContainer>
   )
 }

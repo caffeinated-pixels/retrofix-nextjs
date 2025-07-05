@@ -24,6 +24,7 @@ type FooterProps = {
   }
   increasedPadding?: boolean
   bgColor?: string
+  textColor?: string
   borderTop?: string
   borderOnlyOnMobile?: boolean
 }
@@ -31,6 +32,7 @@ type FooterProps = {
 export const Footer = ({
   footerContent,
   increasedPadding,
+  textColor,
   bgColor,
   borderTop,
   borderOnlyOnMobile,
@@ -45,6 +47,7 @@ export const Footer = ({
     <FooterContainer
       $increasedPadding={increasedPadding}
       $bgColor={bgColor}
+      $textColor={textColor}
       $borderTop={borderTop}
       $borderOnlyOnMobile={borderOnlyOnMobile}
     >
