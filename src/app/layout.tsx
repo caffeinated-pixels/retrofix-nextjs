@@ -6,7 +6,6 @@ import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 
 import FirebaseAuthContextProvider from '@/context/AuthContext'
-import BrowseDataProvider from '@/context/BrowseDataProvider'
 import { SignUpContextProvider } from '@/context/SignUpContext'
 import StyledComponentsRegistry from '@/lib/registry'
 config.autoAddCss = false
@@ -52,9 +51,7 @@ export default function RootLayout({
       <body className={roboto.className}>
         <StyledComponentsRegistry>
           <FirebaseAuthContextProvider>
-            <BrowseDataProvider>
-              <SignUpContextProvider>{children}</SignUpContextProvider>
-            </BrowseDataProvider>
+            <SignUpContextProvider>{children}</SignUpContextProvider>
           </FirebaseAuthContextProvider>
         </StyledComponentsRegistry>
       </body>
