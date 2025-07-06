@@ -6,7 +6,12 @@ import { headers } from 'next/headers'
 export const getDeviceOnServer = () => {
   const headersList = headers()
   const userAgent = headersList.get('user-agent')
-  const isMobileOrTablet = isMobile(userAgent || '').any
+  const returnValues = isMobile(userAgent || '')
 
-  return isMobileOrTablet
+  return {
+    isMobileOrTablet: returnValues.any,
+    isMobile: returnValues.phone,
+    isTablet: returnValues.tablet,
+    isDesktop: !returnValues.any,
+  }
 }

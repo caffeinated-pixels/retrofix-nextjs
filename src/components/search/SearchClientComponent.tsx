@@ -21,12 +21,12 @@ const fuse = new Fuse(mediaCollection, {
 })
 
 type SearchClientComponentProps = {
-  isMobileOrTablet: boolean
+  isMobile: boolean
 }
 
-export default function SearchClientComponent({
-  isMobileOrTablet,
-}: SearchClientComponentProps) {
+export const SearchClientComponent = ({
+  isMobile,
+}: SearchClientComponentProps) => {
   const [searchInput, setSearchInput] = useState(
     decodeURIComponent(useSearchParams().get('q') || '')
   )
@@ -58,7 +58,7 @@ export default function SearchClientComponent({
 
   return (
     <BrowsePageContainer>
-      {isMobileOrTablet ? (
+      {isMobile ? (
         <>
           <SearchHeaderMobile
             searchInput={searchInput}

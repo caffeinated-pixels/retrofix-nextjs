@@ -7,15 +7,15 @@ import { Footer } from '@/components/shared/footer'
 import { footerHomeContent } from '@/fixtures/footer-content'
 
 type BrowseClientComponentProps = {
-  isMobileOrTablet: boolean
+  isMobile: boolean
 }
 
-export default function BrowseClientComponent({
-  isMobileOrTablet,
-}: BrowseClientComponentProps) {
+export const BrowseClientComponent = ({
+  isMobile,
+}: BrowseClientComponentProps) => {
   return (
     <BrowsePageContainer>
-      {isMobileOrTablet ? <BrowseMobileLayout /> : <BrowseDesktopLayout />}
+      {isMobile ? <BrowseMobileLayout /> : <BrowseDesktopLayout />}
       <Footer footerContent={footerHomeContent} increasedPadding />
     </BrowsePageContainer>
   )
