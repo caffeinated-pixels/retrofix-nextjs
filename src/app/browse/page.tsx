@@ -1,8 +1,8 @@
-import BrowseClientComponent from '@/components/browse/BrowseClientComponent'
+import { BrowseClientComponent } from '@/components/browse/BrowseClientComponent'
 import { getDeviceOnServer } from '@/helpers/getDeviceOnServer'
 
 export default function BrowsePage() {
-  const isMobileOrTablet = getDeviceOnServer()
+  const { isMobile } = getDeviceOnServer()
 
-  return <BrowseClientComponent isMobileOrTablet={isMobileOrTablet} />
+  return <BrowseClientComponent isMobile={isMobile} />
 }
