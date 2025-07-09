@@ -12,6 +12,7 @@ const FIREBASE_ERROR_CODES = {
 } as const
 
 export const FALLBACK_ERROR = 'An error occurred. Please try again later'
+export const REGISTRATION_SUCCESS = 'Registration successful! Please sign in.'
 
 type FirebaseErrorAction = {
   type: 'SET_FIREBASE_ERROR'

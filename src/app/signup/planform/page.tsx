@@ -36,7 +36,7 @@ export default function PlanformPage() {
       globalPassword
     )
     if (response.success) {
-      router.replace(SIGN_IN)
+      router.replace(`${SIGN_IN}?rs=true`)
     } else {
       // TODO: Handle error
       router.push(REG_FORM)
