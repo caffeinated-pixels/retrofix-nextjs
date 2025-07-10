@@ -10,7 +10,6 @@ import { Navbar } from '@/components/shared/navbar'
 import { SemanticHeader } from '@/components/shared/SemanticHeader'
 import { SiteLogo } from '@/components/shared/site-logo'
 import { SIGN_IN } from '@/constants/routes'
-import { colors } from '@/constants/theme'
 import { footerHomeContent } from '@/fixtures/footer-content'
 
 export default function Home() {
