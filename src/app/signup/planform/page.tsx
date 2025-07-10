@@ -1,5 +1,6 @@
 'use client'
 
+import { FirebaseError } from 'firebase/app'
 import { useRouter } from 'next/navigation'
 import styled from 'styled-components'
 
@@ -18,9 +19,10 @@ import { PageContainer } from '@/components/shared/containers/PageContainer'
 import { NavLink } from '@/components/shared/nav-link'
 import { RegNavbar } from '@/components/shared/reg-navbar'
 import { SubmitButton } from '@/components/shared/submit-button'
-import { REG_FORM, SIGN_IN } from '@/constants/routes'
+import { SIGN_IN } from '@/constants/routes'
 import { colors } from '@/constants/theme'
 import { useSignUpContext } from '@/context/SignUpContext'
+import { FALLBACK_ERROR } from '@/lib/firebase/authErrors'
 import { registerWithFirebase } from '@/lib/firebase/registerWithFirebase'
 
 const RegContainerPlanForm = styled.div``
@@ -30,16 +32,18 @@ export default function PlanformPage() {
   const router = useRouter()
 
   const completeRegistration = async () => {
-    const response = await registerWithFirebase(
+    const { success, error } = await registerWithFirebase(
       globalFirstName,
       globalEmail,
       globalPassword
     )
-    if (response.success) {
-      router.replace(SIGN_IN)
+
+    if (success) {
+      router.replace(`${SIGN_IN}?rs=true`)
     } else {
-      // TODO: Handle error
-      router.push(REG_FORM)
+      const errorMessage =
+        error instanceof FirebaseError ? error.message : FALLBACK_ERROR
+      alert(errorMessage)
     }
   }
 
@@ -67,11 +71,7 @@ export default function PlanformPage() {
           </RegContextBody>
         </RegContainerPlanForm>
         <PlanFormTable />
-        <SubmitButton
-          // route={PLAN_FORM}
-          maxWidth='440px'
-          onClick={completeRegistration}
-        >
+        <SubmitButton maxWidth='440px' onClick={completeRegistration}>
           Complete Registration
         </SubmitButton>
       </RegContentContainer>

@@ -3,7 +3,7 @@
 import { FirebaseError } from 'firebase/app'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
-import { FormEvent } from 'react'
+import { FormEvent, useEffect } from 'react'
 
 import { MainContainer } from '@/components/shared/containers/MainContainer'
 import { Footer } from '@/components/shared/footer'
@@ -11,15 +11,23 @@ import { HeroHeader } from '@/components/shared/hero-header/HeroHeader'
 import { RegNavbar } from '@/components/shared/reg-navbar'
 import { SemanticHeader } from '@/components/shared/SemanticHeader'
 import { SigninForm } from '@/components/signin/signin-form'
-import { LOGIN_API, PROFILE } from '@/constants/routes'
+import { LOGIN_API, PROFILE, SIGN_IN } from '@/constants/routes'
 import { colors } from '@/constants/theme'
 import { footerHomeRegistration } from '@/fixtures/footer-content'
 import { isEmailValid } from '@/helpers/isEmailValid'
 import { FORM_ACTION_TYPES, useFormValidation } from '@/hooks/useFormValidation'
-import { FALLBACK_ERROR, processFirebaseError } from '@/lib/firebase/authErrors'
+import {
+  FALLBACK_ERROR,
+  processFirebaseError,
+  REGISTRATION_SUCCESS,
+} from '@/lib/firebase/authErrors'
 import { firebaseAuthWeb } from '@/lib/firebase/firebaseClient'
 
-export default function Signin() {
+export default function Signin({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined }
+}) {
   const { state, dispatch } = useFormValidation()
   const router = useRouter()
 
@@ -67,6 +75,18 @@ export default function Signin() {
       contactFirebase()
     }
   }
+
+  useEffect(() => {
+    // if user is redirected from the registration page
+    // show the registration success message
+    if (searchParams.rs) {
+      dispatch({
+        type: FORM_ACTION_TYPES.SET_FIREBASE_ERROR,
+        payload: REGISTRATION_SUCCESS,
+      })
+      router.replace(SIGN_IN)
+    }
+  }, [searchParams, dispatch, router])
 
   return (
     <>

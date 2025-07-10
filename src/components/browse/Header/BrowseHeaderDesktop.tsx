@@ -8,7 +8,7 @@ export const BrowseHeaderDesktop = () => {
   const searchParams = useSearchParams()
 
   const [isSearchOpen, setIsSearchOpen] = useState(
-    searchParams.get('sp') ? true : false
+    searchParams.has('sp') ? true : false
   )
 
   const { handleSearchInput } = useBrowseSearch()
