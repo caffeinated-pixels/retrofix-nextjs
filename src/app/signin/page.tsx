@@ -2,7 +2,7 @@
 
 import { FirebaseError } from 'firebase/app'
 import { signInWithEmailAndPassword } from 'firebase/auth'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { FormEvent, useEffect } from 'react'
 
 import { MainContainer } from '@/components/shared/containers/MainContainer'
@@ -23,10 +23,13 @@ import {
 } from '@/lib/firebase/authErrors'
 import { firebaseAuthWeb } from '@/lib/firebase/firebaseClient'
 
-export default function Signin() {
+export default function Signin({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined }
+}) {
   const { state, dispatch } = useFormValidation()
   const router = useRouter()
-  const searchParams = useSearchParams()
 
   const isEmailInvalid = !isEmailValid(state.email)
   const isPasswordTooShort = state.password.length < 6
@@ -76,7 +79,7 @@ export default function Signin() {
   useEffect(() => {
     // if user is redirected from the registration page
     // show the registration success message
-    if (searchParams.has('rs')) {
+    if (searchParams.rs) {
       dispatch({
         type: FORM_ACTION_TYPES.SET_FIREBASE_ERROR,
         payload: REGISTRATION_SUCCESS,
