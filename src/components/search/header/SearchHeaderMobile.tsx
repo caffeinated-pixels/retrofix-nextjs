@@ -15,6 +15,7 @@ import { SemanticHeader } from '@/components/shared/SemanticHeader'
 import { SiteLogo } from '@/components/shared/site-logo'
 import { BROWSE } from '@/constants/routes'
 import { useBrowseContext } from '@/context/BrowseContext'
+import { type SortingCategory } from '@/types/mediaContent'
 
 type SearchHeaderMobileProps = {
   searchInput: string
@@ -33,7 +34,7 @@ export const SearchHeaderMobile = ({
     setIsMenuOpen((prevState) => !prevState)
   }
 
-  const handleCategory = (category: string) => {
+  const handleCategory = (category: SortingCategory) => {
     setCategory(category)
     router.push(BROWSE)
   }

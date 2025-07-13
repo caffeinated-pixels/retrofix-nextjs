@@ -1,9 +1,12 @@
+export type Category = 'films' | 'series'
+export type SortingCategory = 'home' | Category
+
 // Base type with common properties
 interface MediaBase {
   id: string
   title: string
   description: string
-  category: 'films' | 'series'
+  category: Category
   genre: string
   subgenres?: string
   maturity: string
@@ -15,13 +18,13 @@ interface MediaBase {
 
 // Film-specific type
 interface Film extends MediaBase {
-  category: 'films'
+  category: Extract<Category, 'films'>
   director: string
 }
 
 // Series-specific type
 interface Series extends MediaBase {
-  category: 'series'
+  category: Extract<Category, 'series'>
 }
 
 // Union type representing either a film or series

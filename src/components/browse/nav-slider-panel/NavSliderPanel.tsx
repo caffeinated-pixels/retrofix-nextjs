@@ -4,6 +4,7 @@ import { PROFILE } from '@/constants/routes'
 import { useAuth } from '@/context/AuthContext'
 import { removeDotFromPhotoUrl } from '@/helpers/removeDotFromPhotoUrl'
 import { useSignOut } from '@/hooks/useSignOut'
+import { type SortingCategory } from '@/types/mediaContent'
 
 import {
   NavBtn,
@@ -21,8 +22,8 @@ import {
 
 type NavSliderPanelProps = {
   isMenuOpen: boolean
-  activeCategory: string
-  setCategory: (category: string) => void
+  activeCategory: SortingCategory
+  setCategory: (category: SortingCategory) => void
 }
 
 export const NavSliderPanel = ({

@@ -19,11 +19,12 @@ import {
   type MediaCollection,
   type MediaItem,
   type SortedContent,
+  type SortingCategory,
 } from '@/types/mediaContent'
 
 type BrowseContextType = {
-  activeCategory: string
-  setCategory: (category: string) => void
+  activeCategory: SortingCategory
+  setCategory: (category: SortingCategory) => void
   mediaCollection: MediaCollection
   sortedContent: SortedContent[]
   randomShow: MediaItem | null
@@ -44,7 +45,7 @@ export const BrowseContextProvider = ({
   const pathname = usePathname()
 
   const setCategory = useCallback(
-    (category: string) => {
+    (category: SortingCategory) => {
       setBrowseData((prev: BrowseData) => {
         if (prev.activeCategory === category) return prev
 
