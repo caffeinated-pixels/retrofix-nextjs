@@ -5,10 +5,14 @@ import {
   getRandomShow,
   sortStreamingContent,
 } from '@/helpers/sortStreamingContent'
-import { type MediaItem, type SortedContent } from '@/types/mediaContent'
+import {
+  type MediaItem,
+  type SortedContent,
+  SortingCategory,
+} from '@/types/mediaContent'
 
 export type BrowseData = {
-  activeCategory: string
+  activeCategory: SortingCategory
   sortedContent: SortedContent[]
   randomShow: MediaItem
 }
@@ -17,7 +21,9 @@ export type BrowseData = {
  * server side function for getting the browse data
  * which is used to initialize the BrowseContext via the BrowseDataProvider
  */
-export const getBrowseData = (category: string = 'home'): BrowseData => {
+export const getBrowseData = (
+  category: SortingCategory = 'home'
+): BrowseData => {
   const sortedStreamingContent = sortStreamingContent(mediaCollection, category)
   const randomShow = getRandomShow(sortedStreamingContent)
 

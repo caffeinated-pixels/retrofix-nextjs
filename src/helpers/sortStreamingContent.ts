@@ -1,7 +1,8 @@
 import {
   type MediaCollection,
-  MediaItem,
-  SortedContent,
+  type MediaItem,
+  type SortedContent,
+  type SortingCategory,
 } from '@/types/mediaContent'
 
 /**
@@ -14,7 +15,7 @@ import {
  * @param contentArray - Collection of media items
  * @returns Array of unique genre strings
  */
-const getUniqueGenresList = (contentArray: MediaCollection) => {
+export const getUniqueGenresList = (contentArray: MediaCollection) => {
   return [
     ...new Set(
       contentArray.map((item) => item.genre).filter((genre) => genre !== '')
@@ -35,7 +36,7 @@ We do this by mapping through the genreList arr. Use each genre to filter stream
 
 export const sortStreamingContent = (
   unsortedContent: MediaCollection,
-  category: string
+  category: SortingCategory
 ): SortedContent[] => {
   const filteredByCategory =
     category === 'home'
@@ -56,7 +57,7 @@ export const sortStreamingContent = (
  * @param array - The array to select a random item from.
  * @returns A random item from the provided array.
  */
-const getRandomItemFromArray = <T>(array: T[]): T => {
+export const getRandomItemFromArray = <T>(array: T[]): T => {
   return array[Math.floor(Math.random() * array.length)]
 }
 
