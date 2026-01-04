@@ -21,7 +21,7 @@
     "fuse.js": "^7.1.0",
     "ismobilejs": "^1.1.1",
     "js-cookie": "^3.0.5",
-    "next": "14.2.25",
+    "next": "^14.2.35",
     "next-firebase-auth-edge": "^1.9.1",
     "react": "^18",
     "react-dom": "^18",
@@ -37,7 +37,7 @@
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^8.29.1",
     "eslint": "^8",
-    "eslint-config-next": "14.2.25",
+    "eslint-config-next": "^14.2.35",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "husky": "^8.0.0",
@@ -46,5 +46,10 @@
     "lint-staged": "^16.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5"
+  },
+  "overrides": {
+    "@next/eslint-plugin-next": {
+      "glob": "10.5.0"
+    }
   }
 }
